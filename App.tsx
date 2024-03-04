@@ -1,5 +1,9 @@
 import 'react-native-gesture-handler';
 
+// Firebase
+import { initializeApp } from "firebase/app";
+import { firebaseConfig } from './src/firebaseConfig';
+
 import { StatusBar } from 'expo-status-bar';
 import {  Text } from 'react-native';
 

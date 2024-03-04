@@ -13,7 +13,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 export const Navigation = () => {
 
-    const isAuthenticated = !!false;
+    const isAuthenticated = !!true;
     const isAdmin = false;
 
     return (

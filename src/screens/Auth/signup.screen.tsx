@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 
 import { KeyboardAvoidingView, ScrollView } from "react-native";
 
+// Firebase 
+import { auth } from '../../firebaseConfig';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+
 // Styling
 import { loginStyle } from "../../styles/screens/login-auth.styles";
 
@@ -17,6 +21,18 @@ export const SignupScreen = () => {
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [retryPassword, setRetryPassword] = useState<string>("");
+
+    const createUser = async () => {
+        if(name.length > 0 && email.length > 0 && password.length > 0 && retryPassword.length > 0){
+            console.log(name, email, password);
+            createUserWithEmailAndPassword(auth, email, password)
+            .then( res => console.log(res) )
+            .catch( err => console.log(err) );
+        }
+        else{
+            console.log("Please fill in necessary info");
+        }
+    }
 
     return (
         <>
@@ -65,7 +81,7 @@ export const SignupScreen = () => {
 
                     <FormBtnComponent 
                         title="SIGN UP"
-                        func={ () => {} }
+                        func={ () => createUser() }
                     />
 
                     <BottomFormComponent 
