@@ -38,8 +38,8 @@ export const OnboardingScreen = () => {
     )
 
     const handleDone = async () => {
-        await AsyncStorage.setItem("Next", "Login");
-        navigation.navigate("Login")
+        await AsyncStorage.setItem("Screen", "Login");
+        navigation.navigate("Login");
     }
 
     return (
