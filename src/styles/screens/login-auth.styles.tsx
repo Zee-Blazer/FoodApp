@@ -86,7 +86,8 @@ export const loginStyle = StyleSheet.create({
         color: "#FF3434",
         fontSize: 12,
         fontFamily: theme.fonts.body,
-        marginBottom: 2
+        marginBottom: 2,
+        textAlign: "right"
     },
     eyesIconStyle: {
         marginLeft: theme.space[8]

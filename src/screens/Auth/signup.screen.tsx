@@ -34,7 +34,7 @@ export const SignupScreen = () => {
     const createUser = async () => {
         const proceed = email.length > 0 && name.length > 0 && password.length > 0 && retryPassword.length > 0;
     
-        setNameErr(""); setEmailErr(""); setPasswordErr(""); setRetryPassword("");
+        setNameErr(""); setEmailErr(""); setPasswordErr(""); setRetryPasswordErr(""); setErr("");
 
         if( proceed ) {
 
@@ -46,7 +46,7 @@ export const SignupScreen = () => {
             else{
                 console.log("All the data is working fine");
             }
-            
+
         }
         else if(name.length < 1){
             setNameErr("Fill in name");
@@ -61,10 +61,10 @@ export const SignupScreen = () => {
             setErr("Fill all inputs");
         }
         else if(retryPassword.length < 1){
-            setRetryPassword("Fill retype password");
+            setRetryPasswordErr("Fill retype password");
             setErr("Fill all inputs");
         }
-        // signUpFunc(name, email, password, retryPassword);
+
     }
 
     return (

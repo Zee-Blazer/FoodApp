@@ -14,8 +14,33 @@ import { RememberForgotComponent } from '../../components/Auth-Comp/remember-for
 
 export const LoginScreen = () => {
 
-    const [email, setEmail] = useState("");
+    const [err, setErr] = useState<string>("");
+
+    const [email, setEmail] = useState<string>("");
+    const [emailErr, setEmailErr] = useState<string>("");
     const [password, setPassword] = useState<string>("");
+    const [passwordErr, setPasswordErr] = useState<string>("");
+
+    const loginUser = () => {
+        const proceed = email.length > 1 && password.length > 1;
+        
+        setEmailErr(""); setPasswordErr("");
+        
+        if( proceed ){
+            console.log("About to Login the User");
+        }
+        else if(email.length < 1){
+            setEmailErr("Fill your email");
+            setErr("Fill every field");
+        }
+        else if(password.length < 1){
+            setPasswordErr("Fill in your password");
+            setErr("Fill every field");
+        }
+        else{
+            console.log("Error of another sort");
+        }
+    }
 
     return (
         <>
@@ -24,6 +49,7 @@ export const LoginScreen = () => {
                 subtitle="Please sign in to your existing account"
                 extra=""
                 back={ false }
+                err={ err }
             />
 
             <View style={ loginStyle.formContainer }>
@@ -36,6 +62,7 @@ export const LoginScreen = () => {
                         placeholder='example@gmail.com'
                         value={ email }
                         setValue={ setEmail }
+                        setErr={ emailErr }
                     />
 
                     <InputFieldComponent 
@@ -44,13 +71,14 @@ export const LoginScreen = () => {
                         placeholder="* * * * * * * * * *" 
                         value={ password }
                         setValue={ setPassword }
+                        setErr={ passwordErr }
                     />
                     
                     <RememberForgotComponent />
 
                     <FormBtnComponent 
                         title="LOG IN"
-                        func={ () => {} }
+                        func={ () => loginUser() }
                     />
 
                     <BottomFormComponent 
