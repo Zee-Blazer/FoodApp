@@ -115,6 +115,12 @@ export const loginStyle = StyleSheet.create({
         paddingVertical: 23,
         borderRadius: 12,
     },
+    loadingSubmitBtn: {
+        opacity: 0.4,
+        flexDirection: "row",
+        justifyContent: 'center',
+        alignItems: "center"
+    },
     submitBtnText: {
         textAlign: 'center',
         color: theme.colors.text.normal,

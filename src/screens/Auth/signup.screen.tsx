@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 
 import { KeyboardAvoidingView, ScrollView } from "react-native";
 
+// Authentication Context
+import { AuthContext } from '../../services/Context/auth.context';
+
 // Firebase local function
-import { signUpWithEmailPassword } from '../../services/Firebase/authentication';
+// import { signUpWithEmailPassword } from '../../services/Firebase/authentication';
 
 // Styling
 import { loginStyle } from "../../styles/screens/login-auth.styles";
@@ -15,6 +18,9 @@ import { InputFieldComponent } from "../../components/Auth-Comp/input-field.comp
 import { FormBtnComponent } from '../../components/Auth-Comp/form-btn.component'; // Simplified Button
 
 export const SignupScreen = () => {
+
+    // Context
+    const { isLoading, errMsg, signUpWithEmailPassword } = useContext(AuthContext);
 
     const [err, setErr] = useState<string>("");
 
@@ -40,6 +46,7 @@ export const SignupScreen = () => {
                 setErr("Password mismatch... Please check the passwords you typed");
             }
             else{
+                setErr(errMsg);
                 signUpWithEmailPassword(email, password);
             }
 
@@ -115,6 +122,7 @@ export const SignupScreen = () => {
 
                     <FormBtnComponent 
                         title="SIGN UP"
+                        loading={ isLoading }
                         func={ () => createUser() }
                     />
 
