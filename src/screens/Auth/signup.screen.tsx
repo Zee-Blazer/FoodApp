@@ -6,6 +6,9 @@ import { KeyboardAvoidingView, ScrollView } from "react-native";
 import { auth } from '../../firebaseConfig';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 
+// Middleware Functions
+import { signUpFunc } from '../../Utils/Func/Authentication';
+
 // Styling
 import { loginStyle } from "../../styles/screens/login-auth.styles";
 
@@ -17,21 +20,51 @@ import { FormBtnComponent } from '../../components/Auth-Comp/form-btn.component'
 
 export const SignupScreen = () => {
 
+    const [err, setErr] = useState<string>("");
+
     const [name, setName] = useState<string>('');
+    const [nameErr, setNameErr] = useState<string>("");
     const [email, setEmail] = useState<string>("");
+    const [emailErr, setEmailErr] = useState<string>("");
     const [password, setPassword] = useState<string>("");
+    const [passwordErr, setPasswordErr] = useState<string>("");
     const [retryPassword, setRetryPassword] = useState<string>("");
+    const [retryPasswordErr, setRetryPasswordErr] = useState<string>("");
 
     const createUser = async () => {
-        if(name.length > 0 && email.length > 0 && password.length > 0 && retryPassword.length > 0){
-            console.log(name, email, password);
-            createUserWithEmailAndPassword(auth, email, password)
-            .then( res => console.log(res) )
-            .catch( err => console.log(err) );
+        const proceed = email.length > 0 && name.length > 0 && password.length > 0 && retryPassword.length > 0;
+    
+        setNameErr(""); setEmailErr(""); setPasswordErr(""); setRetryPassword("");
+
+        if( proceed ) {
+
+            if(password != retryPassword){
+                setPasswordErr("Password mismatch");
+                setRetryPasswordErr("Password mismatch");
+                setErr("Password mismatch... Please check the passwords you typed");
+            }
+            else{
+                console.log("All the data is working fine");
+            }
+            
         }
-        else{
-            console.log("Please fill in necessary info");
+        else if(name.length < 1){
+            setNameErr("Fill in name");
+            setErr("Fill all inputs");
         }
+        else if(email.length < 1){
+            setEmailErr("Fill in your email");
+            setErr("Fill all inputs");
+        }
+        else if(password.length < 1){
+            setPasswordErr("Fill in your password");
+            setErr("Fill all inputs");
+        }
+        else if(retryPassword.length < 1){
+            setRetryPassword("Fill retype password");
+            setErr("Fill all inputs");
+        }
+        // signUpFunc(name, email, password, retryPassword);
     }
 
     return (
@@ -41,6 +74,7 @@ export const SignupScreen = () => {
                 subtitle="Please sign up to get started"
                 extra=""
                 back={ true }
+                err={ err }
             />
 
             <ScrollView style={ loginStyle.scrollFormContainer }>
@@ -53,6 +87,7 @@ export const SignupScreen = () => {
                         placeholder='John Doe'
                         value={ name }
                         setValue={ setName }
+                        setErr={ nameErr }
                     />
                     
                     <InputFieldComponent 
@@ -61,6 +96,7 @@ export const SignupScreen = () => {
                         placeholder='example@gmail.com'
                         value={ email }
                         setValue={ setEmail }
+                        setErr={ emailErr }
                     />
 
                     <InputFieldComponent 
@@ -69,6 +105,7 @@ export const SignupScreen = () => {
                         placeholder="* * * * * * * * * *" 
                         value={ password }
                         setValue={ setPassword }
+                        setErr={ passwordErr }
                     />
 
                     <InputFieldComponent 
@@ -77,6 +114,7 @@ export const SignupScreen = () => {
                         placeholder="* * * * * * * * * *" 
                         value={ retryPassword }
                         setValue={ setRetryPassword }
+                        setErr={ retryPasswordErr }
                     />
 
                     <FormBtnComponent 

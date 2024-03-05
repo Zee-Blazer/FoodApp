@@ -14,10 +14,11 @@ interface Props {
     title: string,
     subtitle: string,
     extra: string, 
-    back: boolean
+    back: boolean,
+    err?: string
 }
 
-export const TopImageComponent: React.FC<Props> = ({ title, subtitle, extra, back }) => {
+export const TopImageComponent: React.FC<Props> = ({ title, subtitle, extra, back, err }) => {
 
     const navigation = useNavigation();
 
@@ -46,6 +47,19 @@ export const TopImageComponent: React.FC<Props> = ({ title, subtitle, extra, bac
                 {  
                     extra.length > 1 &&
                     <Text style={ loginStyle.headerExtra }>example@gmail.com</Text>
+                }
+
+                {/* An Error message form filling for that the user should see */}
+                { 
+                    err && 
+                    <Text 
+                        style={
+                            [ 
+                                loginStyle.errText, 
+                                { textAlign: "center", fontSize: 13, marginTop: 4 } 
+                            ]
+                        }
+                    >{ err }</Text> 
                 }
             </View>
         </ImageBackground>

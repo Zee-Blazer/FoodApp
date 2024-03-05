@@ -13,12 +13,13 @@ interface Props {
     label: string,
     placeholder: string,
     value: string,
+    setErr?: string,
     setValue: React.Dispatch<React.SetStateAction<string>>
 }
 
-export const InputFieldComponent: React.FC<Props> = ({ type, label, placeholder, value, setValue }) => {
+export const InputFieldComponent: React.FC<Props> = ({ type, label, placeholder, value, setValue, setErr }) => {
 
-    const [iconDisplay, setIconDisplay] = useState<boolean>(false);
+    const [iconDisplay, setIconDisplay] = useState<boolean>(true);
 
     let template;
 
@@ -26,12 +27,20 @@ export const InputFieldComponent: React.FC<Props> = ({ type, label, placeholder,
 
     switch(type){
         case "text": 
+            
             template = (
                 <View>
                     <Text style={ loginStyle.labelText }>{ label }</Text>
+                    { setErr && <Text style={ loginStyle.errText }>{ setErr }</Text> }
                     <TextInput 
                         placeholder={ placeholder } 
-                        style={ loginStyle.textInputStyle }
+                        style={
+                            [ 
+                                loginStyle.textInputStyle, 
+                                setErr != undefined && setErr.length > 1 && 
+                                loginStyle.textErrInputStyle 
+                            ]
+                        }
                         autoCapitalize="none"
                         autoCorrect={ false }
                         onChangeText={ setValue }
@@ -43,20 +52,27 @@ export const InputFieldComponent: React.FC<Props> = ({ type, label, placeholder,
             template = (
                 <View>
                     <Text style={ loginStyle.labelText }>{ label }</Text>
-                    <View style={ loginStyle.textInputStyle }>
+                    { setErr && <Text style={ loginStyle.errText }>{ setErr }</Text> }
+                    <View style={
+                        [ 
+                            loginStyle.textInputStyle,  
+                            setErr != undefined && setErr.length > 1 && 
+                            loginStyle.textErrInputStyle 
+                        ]
+                    }>
                         <TextInput 
                             placeholder={ placeholder } //"* * * * * * * * * *" 
                             secureTextEntry={ iconDisplay }
                             autoCapitalize="none"
                             autoCorrect={ false }
-                            style={[ { flex: 1, color: "#32343E" }]}
+                            style={ { flex: 1, color: "#32343E" } } 
                             onChangeText={ setValue }
                         />
                         { 
                             value.length > 0 && 
                             <>
                                 { 
-                                    iconDisplay ? 
+                                    !iconDisplay ? 
                                     <TouchableOpacity
                                         onPress={ changeIcon }
                                     >

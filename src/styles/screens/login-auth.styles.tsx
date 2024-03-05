@@ -78,6 +78,16 @@ export const loginStyle = StyleSheet.create({
         fontFamily: theme.fonts.body,
         color: "#32343E"
     },
+    textErrInputStyle : {
+        borderColor: "#FF3434",
+        borderWidth: 1
+    },
+    errText: {
+        color: "#FF3434",
+        fontSize: 12,
+        fontFamily: theme.fonts.body,
+        marginBottom: 2
+    },
     eyesIconStyle: {
         marginLeft: theme.space[8]
     },
