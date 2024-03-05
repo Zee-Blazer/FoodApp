@@ -4,6 +4,9 @@ import 'react-native-gesture-handler';
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from './src/firebaseConfig';
 
+// Authentication Context
+import { AuthContextProvider } from './src/services/Context/auth.context';
+
 import { StatusBar } from 'expo-status-bar';
 import {  Text } from 'react-native';
 
@@ -26,6 +29,8 @@ export default function App() {
   }
 
   return (
-    <Navigation />
+    <AuthContextProvider>
+      <Navigation />
+    </AuthContextProvider>
   );
 }

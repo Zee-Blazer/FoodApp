@@ -2,12 +2,8 @@ import React, { useState } from 'react';
 
 import { KeyboardAvoidingView, ScrollView } from "react-native";
 
-// Firebase 
-import { auth } from '../../firebaseConfig';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-
-// Middleware Functions
-import { signUpFunc } from '../../Utils/Func/Authentication';
+// Firebase local function
+import { signUpWithEmailPassword } from '../../services/Firebase/authentication';
 
 // Styling
 import { loginStyle } from "../../styles/screens/login-auth.styles";
@@ -44,7 +40,7 @@ export const SignupScreen = () => {
                 setErr("Password mismatch... Please check the passwords you typed");
             }
             else{
-                console.log("All the data is working fine");
+                signUpWithEmailPassword(email, password);
             }
 
         }
