@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 
 import { View, KeyboardAvoidingView } from "react-native";
+
+// Authentication Context
+import { AuthContext } from '../../services/Context/auth.context';
 
 // Styling 
 import { loginStyle } from "../../styles/screens/login-auth.styles";
@@ -13,6 +16,9 @@ import { FormBtnComponent } from '../../components/Auth-Comp/form-btn.component'
 import { RememberForgotComponent } from '../../components/Auth-Comp/remember-forgot.component'; // Remember and Forgotten Password
 
 export const LoginScreen = () => {
+
+    // Context
+    const { isLoading, errMsg, loginWithEmailPassword } = useContext(AuthContext);
 
     const [err, setErr] = useState<string>("");
 
@@ -27,7 +33,8 @@ export const LoginScreen = () => {
         setEmailErr(""); setPasswordErr("");
         
         if( proceed ){
-            console.log("About to Login the User");
+            setErr(errMsg);
+            loginWithEmailPassword(email, password)
         }
         else if(email.length < 1){
             setEmailErr("Fill your email");
@@ -78,6 +85,7 @@ export const LoginScreen = () => {
 
                     <FormBtnComponent 
                         title="LOG IN"
+                        loading={ isLoading }
                         func={ () => loginUser() }
                     />
 

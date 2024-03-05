@@ -41,12 +41,13 @@ export const AuthContextProvider = ({ children }) => {
     const loginWithEmailPassword = (email, password) => {
         setIsLoading(true);
 
-        signInWithEmailAndPassword(auth, email, password
+        signInWithEmailAndPassword(auth, email, password)
             .then( async res => {
                 await AsyncStorage.setItem("@user_details", JSON.stringify(res));
-                await AsyncStorage.setItem("@user_id", res.uid);
+                await AsyncStorage.setItem("@user_id", res.user.uid);
                 setUser(res);
                 setIsLoading(false);
+                console.log("Done");
             } )
             .catch( err => {
                 if (err.code === 'auth/user-not-found') {
@@ -54,11 +55,21 @@ export const AuthContextProvider = ({ children }) => {
                 } else if (err.code === 'auth/wrong-password') {
                     setErrMsg('Incorrect password');
                 } else {
-                    setErrMsg('Registration failed. Please try again later.');
+                    // setErrMsg('Error signing in: ', err.code);
+                    console.log(err);
                 }
                 setIsLoading(false);
             } )
-        )
+    }
+
+    const logoutApp = () => {
+        signOut()
+        .then( async res => {
+            await AsyncStorage.setItem("@user_details", "");
+            await AsyncStorage.setItem("@user_id", "");
+            setUser();
+        } )
+        .catch( err => console.log(err) );
     }
 
     return (
@@ -66,6 +77,8 @@ export const AuthContextProvider = ({ children }) => {
             value={{
                 isAuthenticated: !!user,
                 signUpWithEmailPassword,
+                loginWithEmailPassword,
+                logoutApp,
                 isLoading,
                 errMsg
             }}

@@ -1,5 +1,9 @@
+import React, { useContext } from "react";
 
 import { NavigationContainer } from "@react-navigation/native";
+
+// Authentication Context
+import { AuthContext } from "../../services/Context/auth.context";
 
 // Auth Stack Navigation
 import { AuthNavigation } from "./auth.nav";
@@ -13,8 +17,11 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 export const Navigation = () => {
 
-    const isAuthenticated = !!true;
-    const isAdmin = false;
+    // Constext
+    const { isAuthenticated } = useContext(AuthContext);
+
+    // const isAuthenticated = !!true;
+    const isAdmin = true;
 
     return (
         <GestureHandlerRootView  style={{ flex: 1 }}>
