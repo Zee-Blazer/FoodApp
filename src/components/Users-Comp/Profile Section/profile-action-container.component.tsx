@@ -1,5 +1,9 @@
+import React, { useContext } from "react";
 
 import { View, Text, Image, TouchableOpacity, FlatList } from "react-native";
+
+// Authentication Context
+import { AuthContext } from "../../../services/Context/auth.context";
 
 // Icon
 import { AntDesign } from '@expo/vector-icons';
@@ -25,6 +29,9 @@ interface Props {
 
 export const ProfileActionContainerComponent: React.FC<Props> = ({ data, other }) => {
 
+    // Context
+    const { logoutApp } = useContext(AuthContext);
+
     const navigation = useNavigation();
 
     const moveToScreen = (e: string) => {
@@ -45,7 +52,14 @@ export const ProfileActionContainerComponent: React.FC<Props> = ({ data, other }
                             homeUsersScreenStyles.flexDesign,
                             { marginBottom: 16 }
                         ]}
-                        onPress={ () => moveToScreen(item.link) }
+                        onPress={ () => {
+                            if(item.link == "logout"){
+                                logoutApp();
+                            }
+                            else{
+                                moveToScreen(item.link)
+                            }
+                        } }
                     >
                         <View style={[ homeUsersScreenStyles.flexDisplay, { alignItems: "center" } ]}>
                             <Image 

@@ -63,11 +63,13 @@ export const AuthContextProvider = ({ children }) => {
     }
 
     const logoutApp = () => {
-        signOut()
+        signOut(auth)
         .then( async res => {
             await AsyncStorage.setItem("@user_details", "");
             await AsyncStorage.setItem("@user_id", "");
-            setUser();
+            setUser(null);
+            console.log("Done perfectly");
+            console.log(user);
         } )
         .catch( err => console.log(err) );
     }
@@ -75,7 +77,7 @@ export const AuthContextProvider = ({ children }) => {
     return (
         <AuthContext.Provider
             value={{
-                isAuthenticated: !!user,
+                isAuthenticated: user,
                 signUpWithEmailPassword,
                 loginWithEmailPassword,
                 logoutApp,
