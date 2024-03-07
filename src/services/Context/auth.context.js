@@ -43,11 +43,11 @@ export const AuthContextProvider = ({ children }) => {
 
         signInWithEmailAndPassword(auth, email, password)
             .then( async res => {
-                await AsyncStorage.setItem("@user_details", JSON.stringify(res));
+                await AsyncStorage.setItem("@user_details", JSON.stringify(res.user));
                 await AsyncStorage.setItem("@user_id", res.user.uid);
-                setUser(res);
+                setUser(res.user);
                 setIsLoading(false);
-                console.log("Done");
+                console.log(res.user);
             } )
             .catch( err => {
                 if (err.code === 'auth/user-not-found') {
@@ -73,6 +73,9 @@ export const AuthContextProvider = ({ children }) => {
         } )
         .catch( err => console.log(err) );
     }
+
+    console.log("Working fine");
+    console.log(user);
 
     return (
         <AuthContext.Provider
