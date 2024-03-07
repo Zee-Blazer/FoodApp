@@ -1,8 +1,8 @@
 import React, { useState, createContext, useEffect } from 'react';
 
 // Firebase Authentication
-import { auth } from '../../firebaseConfig';
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { auth, googleProvider } from '../../firebaseConfig';
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithPopup, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 // Async Storage
 import AsyncStorage from '@react-native-async-storage/async-storage';
