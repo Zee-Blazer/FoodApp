@@ -39,7 +39,7 @@ export const OnboardingScreen = () => {
 
     const handleDone = async () => {
         await AsyncStorage.setItem("Screen", "Login");
-        navigation.navigate("Login");
+        navigation.navigate("Login"); // Navigate to login after setting the async storage
     }
 
     return (

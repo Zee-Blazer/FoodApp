@@ -1,4 +1,5 @@
 
+// Main Stack Navigation
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 // React Native Component
