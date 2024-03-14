@@ -10,8 +10,10 @@ import { AuthContextProvider } from './src/services/Context/auth.context';
 import { StatusBar } from 'expo-status-bar';
 import {  Text } from 'react-native';
 
+// Expo fonts
 import { useFonts } from 'expo-font';
 
+// Navigation
 import { Navigation } from './src/infrastructure/Navigation';
 
 export default function App() {
