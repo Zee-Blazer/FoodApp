@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect useContext } from 'react';
 
 import { KeyboardAvoidingView, ScrollView } from "react-native";
 
@@ -32,6 +32,10 @@ export const SignupScreen = () => {
     const [passwordErr, setPasswordErr] = useState<string>("");
     const [retryPassword, setRetryPassword] = useState<string>("");
     const [retryPasswordErr, setRetryPasswordErr] = useState<string>("");
+
+    useEffect( () => {
+        setErr(errMsg);
+    } )
 
     const createUser = async () => {
         const proceed = email.length > 0 && name.length > 0 && password.length > 0 && retryPassword.length > 0;
