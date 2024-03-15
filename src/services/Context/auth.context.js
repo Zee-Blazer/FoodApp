@@ -68,6 +68,10 @@ export const AuthContextProvider = ({ children }) => {
             } )
     }
 
+    const serviceNotAvailiable = () => {
+        setErrMsg("Service not availiable at the moment");
+    }
+
     const logoutApp = () => {
         signOut(auth)
         .then( async res => {
@@ -86,6 +90,7 @@ export const AuthContextProvider = ({ children }) => {
                 isAuthenticated: user,
                 signUpWithEmailPassword,
                 loginWithEmailPassword,
+                serviceNotAvailiable,
                 logoutApp,
                 isLoading,
                 errMsg

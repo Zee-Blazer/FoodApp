@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 import { View, KeyboardAvoidingView } from "react-native";
 
@@ -26,6 +26,10 @@ export const LoginScreen = () => {
     const [emailErr, setEmailErr] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [passwordErr, setPasswordErr] = useState<string>("");
+
+    useEffect( () => {
+        setErr(errMsg);
+    } )
 
     const loginUser = () => {
         const proceed = email.length > 1 && password.length > 1;
