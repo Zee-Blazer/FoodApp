@@ -2,7 +2,10 @@ import React, { useState, createContext, useEffect } from 'react';
 
 // Firebase Authentication
 import { auth, googleProvider } from '../../firebaseConfig';
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithPopup, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, updateProfile, signInWithEmailAndPassword, signOut } from "firebase/auth";
+
+// Firebase functions
+import { newUser } from '../Firebase/user';
 
 // Async Storage
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -23,13 +26,21 @@ export const AuthContextProvider = ({ children }) => {
         })
     }, [] ) 
 
-    const signUpWithEmailPassword = (email, password) => {
+    const signUpWithEmailPassword = (username, email, password) => {
         setIsLoading(true);
         createUserWithEmailAndPassword(auth, email, password)
             .then( async res => {
+
+                updateProfile(
+                    auth.currentUser, {
+                        displayName: username
+                    }
+                )
+                .then( data => console.log(data) )
+                .catch( err => console.log(err) );
+
                 await AsyncStorage.setItem("@user_details", JSON.stringify(res));
                 setUser(res);
-                console.log(user)
                 setIsLoading(false);
             } )
             .catch( err => {
@@ -54,7 +65,6 @@ export const AuthContextProvider = ({ children }) => {
                 await AsyncStorage.setItem("@user_details", JSON.stringify(res.user));
                 setUser(res.user);
                 setIsLoading(false);
-                console.log(res.user);
             } )
             .catch( err => {
                 if (err.code === 'auth/user-not-found') {
@@ -83,6 +93,8 @@ export const AuthContextProvider = ({ children }) => {
         } )
         .catch( err => console.log(err) );
     }
+
+    console.log(user)
 
     return (
         <AuthContext.Provider

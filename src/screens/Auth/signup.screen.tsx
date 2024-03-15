@@ -51,7 +51,7 @@ export const SignupScreen = () => {
             }
             else{
                 setErr(errMsg);
-                signUpWithEmailPassword(email, password);
+                signUpWithEmailPassword(name, email, password);
             }
 
         }
