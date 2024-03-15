@@ -15,13 +15,21 @@ export const AuthContextProvider = ({ children }) => {
     const [errMsg, setErrMsg] = useState("");
     const [isLoading, setIsLoading] = useState(false);
 
+    useEffect( () => {
+        onAuthStateChanged(auth, ( user ) => {
+            if(user){
+                setUser(user);
+            }
+        })
+    }, [] ) 
+
     const signUpWithEmailPassword = (email, password) => {
         setIsLoading(true);
         createUserWithEmailAndPassword(auth, email, password)
             .then( async res => {
                 await AsyncStorage.setItem("@user_details", JSON.stringify(res));
-                await AsyncStorage.setItem("@user_id", res.uid);
                 setUser(res);
+                console.log(user)
                 setIsLoading(false);
             } )
             .catch( err => {
@@ -44,7 +52,6 @@ export const AuthContextProvider = ({ children }) => {
         signInWithEmailAndPassword(auth, email, password)
             .then( async res => {
                 await AsyncStorage.setItem("@user_details", JSON.stringify(res.user));
-                await AsyncStorage.setItem("@user_id", res.user.uid);
                 setUser(res.user);
                 setIsLoading(false);
                 console.log(res.user);
@@ -55,8 +62,7 @@ export const AuthContextProvider = ({ children }) => {
                 } else if (err.code === 'auth/wrong-password') {
                     setErrMsg('Incorrect password');
                 } else {
-                    // setErrMsg('Error signing in: ', err.code);
-                    console.log(err);
+                    setErrMsg("An error occured, please try again");
                 }
                 setIsLoading(false);
             } )
@@ -73,9 +79,6 @@ export const AuthContextProvider = ({ children }) => {
         } )
         .catch( err => console.log(err) );
     }
-
-    console.log("Working fine");
-    console.log(user);
 
     return (
         <AuthContext.Provider
