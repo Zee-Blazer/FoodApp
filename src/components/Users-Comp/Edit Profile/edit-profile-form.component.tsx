@@ -1,10 +1,16 @@
+import React, { useContext } from "react";
 
 import { View, Text, TextInput } from "react-native";
+
+// Authentication Context
+import { AuthContext } from "../../../services/Context/auth.context";
 
 // Styling
 import { editProfileUsersStyles } from "../../../styles/screens/edit-profile-users.styles";
 
 export const EditProfielFormComponent = () => {
+
+    const { user } = useContext( AuthContext );
 
     return (
         <View>
@@ -12,7 +18,7 @@ export const EditProfielFormComponent = () => {
             <View style={[ editProfileUsersStyles.inputContainer ]}>
                 <Text style={ editProfileUsersStyles.inputLabel }>FULL NAME</Text>
                 <TextInput 
-                    placeholder="Vishal Khadok"
+                    placeholder={ user.username }
                     style={[ editProfileUsersStyles.inputField ]}
                 />
             </View>
@@ -20,7 +26,7 @@ export const EditProfielFormComponent = () => {
             <View style={[ editProfileUsersStyles.inputContainer ]}>
                 <Text style={ editProfileUsersStyles.inputLabel }>EMAIL</Text>
                 <TextInput 
-                    placeholder="hello@halallab.co"
+                    placeholder={ user.email }
                     style={[ editProfileUsersStyles.inputField ]}
                 />
             </View>
@@ -28,7 +34,7 @@ export const EditProfielFormComponent = () => {
             <View style={[ editProfileUsersStyles.inputContainer ]}>
                 <Text style={ editProfileUsersStyles.inputLabel }>PHONE</Text>
                 <TextInput 
-                    placeholder="408-841-0926"
+                    placeholder={ user.phoneNumber || "408-841-0926" }
                     inputMode="numeric"
                     style={[ editProfileUsersStyles.inputField ]}
                 />

@@ -1,11 +1,17 @@
+import React, { useContext } from "react";
 
 import { View, Image, Text, TouchableOpacity } from "react-native";
+
+// Authentication Context
+import { AuthContext } from "../../../services/Context/auth.context";
 
 // Styling
 import { homeUsersScreenStyles } from "../../../styles/screens/home-users.styles";
 import { profileUsersStyles } from "../../../styles/screens/profile-users.styles";
 
 export const ProfileDetailsComponent = () => {
+
+    const { user } = useContext(AuthContext);
 
     return (
         <TouchableOpacity 
@@ -20,7 +26,7 @@ export const ProfileDetailsComponent = () => {
             />
 
             <View>
-                <Text style={ profileUsersStyles.profileNameDetailTxt }>Vishal Khadok</Text>
+                <Text style={ profileUsersStyles.profileNameDetailTxt }>{ user.username }</Text>
                 <Text style={ profileUsersStyles.profileSubtitleDetailTxt }>I love fast food</Text>
             </View>
         </TouchableOpacity>

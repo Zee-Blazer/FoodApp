@@ -71,7 +71,7 @@ export const ProfileActionContainerComponent: React.FC<Props> = ({ data, other }
                         { !item.rate ?
                             <AntDesign 
                                 name="right" size={16} color="#181C2E" 
-                                style={{ marginTop: 6, marginLeft: 4 }} 
+                                style={{ marginTop: 14, marginLeft: 4 }} 
                             /> :
                             <Text
                                 style={ profileUsersStyles.rateTxt }

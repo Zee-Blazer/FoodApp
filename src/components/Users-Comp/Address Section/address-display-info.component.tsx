@@ -38,7 +38,7 @@ export const AddressDisplayInfoComponent: React.FC<Props> = ({ iconUri, title, s
                             style={[ 
                                 homeUsersScreenStyles.flexDisplay, 
                                 homeUsersScreenStyles.flexDesign,
-                                { marginBottom: 7, width: "62%" }
+                                { marginBottom: 7, width: "86%" }
                             ]}
                         >
                             <Text style={ profileUsersStyles.infoActionContTxt }>
@@ -46,7 +46,7 @@ export const AddressDisplayInfoComponent: React.FC<Props> = ({ iconUri, title, s
                             </Text>
 
                             <View style={[ homeUsersScreenStyles.flexDisplay ]}>
-                                <TouchableOpacity style={{ marginRight: 10 }}>
+                                <TouchableOpacity style={{ marginRight: 14 }}>
                                     <Feather name="edit" size={16} color="#FB6D3A" />
                                 </TouchableOpacity>
                                 <TouchableOpacity>

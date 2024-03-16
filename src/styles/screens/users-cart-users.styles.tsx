@@ -24,8 +24,8 @@ export const usersCartUsersStyles = StyleSheet.create({
         marginVertical: 18
     },
     cartOptionImg: {
-        width: 145,
-        height: 120,
+        width: 125,
+        height: 106,
         borderRadius: 25,
         marginRight: theme.space[8]
     },

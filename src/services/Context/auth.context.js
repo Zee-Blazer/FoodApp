@@ -39,7 +39,7 @@ export const AuthContextProvider = ({ children }) => {
 
                 updateProfile(
                     auth.currentUser, {
-                        displayName: username
+                        displayName: username,
                     }
                 )
                 .then( async data => {
@@ -54,6 +54,8 @@ export const AuthContextProvider = ({ children }) => {
                     setIsLoading(false);
                 } )
                 .catch( err => console.log(err) );
+
+                setIsLoading(false);
 
             } )
             .catch( err => {
@@ -112,6 +114,8 @@ export const AuthContextProvider = ({ children }) => {
         } )
         .catch( err => console.log(err) );
     }
+
+    console.log(user);
 
     return (
         <AuthContext.Provider
