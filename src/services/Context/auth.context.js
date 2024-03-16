@@ -21,7 +21,13 @@ export const AuthContextProvider = ({ children }) => {
     useEffect( () => {
         onAuthStateChanged(auth, ( user ) => {
             if(user){
-                setUser(user);
+                setUser({
+                    username: user.displayName,
+                    email: user.email,
+                    photoURL: user.photoURL,
+                    accesstoken: user.stsTokenManager.accessToken,
+                    uid: user.uid
+                });
             }
         })
     }, [] ) 
@@ -29,19 +35,26 @@ export const AuthContextProvider = ({ children }) => {
     const signUpWithEmailPassword = (username, email, password) => {
         setIsLoading(true);
         createUserWithEmailAndPassword(auth, email, password)
-            .then( async res => {
+            .then( res => {
 
                 updateProfile(
                     auth.currentUser, {
                         displayName: username
                     }
                 )
-                .then( data => console.log(data) )
+                .then( async data => {
+                    await AsyncStorage.setItem("@user_details", JSON.stringify(res));
+                    setUser({
+                        username: res.displayName,
+                        email: res.email,
+                        photoURL: res.photoURL,
+                        accesstoken: res.stsTokenManager.accessToken,
+                        uid: res.uid
+                    });
+                    setIsLoading(false);
+                } )
                 .catch( err => console.log(err) );
 
-                await AsyncStorage.setItem("@user_details", JSON.stringify(res));
-                setUser(res);
-                setIsLoading(false);
             } )
             .catch( err => {
                 if (err.code === 'auth/email-already-in-use') {
@@ -63,7 +76,13 @@ export const AuthContextProvider = ({ children }) => {
         signInWithEmailAndPassword(auth, email, password)
             .then( async res => {
                 await AsyncStorage.setItem("@user_details", JSON.stringify(res.user));
-                setUser(res.user);
+                setUser({
+                    username: res.user.displayName,
+                    email: res.user.email,
+                    photoURL: res.user.photoURL,
+                    accesstoken: res.user.stsTokenManager.accessToken,
+                    uid: res.user.uid
+                });
                 setIsLoading(false);
             } )
             .catch( err => {
@@ -94,8 +113,6 @@ export const AuthContextProvider = ({ children }) => {
         .catch( err => console.log(err) );
     }
 
-    console.log(user)
-
     return (
         <AuthContext.Provider
             value={{
@@ -105,6 +122,7 @@ export const AuthContextProvider = ({ children }) => {
                 serviceNotAvailiable,
                 logoutApp,
                 isLoading,
+                user,
                 errMsg
             }}
         >

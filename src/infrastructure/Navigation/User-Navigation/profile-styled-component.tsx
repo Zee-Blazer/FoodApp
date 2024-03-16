@@ -1,5 +1,9 @@
+import React, { useContext } from 'react';
 
 import { View, SafeAreaView, TouchableOpacity, Text, Image } from "react-native";
+
+// Authentication Context
+import { AuthContext } from '../../../services/Context/auth.context';
 
 // Navigation
 import { useNavigation } from "@react-navigation/native";
@@ -8,6 +12,8 @@ import { useNavigation } from "@react-navigation/native";
 import { theme } from "../../Theme";
 
 export const ProfileStyledComponent = () => {
+
+    const { user } = useContext(AuthContext);
 
     const navigation = useNavigation();
 
@@ -35,14 +41,14 @@ export const ProfileStyledComponent = () => {
                         marginTop: 8,
                         color: "#32343E"
                     }}
-                >John Doe</Text>
+                >{ user.username }</Text>
                 <Text
                     style={{
                         fontSize: 14,
                         color: "#A0A5BA",
                         fontFamily: theme.fonts.body
                     }}
-                >john.doe@gmail.com</Text>
+                >{ user.email }</Text>
             </TouchableOpacity>
         </SafeAreaView>
     )

@@ -20,5 +20,6 @@ const newUser = (username: string, email: string) => {
 }
 
 export {
-    newUser
+    newUser,
+    displayUser
 };
