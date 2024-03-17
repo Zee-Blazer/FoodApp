@@ -25,7 +25,6 @@ export const AuthContextProvider = ({ children }) => {
                     username: user.displayName,
                     email: user.email,
                     photoURL: user.photoURL,
-                    accesstoken: user.stsTokenManager.accessToken,
                     uid: user.uid
                 });
             }
@@ -39,7 +38,7 @@ export const AuthContextProvider = ({ children }) => {
 
                 updateProfile(
                     auth.currentUser, {
-                        displayName: username,
+                        displayName: username
                     }
                 )
                 .then( async data => {
@@ -48,9 +47,11 @@ export const AuthContextProvider = ({ children }) => {
                         username: res.displayName,
                         email: res.email,
                         photoURL: res.photoURL,
-                        accesstoken: res.stsTokenManager.accessToken,
-                        uid: res.uid
+                        uid: res.uid,
                     });
+                    
+                    newUser(username, email, res.uid)
+
                     setIsLoading(false);
                 } )
                 .catch( err => console.log(err) );
@@ -82,8 +83,7 @@ export const AuthContextProvider = ({ children }) => {
                     username: res.user.displayName,
                     email: res.user.email,
                     photoURL: res.user.photoURL,
-                    accesstoken: res.user.stsTokenManager.accessToken,
-                    uid: res.user.uid
+                    uid: res.user.uid,
                 });
                 setIsLoading(false);
             } )

@@ -4,19 +4,25 @@ import { auth } from "../../firebaseConfig";
 
 // Firebase Database
 import { database } from "../../firebaseConfig";
-import { ref, push } from 'firebase/database';
+import { ref, push, orderByChild, equalTo } from 'firebase/database';
 
 const displayUser = () => {
     console.log(auth.currentUser);
 }
 
-const newUser = (username: string, email: string) => {
+const newUser = (username: string, email: string, id: string) => {
     push(
         ref( database, `User` ),
-        { username, email }
+        { userId: id, userInfo: { username, email } }
     )
     .then( res => console.log(res) )
     .catch( err => console.log(err) )
+}
+
+const getSpecificUser = (userId: string) => {
+    // orderByChild(
+    //     // ref( database, equalTo(`User`) )
+    // )
 }
 
 export {
