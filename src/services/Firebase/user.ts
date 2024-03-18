@@ -20,9 +20,7 @@ const newUser = (username: string, email: string, id: string) => {
 }
 
 const getSpecificUser = (userId: string) => {
-    // orderByChild(
-    //     // ref( database, equalTo(`User`) )
-    // )
+    
 }
 
 export {
