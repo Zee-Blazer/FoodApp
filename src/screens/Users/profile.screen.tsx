@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 
-import { View, SafeAreaView, ScrollView } from "react-native";
+import { View, SafeAreaView, ScrollView, Text } from "react-native";
 
 // Styling 
 import { homeUsersScreenStyles } from "../../styles/screens/home-users.styles";

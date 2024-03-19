@@ -42,6 +42,7 @@ export const AuthContextProvider = ({ children }) => {
                     }
                 )
                 .then( async data => {
+                    newUser(username, email, auth.currentUser.uid);
                     await AsyncStorage.setItem("@user_details", JSON.stringify(res));
                     setUser({
                         username: res.displayName,
@@ -49,8 +50,6 @@ export const AuthContextProvider = ({ children }) => {
                         photoURL: res.photoURL,
                         uid: res.uid,
                     });
-                    
-                    newUser(username, email, res.uid);
 
                     setIsLoading(false);
                 } )
@@ -71,6 +70,7 @@ export const AuthContextProvider = ({ children }) => {
                 }
                 setIsLoading(false);
             } );
+        setErrMsg("");
     }
 
     const loginWithEmailPassword = (email, password) => {
@@ -97,6 +97,7 @@ export const AuthContextProvider = ({ children }) => {
                 }
                 setIsLoading(false);
             } )
+        setErrMsg("");
     }
 
     const serviceNotAvailiable = () => {
@@ -114,8 +115,6 @@ export const AuthContextProvider = ({ children }) => {
         } )
         .catch( err => console.log(err) );
     }
-
-    console.log(user);
 
     return (
         <AuthContext.Provider
