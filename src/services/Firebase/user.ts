@@ -20,7 +20,7 @@ const newUser = (username: string, email: string, id: string) => {
 }
 
 const getSpecificUser = (userId: string) => {
-    
+    const mainDB = ref(database, "User");
 }
 
 export {

@@ -88,7 +88,7 @@ export const LoginScreen = () => {
                     <RememberForgotComponent />
 
                     <FormBtnComponent 
-                        title="LOG IN"
+                        title={ isLoading ? "LOGING IN" : "LOG IN" }
                         loading={ isLoading }
                         func={ () => loginUser() }
                     />

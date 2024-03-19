@@ -50,7 +50,7 @@ export const AuthContextProvider = ({ children }) => {
                         uid: res.uid,
                     });
                     
-                    newUser(username, email, res.uid)
+                    newUser(username, email, res.uid);
 
                     setIsLoading(false);
                 } )
