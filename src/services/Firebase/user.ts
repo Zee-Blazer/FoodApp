@@ -1,10 +1,11 @@
 
 // Firebase Authentication
 import { auth } from "../../firebaseConfig";
+import { updateProfile } from "firebase/auth";
 
 // Firebase Database
 import { database } from "../../firebaseConfig";
-import { ref, push, orderByChild, equalTo, query, get } from 'firebase/database';
+import { ref, push, orderByChild, equalTo, query, get, update } from 'firebase/database';
 
 const displayUser = () => {
     console.log(auth.currentUser);
@@ -33,11 +34,25 @@ const getSpecificUser = (userId: string) => {
             } )
         } )
         .catch( err => console.log(err) );
+}
+
+const updateProfileDetails = (username: string, email: string, phone: any, bio: string) => {
+    console.log("Clicked");
+    updateProfile(
+        auth.currentUser, {
+            displayName: "John Doe",
+            email: "john.doe@gmail.com",
+            phoneNumber: "09122293929"
+        }
+    )
+        .then( res => console.log(res) )
+        .catch( err => console.log(err) );
 
 }
 
 export {
     newUser,
     displayUser,
-    getSpecificUser
+    getSpecificUser,
+    updateProfileDetails
 };

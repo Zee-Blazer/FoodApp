@@ -27,10 +27,11 @@ export const Navigation = () => {
         <GestureHandlerRootView  style={{ flex: 1 }}>
             <NavigationContainer>
                 { 
-                    !isAuthenticated ? 
-                        <AuthNavigation /> : 
+                    isAuthenticated ? 
                         isAdmin ? 
-                            <UsersNavigation /> : <MainNavigation /> 
+                        <UsersNavigation /> : <MainNavigation /> 
+                        :
+                        <AuthNavigation /> 
                 }
             </NavigationContainer>
         </GestureHandlerRootView>

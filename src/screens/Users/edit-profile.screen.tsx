@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 
 import { View, SafeAreaView, ScrollView } from "react-native";
 
@@ -12,6 +13,15 @@ import { EditProfielFormComponent } from "../../components/Users-Comp/Edit Profi
 import { FormBtnComponent } from "../../components/Auth-Comp/form-btn.component";
 
 export const EditProfileScreen = () => {
+
+    const [username, setUsername] = useState<string>("");
+    const [email, setEmail] = useState<string>("");
+    const [phone, setPhone] = useState<any>();
+    const [bio, setBio] = useState<string>("");
+
+    const saveData = () => {
+        console.log(username, email, phone, bio);
+    }
 
     return (
         <SafeAreaView style={{ backgroundColor: "white", flex: 1 }}>
@@ -28,7 +38,16 @@ export const EditProfileScreen = () => {
 
                     <EditProfilePicComponent />
 
-                    <EditProfielFormComponent />
+                    <EditProfielFormComponent 
+                        username={ username }
+                        email={ email }
+                        phone={ phone }
+                        bio={ bio }
+                        setUsername={ setUsername }
+                        setEmail={ setEmail }
+                        setPhone={ setPhone }
+                        setBio={ setBio }
+                    />
 
                 </ScrollView>
                 
@@ -37,7 +56,7 @@ export const EditProfileScreen = () => {
             <View style={ usersCartUsersStyles.wildSpace }>
                 <FormBtnComponent 
                     title="SAVE"
-                    func={ () => {} }
+                    func={ () => saveData() }
                 />
             </View>
         </SafeAreaView>
