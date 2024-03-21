@@ -28,6 +28,7 @@ export const EditProfileScreen = () => {
     const [email, setEmail] = useState<string>("");
     const [phone, setPhone] = useState<any>();
     const [bio, setBio] = useState<string>("");
+    const [pic, setPic] = useState(null);
 
     const saveData = () => {
         setIsLoading(true);
@@ -47,7 +48,10 @@ export const EditProfileScreen = () => {
                     showsVerticalScrollIndicator={ false }
                 >
 
-                    <EditProfilePicComponent />
+                    <EditProfilePicComponent 
+                        pic={ pic }
+                        setPic={ setPic }
+                    />
 
                     <EditProfielFormComponent 
                         username={ username }
