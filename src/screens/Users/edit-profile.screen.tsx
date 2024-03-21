@@ -10,7 +10,7 @@ import { homeUsersScreenStyles } from "../../styles/screens/home-users.styles";
 import { usersCartUsersStyles } from "../../styles/screens/users-cart-users.styles";
 
 // Firebase Created Functions
-import { updateProfileDetails } from '../../services/Firebase/user';
+import { updateProfileDetails } from '../../services/Firebase/profile';
 
 // Component
 import { FoodDetailsHeaderComponent } from "../../components/Users-Comp/Header/food-details-header.component";

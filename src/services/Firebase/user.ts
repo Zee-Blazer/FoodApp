@@ -5,7 +5,7 @@ import { updateProfile } from "firebase/auth";
 
 // Firebase Database
 import { database } from "../../firebaseConfig";
-import { ref, push, orderByChild, equalTo, query, get, set } from 'firebase/database';
+import { ref, onValue, set } from 'firebase/database';
 
 const displayUser = () => {
     console.log(auth.currentUser);
@@ -21,39 +21,15 @@ const newUser = (username: string, email: string, id: string) => {
     .catch( err => console.log(err) )
 }
 
-const updateProfileDetails = (
-        username: string, 
-        email: string, 
-        phone: any, 
-        bio: string, 
-        userId: string, 
-        setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
-    ) => {
-    console.log("Clicked");
-    updateProfile(
-        auth.currentUser, {
-            displayName: username,
-            email: email
-        }
-    )
-        .then( res => {
-            console.log("Working fine" + userId);
-            set(
-                ref(database, `Users/${userId}/userInfo`),
-                { username, email, phone, bio }
-            )
-            .then( doc => {
-                console.log("Working fine " + doc)
-                setIsLoading(false);
-            } )
-            .catch( err => console.log("There was an error: " + err) )
-        } )
-        .catch( err => console.log("Error: " + err) );
-
+const userDetails = (id: string) => {
+    console.log("Working");
+    onValue( ref( database, `Users/BqtrojOZQ1M0McUYpBLqziBBpvG2` ), (snapshot) => {
+        console.log(snapshot.val());
+    } )
 }
 
 export {
     newUser,
     displayUser,
-    updateProfileDetails
+    userDetails
 };

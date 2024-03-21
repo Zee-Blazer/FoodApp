@@ -1,8 +1,11 @@
 import React, { useState, createContext, useEffect } from 'react';
 
 // Firebase Authentication
-import { auth, googleProvider } from '../../firebaseConfig';
+import { auth, database, googleProvider } from '../../firebaseConfig';
 import { createUserWithEmailAndPassword, onAuthStateChanged, updateProfile, signInWithEmailAndPassword, signOut } from "firebase/auth";
+
+// Firebase Realtime database
+import { ref, onValue } from 'firebase/database';
 
 // Firebase functions
 import { newUser } from '../Firebase/user';
@@ -25,13 +28,20 @@ export const AuthContextProvider = ({ children }) => {
     const isUserLoggedIn = () => {
         onAuthStateChanged(auth, ( user ) => {
             if(user){
-                setUser({
-                    username: user.displayName,
-                    email: user.email,
-                    photoURL: user.photoURL,
-                    phoneNumber: user.phoneNumber,
-                    uid: user.uid
-                });
+                onValue( ref( database, `Users/${user.uid}` ), (snapshot) => {
+                    const data = snapshot.val();
+                    setUser({
+                        username: user.displayName,
+                        email: user.email,
+                        photoURL: user.photoURL,
+                        phoneNumber: user.phoneNumber,
+                        uid: user.uid,
+                        bio: data.userInfo.bio,
+                        phoneNumber: data.userInfo.phone
+                    });
+                    console.log(data.userId);
+                } )
+                
             }
         })
     }
@@ -94,6 +104,7 @@ export const AuthContextProvider = ({ children }) => {
                     uid: res.user.uid,
                 });
                 setIsLoading(false);
+                isUserLoggedIn();
             } )
             .catch( err => {
                 if (err.code === 'auth/user-not-found') {
@@ -123,8 +134,6 @@ export const AuthContextProvider = ({ children }) => {
         } )
         .catch( err => console.log(err) );
     }
-
-    // console.log(user);
 
     return (
         <AuthContext.Provider

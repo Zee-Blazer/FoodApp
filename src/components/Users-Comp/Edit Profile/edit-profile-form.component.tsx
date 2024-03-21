@@ -5,6 +5,8 @@ import { View, Text, TextInput } from "react-native";
 // Authentication Context
 import { AuthContext } from "../../../services/Context/auth.context";
 
+import { userDetails } from "../../../services/Firebase/user";
+
 // Styling
 import { editProfileUsersStyles } from "../../../styles/screens/edit-profile-users.styles";
 
@@ -80,6 +82,10 @@ export const EditProfielFormComponent: React.FC<Props> = (
                     style={[ editProfileUsersStyles.inputField ]}
                 />
             </View>
+
+            <Text
+                onPress={ () => userDetails("BqtrojOZQ1M0McUYpBLqziBBpvG2") } 
+            >Check Function</Text>
 
         </View>
     )
