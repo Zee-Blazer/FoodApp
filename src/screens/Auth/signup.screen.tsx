@@ -125,7 +125,7 @@ export const SignupScreen = () => {
                     />
 
                     <FormBtnComponent 
-                        title={ isLoading ? "SIGNING UP" : "SIGN UP" }
+                        title={ isLoading ? "SIGNING UP..." : "SIGN UP" }
                         loading={ isLoading }
                         func={ () => createUser() }
                     />

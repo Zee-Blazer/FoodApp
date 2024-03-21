@@ -7,40 +7,112 @@ import { updateProfile } from "firebase/auth";
 import { database } from "../../firebaseConfig";
 import { ref, push, orderByChild, equalTo, query, get, set } from 'firebase/database';
 
+// Firebase Storage
+import { storage } from "../../firebaseConfig";
+import { ref as real, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
+
 const updateProfileDetails = (
     username: string, 
     email: string, 
     phone: any, 
     bio: string, 
     userId: string, 
+    image: any,
+    result: any,
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
-        console.log("Clicked");
+
+    if(image !== null){
+        const filename = image.uri.substring(image.uri.lastIndexOf('/') + 1);
+
+        const storageRef = real(storage, `Profile/${filename}`);
+
+        const uploadTask = uploadBytesResumable(storageRef, result);
+        uploadTask.on(
+            "state_changed",
+            (snapshot) => { },
+            (err) => { console.log(err) },
+            async () => {
+                getDownloadURL(uploadTask.snapshot.ref)
+                    .then((downloadUrl) => {
+                        
+                        updateProfile(
+                            auth.currentUser, {
+                                displayName: username,
+                                email: email,
+                                photoURL: downloadUrl
+                            }
+                        )
+                            .then( res => {
+                                set(
+                                    ref(database, `Users/${userId}/userInfo`),
+                                    { username, email, phone, bio, photoURL: downloadUrl }
+                                )
+                                .then( doc => {
+                                    setIsLoading(false);
+                                } )
+                                .catch( err => {
+                                    setIsLoading(false);
+                                } )
+                            } )
+                            .catch( err => console.log("Error: " + err) );
+
+                        setIsLoading(false);
+                    })
+                    .catch(err => console.log(err))
+                
+            }
+        )
+    }
+
+    else{
         updateProfile(
             auth.currentUser, {
                 displayName: username,
-                email: email
+                email: email,
             }
         )
             .then( res => {
-                console.log("Working fine" + userId);
                 set(
                     ref(database, `Users/${userId}/userInfo`),
                     { username, email, phone, bio }
                 )
                 .then( doc => {
-                    console.log("Working fine " + doc)
                     setIsLoading(false);
                 } )
                 .catch( err => {
-                    console.log("There was an error: " + err);
                     setIsLoading(false);
                 } )
             } )
             .catch( err => console.log("Error: " + err) );
 
+        setIsLoading(false);
+    }
+
+}
+
+const uploadFile = (image: any, result: any) => {
+    const filename = image.uri.substring(image.uri.lastIndexOf('/') + 1);
+
+        const storageRef = real(storage, `Profile/${filename}`);
+
+        const uploadTask = uploadBytesResumable(storageRef, result);
+        uploadTask.on(
+            "state_changed",
+            (snapshot) => { },
+            (err) => { console.log(err) },
+            async () => {
+                getDownloadURL(uploadTask.snapshot.ref)
+                    .then((downloadUrl) => {
+                        console.log(downloadUrl)
+                    })
+                    .catch(err => console.log(err))
+                
+            }
+        )
 }
 
 export {
-    updateProfileDetails
+    updateProfileDetails,
+    uploadFile
 }

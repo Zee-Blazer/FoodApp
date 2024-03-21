@@ -10,7 +10,7 @@ import { homeUsersScreenStyles } from "../../styles/screens/home-users.styles";
 import { usersCartUsersStyles } from "../../styles/screens/users-cart-users.styles";
 
 // Firebase Created Functions
-import { updateProfileDetails } from '../../services/Firebase/profile';
+import { updateProfileDetails, uploadFile } from '../../services/Firebase/profile';
 
 // Component
 import { FoodDetailsHeaderComponent } from "../../components/Users-Comp/Header/food-details-header.component";
@@ -28,11 +28,33 @@ export const EditProfileScreen = () => {
     const [email, setEmail] = useState<string>("");
     const [phone, setPhone] = useState<any>();
     const [bio, setBio] = useState<string>("");
-    const [pic, setPic] = useState(null);
 
-    const saveData = () => {
+    // Profile Image States 
+    const [pic, setPic] = useState(null || user.photoURL);
+
+    const checkFunc = async () => {
+        if(pic !== null){
+            const source = { uri: pic };
+            const response = await fetch(source.uri);
+            const blob = await response.blob(); 
+
+            uploadFile(source, blob);
+        }
+        else{
+            console.log("No Image URI");
+        }
+        // console.log(pic);
+    }
+
+    const saveData = async () => {
         setIsLoading(true);
-        updateProfileDetails(username, email, phone, bio, user.uid, setIsLoading);
+        const source = { uri: pic };
+        const response = await fetch(source.uri);
+        const blob = await response.blob(); 
+
+        updateProfileDetails(username, email, phone, bio, user.uid, source, blob, setIsLoading);
+
+        
     }
 
     return (
@@ -49,6 +71,7 @@ export const EditProfileScreen = () => {
                 >
 
                     <EditProfilePicComponent 
+                        userPic={ user.photoURL }
                         pic={ pic }
                         setPic={ setPic }
                     />
@@ -70,7 +93,7 @@ export const EditProfileScreen = () => {
 
             <View style={ usersCartUsersStyles.wildSpace }>
                 <FormBtnComponent 
-                    title="SAVE"
+                    title={ isLoading ? "SAVING..." : "SAVE" }
                     loading={ isLoading }
                     func={ () => saveData() }
                 />

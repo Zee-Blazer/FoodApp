@@ -22,8 +22,7 @@ const newUser = (username: string, email: string, id: string) => {
 }
 
 const userDetails = (id: string) => {
-    console.log("Working");
-    onValue( ref( database, `Users/BqtrojOZQ1M0McUYpBLqziBBpvG2` ), (snapshot) => {
+    onValue( ref( database, `Users/${id}` ), (snapshot) => {
         console.log(snapshot.val());
     } )
 }

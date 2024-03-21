@@ -1,8 +1,13 @@
-import { initializeApp } from "firebase/app";
+import { initializeApp } from "firebase/app"; // Firebase initialization
+
+// Firebase authentication
 import { getAuth, initializeAuth, getReactNativePersistence, GoogleAuthProvider } from "firebase/auth";
-import { getDatabase } from 'firebase/database';
+import { getDatabase } from 'firebase/database'; // Firebase Realtime database
+import { getStorage } from 'firebase/storage'; // Firebase Storage
+
 import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage';
 
+// Firebase Configuration
 export const firebaseConfig = {
     apiKey: "AIzaSyCH2BVUL3xK7VuEL6x4Ro2htq05w5j-LM0",
     authDomain: "food-app-project-mobile.firebaseapp.com",
@@ -20,5 +25,7 @@ export const auth = initializeAuth(app, {
 });
 
 export const database = getDatabase();
+
+export const storage = getStorage();
 
 export const googleProvider = new GoogleAuthProvider();

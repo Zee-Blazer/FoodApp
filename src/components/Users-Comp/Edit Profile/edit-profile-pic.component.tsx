@@ -8,11 +8,12 @@ import * as ImagePicker from "expo-image-picker";
 import { editProfileUsersStyles } from "../../../styles/screens/edit-profile-users.styles";
 
 interface Props {
+    userPic: any,
     pic: any,
     setPic: React.Dispatch<React.SetStateAction<any>>
 }
 
-export const EditProfilePicComponent: React.FC<Props> = ({ pic, setPic }) => {
+export const EditProfilePicComponent: React.FC<Props> = ({ userPic, pic, setPic }) => {
 
     const pickImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
@@ -22,21 +23,14 @@ export const EditProfilePicComponent: React.FC<Props> = ({ pic, setPic }) => {
             quality: 1,
         })
 
-        // console.log(result);
-
         if (!result.canceled) {
             const source = { uri: result.assets[0].uri };
             const response = await fetch(source.uri);
             const blob = await response.blob();
-            // if(id, user_id){
-            //     sendPic(source, blob, [id, user_id].sort());
-            // }
+            
             setPic(result.assets[0].uri);
-            // console.log(result);
         }
     }
-
-    console.log(pic);
 
     return (
         <View style={ editProfileUsersStyles.properAlignment }>
@@ -44,7 +38,11 @@ export const EditProfilePicComponent: React.FC<Props> = ({ pic, setPic }) => {
             {
                 !pic ?
                 <Image 
-                    source={ require('../../../../assets/Images/Profile/profile2.jpg') }
+                    source={ 
+                        userPic ? 
+                            { uri: userPic } : 
+                            require('../../../../assets/Images/Profile/profile2.jpg') 
+                    }
                     style={[ editProfileUsersStyles.editableImg ]}
                 /> :
                 <Image 
