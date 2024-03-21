@@ -1,10 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 
 import { View, SafeAreaView, ScrollView } from "react-native";
+
+// Authentication Context
+import { AuthContext } from '../../services/Context/auth.context';
 
 // Styling 
 import { homeUsersScreenStyles } from "../../styles/screens/home-users.styles";
 import { usersCartUsersStyles } from "../../styles/screens/users-cart-users.styles";
+
+// Firebase Created Functions
+import { updateProfileDetails } from '../../services/Firebase/user';
 
 // Component
 import { FoodDetailsHeaderComponent } from "../../components/Users-Comp/Header/food-details-header.component";
@@ -14,13 +20,18 @@ import { FormBtnComponent } from "../../components/Auth-Comp/form-btn.component"
 
 export const EditProfileScreen = () => {
 
+    const { user } = useContext(AuthContext);
+
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+
     const [username, setUsername] = useState<string>("");
     const [email, setEmail] = useState<string>("");
     const [phone, setPhone] = useState<any>();
     const [bio, setBio] = useState<string>("");
 
     const saveData = () => {
-        console.log(username, email, phone, bio);
+        setIsLoading(true);
+        updateProfileDetails(username, email, phone, bio, user.uid, setIsLoading);
     }
 
     return (
@@ -56,6 +67,7 @@ export const EditProfileScreen = () => {
             <View style={ usersCartUsersStyles.wildSpace }>
                 <FormBtnComponent 
                     title="SAVE"
+                    loading={ isLoading }
                     func={ () => saveData() }
                 />
             </View>

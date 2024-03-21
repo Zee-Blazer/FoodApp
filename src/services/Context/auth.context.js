@@ -19,17 +19,22 @@ export const AuthContextProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect( () => {
+        isUserLoggedIn();
+    }, [] ) 
+
+    const isUserLoggedIn = () => {
         onAuthStateChanged(auth, ( user ) => {
             if(user){
                 setUser({
                     username: user.displayName,
                     email: user.email,
                     photoURL: user.photoURL,
+                    phoneNumber: user.phoneNumber,
                     uid: user.uid
                 });
             }
         })
-    }, [] ) 
+    }
 
     const signUpWithEmailPassword = (username, email, password) => {
         setIsLoading(true);
@@ -48,10 +53,12 @@ export const AuthContextProvider = ({ children }) => {
                         username: res.displayName,
                         email: res.email,
                         photoURL: res.photoURL,
+                        phoneNumber: res.phoneNumber,
                         uid: res.uid,
                     });
 
                     setIsLoading(false);
+                    isUserLoggedIn();
                 } )
                 .catch( err => console.log(err) );
 
@@ -83,6 +90,7 @@ export const AuthContextProvider = ({ children }) => {
                     username: res.user.displayName,
                     email: res.user.email,
                     photoURL: res.user.photoURL,
+                    phoneNumber: res.user.phoneNumber,
                     uid: res.user.uid,
                 });
                 setIsLoading(false);
@@ -116,6 +124,8 @@ export const AuthContextProvider = ({ children }) => {
         .catch( err => console.log(err) );
     }
 
+    // console.log(user);
+
     return (
         <AuthContext.Provider
             value={{
@@ -123,6 +133,7 @@ export const AuthContextProvider = ({ children }) => {
                 signUpWithEmailPassword,
                 loginWithEmailPassword,
                 serviceNotAvailiable,
+                isUserLoggedIn,
                 logoutApp,
                 isLoading,
                 user,

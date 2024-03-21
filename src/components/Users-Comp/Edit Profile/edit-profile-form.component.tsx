@@ -5,8 +5,6 @@ import { View, Text, TextInput } from "react-native";
 // Authentication Context
 import { AuthContext } from "../../../services/Context/auth.context";
 
-import { updateProfileDetails } from "../../../services/Firebase/user";
-
 // Styling
 import { editProfileUsersStyles } from "../../../styles/screens/edit-profile-users.styles";
 
@@ -54,6 +52,7 @@ export const EditProfielFormComponent: React.FC<Props> = (
                     placeholder={ user.email }
                     value={ email }
                     onChangeText={ setEmail }
+                    editable={ false }
                     style={[ editProfileUsersStyles.inputField ]}
                 />
             </View>
@@ -81,12 +80,6 @@ export const EditProfielFormComponent: React.FC<Props> = (
                     style={[ editProfileUsersStyles.inputField ]}
                 />
             </View>
-
-            <Text
-                onPress={ 
-                    () => updateProfileDetails("John Doe","john.doe@gmail.com","09122293929", "I love food") 
-                }
-            >Edit profile</Text>
 
         </View>
     )
