@@ -5,8 +5,6 @@ import { View, Text, TextInput } from "react-native";
 // Authentication Context
 import { AuthContext } from "../../../services/Context/auth.context";
 
-import { userDetails } from "../../../services/Firebase/user";
-
 // Styling
 import { editProfileUsersStyles } from "../../../styles/screens/edit-profile-users.styles";
 
@@ -33,6 +31,7 @@ export const EditProfielFormComponent: React.FC<Props> = (
         setUsername( user.username );
         setEmail( user.email );
         setPhone( user.phoneNumber && user.phoneNumber );
+        setBio( user.bio || "I love fast food" )
     }, [] )
 
     return (
@@ -73,8 +72,8 @@ export const EditProfielFormComponent: React.FC<Props> = (
             <View style={[ editProfileUsersStyles.inputContainer ]}>
                 <Text style={ editProfileUsersStyles.inputLabel }>BIO</Text>
                 <TextInput 
-                    placeholder="I love fast food"
-                    value={ bio }
+                    placeholder={ user.bio || "I love fast food" }
+                    value={ bio && bio }
                     onChangeText={ setBio }
                     // multiline
                     numberOfLines={4}
@@ -82,10 +81,6 @@ export const EditProfielFormComponent: React.FC<Props> = (
                     style={[ editProfileUsersStyles.inputField ]}
                 />
             </View>
-
-            <Text
-                onPress={ () => userDetails("BqtrojOZQ1M0McUYpBLqziBBpvG2") } 
-            >Check Function</Text>
 
         </View>
     )

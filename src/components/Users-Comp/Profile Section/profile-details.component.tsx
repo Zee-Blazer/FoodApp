@@ -27,7 +27,9 @@ export const ProfileDetailsComponent = () => {
 
             <View>
                 <Text style={ profileUsersStyles.profileNameDetailTxt }>{ user.username }</Text>
-                <Text style={ profileUsersStyles.profileSubtitleDetailTxt }>I love fast food</Text>
+                <Text style={ profileUsersStyles.profileSubtitleDetailTxt }>
+                    { user.bio }
+                </Text>
             </View>
         </TouchableOpacity>
     )

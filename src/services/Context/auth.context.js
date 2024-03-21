@@ -39,7 +39,6 @@ export const AuthContextProvider = ({ children }) => {
                         bio: data.userInfo.bio,
                         phoneNumber: data.userInfo.phone
                     });
-                    console.log(data.userId);
                 } )
                 
             }
