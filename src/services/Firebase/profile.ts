@@ -19,7 +19,8 @@ const updateProfileDetails = (
     userId: string, 
     image: any,
     result: any,
-    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
+    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
+    setSendLoc: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
 
     if(image !== null){
@@ -58,6 +59,7 @@ const updateProfileDetails = (
                             .catch( err => console.log("Error: " + err) );
 
                         setIsLoading(false);
+                        setSendLoc(true);
                     })
                     .catch(err => console.log(err))
                 

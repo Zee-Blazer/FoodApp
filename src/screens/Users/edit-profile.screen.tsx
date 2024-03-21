@@ -1,9 +1,12 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 import { View, SafeAreaView, ScrollView } from "react-native";
 
 // Authentication Context
 import { AuthContext } from '../../services/Context/auth.context';
+
+// Navigation
+import { useNavigation } from '@react-navigation/native';
 
 // Styling 
 import { homeUsersScreenStyles } from "../../styles/screens/home-users.styles";
@@ -20,9 +23,12 @@ import { FormBtnComponent } from "../../components/Auth-Comp/form-btn.component"
 
 export const EditProfileScreen = () => {
 
-    const { user } = useContext(AuthContext);
+    const { user, isUserLoggedIn } = useContext(AuthContext); // Authentication Context Provider
+
+    const navigation = useNavigation(); // Navigation instance
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [sendLoc, setSendLoc] = useState<boolean>(false);
 
     const [username, setUsername] = useState<string>("");
     const [email, setEmail] = useState<string>("");
@@ -32,19 +38,12 @@ export const EditProfileScreen = () => {
     // Profile Image States 
     const [pic, setPic] = useState(null || user.photoURL);
 
-    const checkFunc = async () => {
-        if(pic !== null){
-            const source = { uri: pic };
-            const response = await fetch(source.uri);
-            const blob = await response.blob(); 
-
-            uploadFile(source, blob);
+    useEffect( () => {
+        if(sendLoc){
+            navigation.goBack();
+            isUserLoggedIn();
         }
-        else{
-            console.log("No Image URI");
-        }
-        // console.log(pic);
-    }
+    }, [sendLoc] )
 
     const saveData = async () => {
         setIsLoading(true);
@@ -52,9 +51,7 @@ export const EditProfileScreen = () => {
         const response = await fetch(source.uri);
         const blob = await response.blob(); 
 
-        updateProfileDetails(username, email, phone, bio, user.uid, source, blob, setIsLoading);
-
-        
+        updateProfileDetails(username, email, phone, bio, user.uid, source, blob, setIsLoading, setSendLoc);
     }
 
     return (

@@ -21,7 +21,11 @@ export const ProfileDetailsComponent = () => {
             ]}
         >
             <Image 
-                source={ require("../../../../assets/Images/Profile/profile2.jpg") }
+                source={ 
+                    user.photoURL ? 
+                        { uri: user.photoURL } : 
+                        require("../../../../assets/Images/Profile/profile2.jpg") 
+                }
                 style={ profileUsersStyles.profileDetailImg }
             />
 

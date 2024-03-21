@@ -27,7 +27,11 @@ export const ProfileStyledComponent = () => {
                 onPress={ () => navigation.navigate("Profile") }
             >
                 <Image 
-                    source={ require('../../../../assets/Images/Profile/profile2.jpg') }
+                    source={ 
+                        user.photoURL ? 
+                            { uri: user.photoURL } : 
+                            require('../../../../assets/Images/Profile/profile2.jpg') 
+                    }
                     style={{
                         width: 130,
                         height: 130,
