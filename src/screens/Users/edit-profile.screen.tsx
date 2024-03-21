@@ -47,9 +47,16 @@ export const EditProfileScreen = () => {
 
     const saveData = async () => {
         setIsLoading(true);
-        const source = { uri: pic };
-        const response = await fetch(source.uri);
-        const blob = await response.blob(); 
+
+        let source;
+        let response;
+        let blob;
+
+        if(pic !== null){
+            source = { uri: pic };
+            response = await fetch(source.uri);
+            blob = await response.blob(); 
+        }
 
         updateProfileDetails(username, email, phone, bio, user.uid, source, blob, setIsLoading, setSendLoc);
     }
