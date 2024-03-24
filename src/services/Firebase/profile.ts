@@ -48,7 +48,7 @@ const updateProfileDetails = (
                             .then( res => {
                                 set(
                                     ref(database, `Users/${userId}/userInfo`),
-                                    { username, email, phone, bio, photoURL: downloadUrl }
+                                    { username, email, phone: phone && phone, bio: bio && bio, photoURL: downloadUrl }
                                 )
                                 .then( doc => {
                                     setIsLoading(false);

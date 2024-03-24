@@ -15,6 +15,9 @@ import { UsersNavigation } from "./User-Navigation";
 import { MainNavigation } from "./Chef-Navigation";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
+// Loading Food App Stack Navigation
+import { LoadingNavigation } from "./Utils";
+
 export const Navigation = () => {
 
     // Constext

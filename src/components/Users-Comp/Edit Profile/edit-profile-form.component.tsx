@@ -73,7 +73,7 @@ export const EditProfielFormComponent: React.FC<Props> = (
                 <Text style={ editProfileUsersStyles.inputLabel }>BIO</Text>
                 <TextInput 
                     placeholder={ user.bio || "I love fast food" }
-                    value={ bio ? bio : "" }
+                    value={ bio && bio }
                     onChangeText={ setBio }
                     // multiline
                     numberOfLines={4}
