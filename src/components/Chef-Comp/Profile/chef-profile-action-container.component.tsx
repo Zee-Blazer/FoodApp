@@ -24,7 +24,7 @@ export const ChefProfileActionContainerComponent = () => {
     ];
 
     const data4 = [
-        { iconUri: require("../../../../assets/Images/Icons/logout.png"), title: "Log Out", link: "" },
+        { iconUri: require("../../../../assets/Images/Icons/logout.png"), title: "Log Out", link: "logout" },
     ];
 
     return (

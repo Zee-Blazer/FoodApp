@@ -149,9 +149,7 @@ export const AuthContextProvider = ({ children }) => {
         .then( async res => {
             await AsyncStorage.setItem("@user_details", "");
             await AsyncStorage.setItem("@user_id", "");
-            setUser(null);
-            console.log("Done perfectly");
-            console.log(user);
+            setUser(false);
         } )
         .catch( err => console.log(err) );
     }
