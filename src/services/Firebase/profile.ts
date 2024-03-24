@@ -20,10 +20,11 @@ const updateProfileDetails = (
     image: any,
     result: any,
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
-    setSendLoc: React.Dispatch<React.SetStateAction<boolean>>
+    setSendLoc: React.Dispatch<React.SetStateAction<boolean>>,
+    setGoBack: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
 
-    if(image !== null){
+    if(image != null){
         const filename = image.uri.substring(image.uri.lastIndexOf('/') + 1);
 
         const storageRef = real(storage, `Profile/${filename}`);
@@ -51,6 +52,7 @@ const updateProfileDetails = (
                                 )
                                 .then( doc => {
                                     setIsLoading(false);
+                                    setGoBack(false);
                                 } )
                                 .catch( err => {
                                     setIsLoading(false);
@@ -65,6 +67,7 @@ const updateProfileDetails = (
                 
             }
         )
+        
     }
 
     else{
@@ -89,6 +92,8 @@ const updateProfileDetails = (
             .catch( err => console.log("Error: " + err) );
 
         setIsLoading(false);
+        setGoBack(false);
+
     }
 
 }

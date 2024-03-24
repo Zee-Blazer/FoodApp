@@ -10,10 +10,11 @@ import { editProfileUsersStyles } from "../../../styles/screens/edit-profile-use
 interface Props {
     userPic: any,
     pic: any,
-    setPic: React.Dispatch<React.SetStateAction<any>>
+    setPic: React.Dispatch<React.SetStateAction<any>>,
+    setProceed: React.Dispatch<React.SetStateAction<any>>
 }
 
-export const EditProfilePicComponent: React.FC<Props> = ({ userPic, pic, setPic }) => {
+export const EditProfilePicComponent: React.FC<Props> = ({ userPic, pic, setPic, setProceed }) => {
 
     const pickImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
@@ -29,6 +30,7 @@ export const EditProfilePicComponent: React.FC<Props> = ({ userPic, pic, setPic 
             const blob = await response.blob();
             
             setPic(result.assets[0].uri);
+            setProceed(true);
         }
     }
 

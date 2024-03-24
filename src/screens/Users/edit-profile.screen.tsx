@@ -37,6 +37,8 @@ export const EditProfileScreen = () => {
 
     // Profile Image States 
     const [pic, setPic] = useState(null || user.photoURL);
+    const [proceed, setProceed] = useState<boolean>(false);
+    const [goBack, setGoBack] = useState<boolean>(true);
 
     useEffect( () => {
         if(sendLoc){
@@ -45,20 +47,29 @@ export const EditProfileScreen = () => {
         }
     }, [sendLoc] )
 
+    useEffect( () => {
+        if(!goBack){
+            navigation.goBack();
+        }
+    }, [goBack] )
+
     const saveData = async () => {
         setIsLoading(true);
 
-        let source;
-        let response;
-        let blob;
+        if(proceed){
+            const source = { uri: pic };
+            const response = await fetch(source.uri);
+            const blob = await response.blob(); 
 
-        if(pic !== null){
-            source = { uri: pic };
-            response = await fetch(source.uri);
-            blob = await response.blob(); 
+            updateProfileDetails(username, email, phone, bio, user.uid, source, blob, setIsLoading, setSendLoc, setGoBack);
         }
+        else{
+            console.log("Working here");
+            const source = null;
+            const blob = null; 
 
-        updateProfileDetails(username, email, phone, bio, user.uid, source, blob, setIsLoading, setSendLoc);
+            updateProfileDetails(username, email, phone, bio, user.uid, source, blob, setIsLoading, setSendLoc, setGoBack);
+        }
     }
 
     return (
@@ -78,6 +89,7 @@ export const EditProfileScreen = () => {
                         userPic={ user.photoURL }
                         pic={ pic }
                         setPic={ setPic }
+                        setProceed={ setProceed }
                     />
 
                     <EditProfielFormComponent 

@@ -25,23 +25,25 @@ export const AuthContextProvider = ({ children }) => {
         isUserLoggedIn();
     }, [] ) 
 
-    const isUserLoggedIn = () => {
+    const isUserLoggedIn = async () => {
         onAuthStateChanged(auth, ( user ) => {
             if(user){
+                console.log(user.uid);
                 onValue( ref( database, `Users/${user.uid}` ), (snapshot) => {
                     const data = snapshot.val();
+                    console.log(data);
                     setUser({
                         username: user.displayName,
                         email: user.email,
                         photoURL: user.photoURL,
                         phoneNumber: user.phoneNumber,
                         uid: user.uid,
-                        bio: data.userInfo.bio,
-                        phoneNumber: data.userInfo.phone
+                        bio: data.userInfo.bio && data.userInfo.bio,
+                        phoneNumber: data.userInfo.phone && data.userInfo.phone
                     });
-                } )
-                
+                } )    
             }
+            
         })
     }
 
@@ -102,8 +104,8 @@ export const AuthContextProvider = ({ children }) => {
                     phoneNumber: res.user.phoneNumber,
                     uid: res.user.uid,
                 });
-                setIsLoading(false);
                 isUserLoggedIn();
+                setIsLoading(false);
             } )
             .catch( err => {
                 if (err.code === 'auth/user-not-found') {
