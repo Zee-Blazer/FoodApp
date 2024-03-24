@@ -4,7 +4,7 @@ import React, { useState, createContext, useEffect } from 'react';
 import NetInfo from '@react-native-community/netinfo';
 
 // Firebase Authentication
-import { auth, database, googleProvider } from '../../firebaseConfig';
+import { auth, database } from '../../firebaseConfig';
 import { createUserWithEmailAndPassword, onAuthStateChanged, updateProfile, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 // Firebase Realtime database
