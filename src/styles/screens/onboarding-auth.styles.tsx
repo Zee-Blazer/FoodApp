@@ -9,11 +9,19 @@ import { theme } from "../../infrastructure/Theme";
 export const onboardingScreenStyles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "green"
+        backgroundColor: "white"
+    },
+    loadingContainerCenter: {
+        alignItems: "center",
+        justifyContent: "center"
     },
     lottie: {
         width: width*0.9,
         height: width
+    },
+    loadingLottie: {
+        width: width*0.5,
+        height: width*0.7
     },
     doneButton: {
         padding: 20,

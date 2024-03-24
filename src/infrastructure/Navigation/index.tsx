@@ -26,15 +26,20 @@ export const Navigation = () => {
     // const isAuthenticated = !!true;
     const isAdmin = true;
 
+    console.log(isAuthenticated);
+
     return (
         <GestureHandlerRootView  style={{ flex: 1 }}>
             <NavigationContainer>
                 { 
-                    isAuthenticated ? 
-                        isAdmin ? 
-                        <UsersNavigation /> : <MainNavigation /> 
+                    isAuthenticated == undefined ?
+                        <LoadingNavigation /> 
                         :
-                        <AuthNavigation /> 
+                        isAuthenticated ? 
+                            isAdmin ? 
+                            <UsersNavigation /> : <MainNavigation /> 
+                            :
+                            <AuthNavigation /> 
                 }
             </NavigationContainer>
         </GestureHandlerRootView>

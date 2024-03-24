@@ -43,6 +43,9 @@ export const AuthContextProvider = ({ children }) => {
                     });
                 } )    
             }
+            else{
+                setUser(false);
+            }
             
         })
     }

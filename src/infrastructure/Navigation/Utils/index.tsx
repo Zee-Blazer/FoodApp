@@ -9,7 +9,11 @@ const LoadingStack = createStackNavigator();
 export const LoadingNavigation = () => {
 
     return (
-        <LoadingStack.Navigator>
+        <LoadingStack.Navigator
+            screenOptions={{
+                headerShown: false
+            }}
+        >
             <LoadingStack.Screen name="Loading" component={ LoadingFoodApp } />
         </LoadingStack.Navigator>
     )
