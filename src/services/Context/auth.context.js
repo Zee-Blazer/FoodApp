@@ -1,5 +1,8 @@
 import React, { useState, createContext, useEffect } from 'react';
 
+// Internet Connnection
+import NetInfo from '@react-native-community/netinfo';
+
 // Firebase Authentication
 import { auth, database, googleProvider } from '../../firebaseConfig';
 import { createUserWithEmailAndPassword, onAuthStateChanged, updateProfile, signInWithEmailAndPassword, signOut } from "firebase/auth";
@@ -20,10 +23,17 @@ export const AuthContextProvider = ({ children }) => {
     const [user, setUser] = useState();
     const [errMsg, setErrMsg] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+    const [internetConn, setInternetConn] = useState(true);
 
     useEffect( () => {
         isUserLoggedIn();
     }, [] ) 
+
+    useEffect( () => {
+        NetInfo.addEventListener( state => {
+            setInternetConn(state.isConnected);
+        } )
+    }, [] )
 
     const isUserLoggedIn = async () => {
         onAuthStateChanged(auth, ( user ) => {
@@ -86,6 +96,8 @@ export const AuthContextProvider = ({ children }) => {
                     setErrMsg('Invalid email address.');
                 } else if (err.code === 'auth/weak-password') {
                     setErrMsg('Password is too weak.');
+                } else if(!internetConn){
+                    setErrMsg("You are not connected to the internet!!");
                 } else {
                     setErrMsg('Registration failed. Please try again later.');
                 }
@@ -115,6 +127,8 @@ export const AuthContextProvider = ({ children }) => {
                     setErrMsg('User not found. Check email and password');
                 } else if (err.code === 'auth/wrong-password') {
                     setErrMsg('Incorrect password');
+                } else if(!internetConn){
+                    setErrMsg("You are not connected to the internet!!");
                 } else {
                     setErrMsg("An error occured, please try again");
                 }
@@ -148,6 +162,7 @@ export const AuthContextProvider = ({ children }) => {
                 serviceNotAvailiable,
                 isUserLoggedIn,
                 logoutApp,
+                internetConn,
                 isLoading,
                 user,
                 errMsg
