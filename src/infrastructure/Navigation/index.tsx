@@ -20,11 +20,11 @@ import { LoadingNavigation } from "./Utils";
 
 export const Navigation = () => {
 
-    // Constext
-    const { isAuthenticated } = useContext(AuthContext);
+    // Context
+    const { isAuthenticated, isAdmin } = useContext(AuthContext);
 
     // const isAuthenticated = !!true;
-    const isAdmin = true;
+    // const isAdmin = true;
 
     console.log(isAuthenticated);
 
@@ -36,7 +36,7 @@ export const Navigation = () => {
                         <LoadingNavigation /> 
                         :
                         isAuthenticated ? 
-                            isAdmin ? 
+                            !isAdmin ? 
                             <UsersNavigation /> : <MainNavigation /> 
                             :
                             <AuthNavigation /> 

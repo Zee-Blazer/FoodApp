@@ -24,6 +24,7 @@ export const AuthContextProvider = ({ children }) => {
     const [errMsg, setErrMsg] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [internetConn, setInternetConn] = useState(true);
+    const [isAdmin, setIsAdmin] = useState(false);
 
     useEffect( () => {
         isUserLoggedIn();
@@ -41,7 +42,9 @@ export const AuthContextProvider = ({ children }) => {
                 console.log(user.uid);
                 onValue( ref( database, `Users/${user.uid}` ), (snapshot) => {
                     const data = snapshot.val();
-                    console.log(data);
+
+                    data.isChef ? setIsAdmin(true) : setIsAdmin(false);
+
                     setUser({
                         username: user.displayName,
                         email: user.email,
@@ -157,6 +160,7 @@ export const AuthContextProvider = ({ children }) => {
         <AuthContext.Provider
             value={{
                 isAuthenticated: user,
+                isAdmin,
                 signUpWithEmailPassword,
                 loginWithEmailPassword,
                 serviceNotAvailiable,
