@@ -5,7 +5,7 @@ import { updateProfile } from "firebase/auth";
 
 // Firebase Database
 import { database } from "../../firebaseConfig";
-import { ref, push, orderByChild, equalTo, query, get, set } from 'firebase/database';
+import { ref, set } from 'firebase/database';
 
 // Firebase Storage
 import { storage } from "../../firebaseConfig";

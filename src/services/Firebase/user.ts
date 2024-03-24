@@ -12,7 +12,6 @@ const displayUser = () => {
 }
 
 const newUser = (username: string, email: string, id: string) => {
-    console.log("Working")
     set(
         ref( database, `Users/${id}` ),
         { userId: id, isChef: false, userInfo: { username, email } }

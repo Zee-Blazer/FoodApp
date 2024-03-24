@@ -56,5 +56,11 @@ export const profileUsersStyles = StyleSheet.create({
         color: "#9C9BA6",
         fontFamily: theme.fonts.title,
         marginTop: 13
+    },
+    becomeAdmin: {
+        textAlign: "center",
+        color: "#FB6D3A",
+        fontFamily: theme.fonts.body,
+        fontSize: 10
     }
 });

@@ -1,5 +1,12 @@
+import React, { useContext } from 'react';
 
-import { View, Text, FlatList, Image } from "react-native";
+import { View, Text, FlatList, Image, TouchableOpacity } from "react-native";
+
+// Authentication Context
+import { AuthContext } from '../../../services/Context/auth.context';
+
+// Firebase Function
+import { becomeAdmin } from '../../../services/Firebase/Chef/profile';
 
 // Styling
 import { homeUsersScreenStyles } from "../../../styles/screens/home-users.styles";
@@ -17,8 +24,11 @@ interface Props {
 
 export const InfoDisplayContainerComponent: React.FC<Props> = ({ data }) => {
 
+    const { user } = useContext(AuthContext);
+
     return (
-        <View style={[ profileUsersStyles.profileActionCont, { marginTop: 20 } ]}>
+        <>
+            <View style={[ profileUsersStyles.profileActionCont, { marginTop: 20 } ]}>
 
             <FlatList 
                 data={ data }
@@ -51,6 +61,15 @@ export const InfoDisplayContainerComponent: React.FC<Props> = ({ data }) => {
                 keyExtractor={ item => item.iconUri }
             />
 
-        </View>
+            </View>
+
+            <TouchableOpacity
+                onPress={ () => becomeAdmin(user.uid, user) }
+            >
+                <Text
+                    style={ profileUsersStyles.becomeAdmin }
+                >BECOME A CHEF</Text>
+            </TouchableOpacity>
+        </>
     )
 }
