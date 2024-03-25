@@ -72,7 +72,7 @@ export const AuthContextProvider = ({ children }) => {
         })
     }
 
-    // The signup function 
+    // The signup function to sign a user up in the app
     const signUpWithEmailPassword = (username, email, password) => {
         setIsLoading(true);
         createUserWithEmailAndPassword(auth, email, password)
@@ -119,6 +119,7 @@ export const AuthContextProvider = ({ children }) => {
         setErrMsg("");
     }
 
+    // The Login function that logs in a user into the app
     const loginWithEmailPassword = (email, password) => {
         setIsLoading(true);
 
@@ -150,6 +151,7 @@ export const AuthContextProvider = ({ children }) => {
         setErrMsg("");
     }
 
+    // The function for the google, facebook and twitter authentication that is yet to work
     const serviceNotAvailiable = () => {
         setErrMsg("Service not availiable at the moment");
     }
