@@ -5,7 +5,13 @@ import NetInfo from '@react-native-community/netinfo';
 
 // Firebase Authentication
 import { auth, database } from '../../firebaseConfig';
-import { createUserWithEmailAndPassword, onAuthStateChanged, updateProfile, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { 
+    createUserWithEmailAndPassword, 
+    onAuthStateChanged, 
+    updateProfile, 
+    signInWithEmailAndPassword, 
+    signOut 
+} from "firebase/auth";
 
 // Firebase Realtime database
 import { ref, onValue } from 'firebase/database';
@@ -20,26 +26,29 @@ export const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
 
+    // State Management
     const [user, setUser] = useState();
     const [errMsg, setErrMsg] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [internetConn, setInternetConn] = useState(true);
     const [isAdmin, setIsAdmin] = useState(false);
 
+    // useEffect used to manage and check if a user is logged in or not
     useEffect( () => {
         isUserLoggedIn();
     }, [] ) 
 
+    // useEffect used to check for internet connection
     useEffect( () => {
         NetInfo.addEventListener( state => {
             setInternetConn(state.isConnected);
         } )
     }, [] )
 
+    // Function to check if a user is logged in or not
     const isUserLoggedIn = async () => {
         onAuthStateChanged(auth, ( user ) => {
             if(user){
-                console.log(user.uid);
                 onValue( ref( database, `Users/${user.uid}` ), (snapshot) => {
                     const data = snapshot.val();
 
@@ -63,6 +72,7 @@ export const AuthContextProvider = ({ children }) => {
         })
     }
 
+    // The signup function 
     const signUpWithEmailPassword = (username, email, password) => {
         setIsLoading(true);
         createUserWithEmailAndPassword(auth, email, password)
