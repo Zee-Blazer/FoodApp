@@ -13,12 +13,15 @@ import { OnboardingScreen } from "../../screens/Auth/onboarding.screen";
 import { ForgotPasswordScreen } from "../../screens/Auth/forgot-password.screen";
 import { OtpVerificationScreen } from "../../screens/Auth/otp-verification.screen";
 
+// The Auth stack instance
 const AuthStack = createStackNavigator();
 
 export const AuthNavigation: React.FC = () => {
 
+    // The screen that would be displayed in the Auth stack either "Onboarding screen" || "Login screen"
     const [screen, setScreen] = useState<string>("Onboarding");
 
+    // This useEffect helps see the screen that should be displayed
     useEffect( () => {
         const checkData = async () => setScreen(await AsyncStorage.getItem("Screen"));
         checkData();
