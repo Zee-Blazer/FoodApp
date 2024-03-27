@@ -44,12 +44,6 @@ export const ChefNotificationScreen = () => {
                         time={ 23 }
                     />
 
-                    {/* <NotificationContainerComponent 
-                        name="Royal Bengol"
-                        msg="agreed to cancel"
-                        time={ 23 }
-                    /> */}
-
                 </ScrollView>
 
             </View>

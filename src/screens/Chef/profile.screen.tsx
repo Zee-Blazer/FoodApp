@@ -11,15 +11,12 @@ import { ChefProfileActionContainerComponent } from "../../components/Chef-Comp/
 export const ChefProfileScreen = () => {
 
     return (
-        // <SafeAreaView style={{ backgroundColor: "#F7F8F9", flex: 1 }}>
-            <View style={ homeChefScreenStyles.body }>
+        <View style={ homeChefScreenStyles.body }>
 
-                <ProfileHeaderContainerComponent />
+            <ProfileHeaderContainerComponent />
 
-                <ChefProfileActionContainerComponent />
+            <ChefProfileActionContainerComponent />
 
-                {/* <Text>Profile Chef Screen</Text> */}
-            </View>
-        // </SafeAreaView>
+        </View>
     )
 }

@@ -31,7 +31,6 @@ export const ChefHomeScreen = () => {
     const openBottomSheet = () => {
         setShowBottomSheet(true);
         bottomSheetRef.current?.expand();
-        // snapToIndex(0);
     }
 
     return (
