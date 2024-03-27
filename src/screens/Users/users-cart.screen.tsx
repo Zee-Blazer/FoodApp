@@ -2,9 +2,6 @@ import React, { useState, useMemo, useRef } from 'react';
 
 import { View, ScrollView, SafeAreaView } from "react-native";
 
-// Navigation
-import { useNavigation } from "@react-navigation/native";
-
 // Bottom Sheet
 import BottomSheet from '@gorhom/bottom-sheet';
 
@@ -18,8 +15,6 @@ import { FormBtnComponent } from "../../components/Auth-Comp/form-btn.component"
 import { BottomSheetUserCartComponent } from '../../components/Users-Comp/Users Cart/bottom-sheet-user-cart.component';
 
 export const UsersCartScreen = () => {
-
-    // const navigation = useNavigation();
 
     const snapPoints = useMemo( () => ["40%"], [] );
     const bottomSheetRef = useRef<BottomSheet>(null);
