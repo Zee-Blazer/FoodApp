@@ -48,7 +48,6 @@ export const FoodDetailsScreen = () => {
                         func={ () => {
                             setShowBottomSheet(true);
                             snapToIndex(0);
-                            // navigation.navigate("UsersCart")
                         } }
                     />
                     

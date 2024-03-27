@@ -22,7 +22,6 @@ export const ChefFoodDetails = () => {
                 </View>
 
                 <MainFoodContainerComponent />
-
                 
             </View>
         </SafeAreaView>
