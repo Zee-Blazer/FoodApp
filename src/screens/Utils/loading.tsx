@@ -25,6 +25,8 @@ export const LoadingFoodApp = () => {
                 loop 
                 style={ onboardingScreenStyles.loadingLottie }
             />
+
+            {/* No internet response while loading */}
             { 
                 !internetConn && 
                 <Text
