@@ -1,5 +1,5 @@
 
-import { View, SafeAreaView, Text } from "react-native";
+import { View } from "react-native";
 
 // Styling
 import { homeChefScreenStyles } from "../../styles/screens/home-chef.styles";
