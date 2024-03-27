@@ -1,5 +1,9 @@
+import React, { useContext } from 'react';
 
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
+
+// Authentication Context
+import { AuthContext } from '../../services/Context/auth.context';
 
 // Animation component
 import LottieView from 'lottie-react-native';
@@ -9,6 +13,10 @@ import { onboardingScreenStyles } from '../../styles/screens/onboarding-auth.sty
 
 export const LoadingFoodApp = () => {
 
+    const { internetConn } = useContext(AuthContext);
+
+    console.log(internetConn);
+
     return (
         <View style={[ onboardingScreenStyles.container, onboardingScreenStyles.loadingContainerCenter ]}>
             <LottieView 
@@ -17,6 +25,12 @@ export const LoadingFoodApp = () => {
                 loop 
                 style={ onboardingScreenStyles.loadingLottie }
             />
+            { 
+                !internetConn && 
+                <Text
+                    style={ onboardingScreenStyles.noInternet }
+                >No Internet Connection, Please check your network!!</Text> 
+            }
         </View>
     )
 }

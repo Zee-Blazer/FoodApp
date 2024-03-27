@@ -23,6 +23,13 @@ export const onboardingScreenStyles = StyleSheet.create({
         width: width*0.5,
         height: width*0.7
     },
+    noInternet: {
+        fontSize: 18,
+        fontFamily: theme.fonts.body,
+        color: "red",
+        textAlign: "center",
+        marginHorizontal: 12
+    },
     doneButton: {
         padding: 20,
         backgroundColor: theme.colors.buttons.primary,
