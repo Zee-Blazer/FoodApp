@@ -13,6 +13,9 @@ import { ChefFoodDetails } from "../../../screens/Chef/food-details.screen";
 // Profile Info Screen
 import { ProfileChefInfoScreen } from "../../../screens/Chef/profile-chef-info.screen";
 
+// Profile Edit Restaurant Screen
+import { EditChefRestaurant } from "../../../screens/Chef/edit-chef-restaurant";
+
 const MainNav = createStackNavigator();
 
 export const MainNavigation = () => {
@@ -27,6 +30,7 @@ export const MainNavigation = () => {
             <MainNav.Screen name="Reviews" component={ ReviewsScreen } />
             <MainNav.Screen name="FoodDetails" component={ ChefFoodDetails } />
             <MainNav.Screen name="ProfileChefInfo" component={ ProfileChefInfoScreen } />
+            <MainNav.Screen name="RestaurantEdit" component={ EditChefRestaurant } />
         </MainNav.Navigator>
     )
 }

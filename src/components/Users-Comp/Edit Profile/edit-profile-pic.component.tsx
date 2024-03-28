@@ -11,10 +11,11 @@ interface Props {
     userPic: any,
     pic: any,
     setPic: React.Dispatch<React.SetStateAction<any>>,
-    setProceed: React.Dispatch<React.SetStateAction<any>>
+    setProceed: React.Dispatch<React.SetStateAction<any>>,
+    screen?: string
 }
 
-export const EditProfilePicComponent: React.FC<Props> = ({ userPic, pic, setPic, setProceed }) => {
+export const EditProfilePicComponent: React.FC<Props> = ({ userPic, pic, setPic, setProceed, screen }) => {
 
     const pickImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
@@ -43,7 +44,10 @@ export const EditProfilePicComponent: React.FC<Props> = ({ userPic, pic, setPic,
                     source={ 
                         userPic ? 
                             { uri: userPic } : 
-                            require('../../../../assets/Images/Profile/profile2.jpg') 
+                            !screen ?
+                                require('../../../../assets/Images/Profile/profile2.jpg') 
+                                :
+                                require('../../../../assets/Images/Restaurants/RestaurantPlaceholder.jpg') 
                     }
                     style={[ editProfileUsersStyles.editableImg ]}
                 /> :

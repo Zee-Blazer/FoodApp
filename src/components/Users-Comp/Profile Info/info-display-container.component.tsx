@@ -2,6 +2,9 @@ import React, { useContext } from 'react';
 
 import { View, Text, FlatList, Image, TouchableOpacity } from "react-native";
 
+// Navigation
+import { useNavigation } from '@react-navigation/native';
+
 // Authentication Context
 import { AuthContext } from '../../../services/Context/auth.context';
 
@@ -24,6 +27,8 @@ interface Props {
 }
 
 export const InfoDisplayContainerComponent: React.FC<Props> = ({ data, screen }) => {
+
+    const navigation = useNavigation();
 
     const { user } = useContext(AuthContext);
 
@@ -57,7 +62,9 @@ export const InfoDisplayContainerComponent: React.FC<Props> = ({ data, screen })
                             </View>
                         </View>
 
-                        <TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={ () => navigation.navigate("RestaurantEdit") }
+                        >
                             <Text
                                 style={[ profileUsersStyles.chefEditBtn ]}
                             >EDIT</Text>
