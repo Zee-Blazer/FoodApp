@@ -10,7 +10,7 @@ import { ProfileActionContainerComponent } from "../../Users-Comp/Profile Sectio
 export const ChefProfileActionContainerComponent = () => {
 
     const data1 = [
-        { iconUri: require("../../../../assets/Images/Icons/profile.png"), title: "Personal Info", link: "" },
+        { iconUri: require("../../../../assets/Images/Icons/profile.png"), title: "Personal Info", link: "ProfileChefInfo" },
         { iconUri: require("../../../../assets/Images/Icons/Settings.png"), title: "Settings", link: "" }
     ];
 

@@ -15,8 +15,6 @@ export const LoadingFoodApp = () => {
 
     const { internetConn } = useContext(AuthContext);
 
-    console.log(internetConn);
-
     return (
         <View style={[ onboardingScreenStyles.container, onboardingScreenStyles.loadingContainerCenter ]}>
             <LottieView 
