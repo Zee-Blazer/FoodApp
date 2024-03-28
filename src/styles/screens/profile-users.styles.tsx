@@ -62,5 +62,12 @@ export const profileUsersStyles = StyleSheet.create({
         color: "#FB6D3A",
         fontFamily: theme.fonts.body,
         fontSize: 10
+    },
+    chefEditBtn: {
+        color: "#FF7622",
+        fontSize: 12,
+        fontFamily: theme.fonts.body,
+        marginRight: 6,
+        marginTop: 18
     }
 });

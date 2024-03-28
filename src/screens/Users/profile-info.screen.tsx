@@ -13,7 +13,7 @@ export const ProfileInfoScreen = () => {
 
     return (
         <SafeAreaView style={{ backgroundColor: "white", flex: 1 }}>
-            <View style={ homeUsersScreenStyles.body }>
+            <View style={[ homeUsersScreenStyles.body ]}>
 
                 <UsersCartHeaderComponent 
                     title="Profile Info"

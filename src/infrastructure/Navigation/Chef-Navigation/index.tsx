@@ -11,7 +11,7 @@ import { ReviewsScreen } from "../../../screens/Chef/reviews.screen";
 import { ChefFoodDetails } from "../../../screens/Chef/food-details.screen";
 
 // Profile Info Screen
-import { ProfileChefInfoScreen } from "../../../screens/Chef/profile-info.screen";
+import { ProfileChefInfoScreen } from "../../../screens/Chef/profile-chef-info.screen";
 
 const MainNav = createStackNavigator();
 

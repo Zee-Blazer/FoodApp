@@ -9,7 +9,11 @@ import { AuthContext } from "../../../services/Context/auth.context";
 import { homeUsersScreenStyles } from "../../../styles/screens/home-users.styles";
 import { profileUsersStyles } from "../../../styles/screens/profile-users.styles";
 
-export const ProfileDetailsComponent = () => {
+interface Props {
+    screen?: string
+}
+
+export const ProfileDetailsComponent: React.FC<Props> = ({ screen }) => {
 
     const { user } = useContext(AuthContext);
 
@@ -17,7 +21,7 @@ export const ProfileDetailsComponent = () => {
         <TouchableOpacity 
             style={[ 
                 homeUsersScreenStyles.flexDisplay, 
-                profileUsersStyles.profileDetailCont 
+                profileUsersStyles.profileDetailCont
             ]}
         >
             <Image 

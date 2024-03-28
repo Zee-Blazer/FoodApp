@@ -8,7 +8,11 @@ import { AuthContext } from "../../../services/Context/auth.context";
 // Component
 import { InfoDisplayContainerComponent } from "./info-display-container.component";
 
-export const InfoDisplayComponent = () => {
+interface Props {
+    screen?: string
+}
+
+export const InfoDisplayComponent: React.FC<Props> = ({ screen }) => {
 
     const { user } = useContext(AuthContext);
 
@@ -27,13 +31,22 @@ export const InfoDisplayComponent = () => {
             iconUri: require("../../../../assets/Images/Icons/phone.png"), 
             title: "PHONE NUMBER", 
             subTitle: user.phoneNumber
-        },
+        }
     ];
+
+    const subData = [
+        {
+            iconUri: require("../../../../assets/Images/Icons/restaurant.png"), 
+            title: "RESTAURANT DETAILS", 
+            subTitle: "Amazing Meals"
+        }
+    ]
 
     return (
         <View>
             <InfoDisplayContainerComponent 
-                data={ data }
+                data={ screen == "chef" ? subData : data }
+                screen={ screen && screen }
             />
         </View>
     )

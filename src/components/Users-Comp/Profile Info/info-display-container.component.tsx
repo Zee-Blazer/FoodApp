@@ -19,10 +19,11 @@ interface data {
 }
 
 interface Props {
-    data: data[]
+    data: data[],
+    screen?: string
 }
 
-export const InfoDisplayContainerComponent: React.FC<Props> = ({ data }) => {
+export const InfoDisplayContainerComponent: React.FC<Props> = ({ data, screen }) => {
 
     const { user } = useContext(AuthContext);
 
@@ -56,6 +57,12 @@ export const InfoDisplayContainerComponent: React.FC<Props> = ({ data }) => {
                             </View>
                         </View>
 
+                        <TouchableOpacity>
+                            <Text
+                                style={[ profileUsersStyles.chefEditBtn ]}
+                            >EDIT</Text>
+                        </TouchableOpacity>
+
                     </View>
                 ) }
                 keyExtractor={ item => item.iconUri }
@@ -63,13 +70,19 @@ export const InfoDisplayContainerComponent: React.FC<Props> = ({ data }) => {
 
             </View>
 
-            <TouchableOpacity
-                onPress={ () => becomeAdmin(user.uid, user) }
-            >
-                <Text
-                    style={ profileUsersStyles.becomeAdmin }
-                >BECOME A CHEF</Text>
-            </TouchableOpacity>
+            { 
+                screen ?
+                null
+                : 
+                <TouchableOpacity
+                    onPress={ () => becomeAdmin(user.uid, user) }
+                >
+                    <Text
+                        style={ profileUsersStyles.becomeAdmin }
+                    >BECOME A CHEF</Text>
+                </TouchableOpacity>
+            
+            }
         </>
     )
 }
