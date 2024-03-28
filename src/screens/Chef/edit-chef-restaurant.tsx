@@ -22,7 +22,7 @@ export const EditChefRestaurant = () => {
                 <View style={ homeChefScreenStyles.horiSpacer }>
 
                     <FoodDetailsHeaderComponent 
-                        screen="Edit Profile"
+                        screen="Edit Restaurant"
                         icon={ true }
                     />
 

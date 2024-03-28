@@ -10,7 +10,7 @@ export const RestaurantChefInfoComponent = () => {
         <View>
 
             <View style={[ editProfileUsersStyles.inputContainer ]}>
-                <Text style={ editProfileUsersStyles.inputLabel }>FULL NAME</Text>
+                <Text style={ editProfileUsersStyles.inputLabel }>RESTAURANT NAME</Text>
                 <TextInput 
                     placeholder={ "Amazing Meals" }
                     // value={ username }
@@ -20,7 +20,7 @@ export const RestaurantChefInfoComponent = () => {
             </View>
 
             <View style={[ editProfileUsersStyles.inputContainer ]}>
-                <Text style={ editProfileUsersStyles.inputLabel }>EMAIL</Text>
+                <Text style={ editProfileUsersStyles.inputLabel }>ADDRESS</Text>
                 <TextInput 
                     placeholder={ "Beside CMPLH Bingham University" }
                     // value={ email }
@@ -31,7 +31,7 @@ export const RestaurantChefInfoComponent = () => {
             </View>
 
             <View style={[ editProfileUsersStyles.inputContainer ]}>
-                <Text style={ editProfileUsersStyles.inputLabel }>PHONE NUMBER</Text>
+                <Text style={ editProfileUsersStyles.inputLabel }>RESTAURANT NUMBER</Text>
                 <TextInput 
                     placeholder={ "408-841-0926" }
                     inputMode="numeric"
