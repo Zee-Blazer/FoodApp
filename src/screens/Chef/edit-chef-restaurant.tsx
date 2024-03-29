@@ -5,6 +5,9 @@ import { View, SafeAreaView, Text } from 'react-native';
 // Styling
 import { homeChefScreenStyles } from '../../styles/screens/home-chef.styles';
 
+// Firebase Function
+import { restaurantDetailsInfoDB } from '../../services/Firebase/Chef/Restaurant/restaurant-info';
+
 // Components
 import { FoodDetailsHeaderComponent } from '../../components/Users-Comp/Header/food-details-header.component';
 import { EditProfilePicComponent } from '../../components/Users-Comp/Edit Profile/edit-profile-pic.component';
@@ -42,8 +45,8 @@ export const EditChefRestaurant = () => {
 
             <View style={ homeChefScreenStyles.horiSpacer }>
                 <FormBtnComponent 
-                    title='Save'
-                    func={ () => {} }
+                    title='SAVE'
+                    func={ () => restaurantDetailsInfoDB() }
                 />
             </View>
 
