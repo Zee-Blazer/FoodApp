@@ -46,7 +46,7 @@ export const EditChefRestaurant = () => {
             <View style={ homeChefScreenStyles.horiSpacer }>
                 <FormBtnComponent 
                     title='SAVE'
-                    func={ () => restaurantDetailsInfoDB() }
+                    func={ () => {} }
                 />
             </View>
 
