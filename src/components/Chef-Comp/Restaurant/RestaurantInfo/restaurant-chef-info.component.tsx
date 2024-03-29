@@ -4,7 +4,18 @@ import { View, Text, TextInput } from 'react-native';
 // Styling
 import { editProfileUsersStyles } from '../../../../styles/screens/edit-profile-users.styles';
 
-export const RestaurantChefInfoComponent = () => {
+interface Props {
+    name: string,
+    address: string,
+    phone: any,
+    setName: React.Dispatch<React.SetStateAction<string>>,
+    setAddress: React.Dispatch<React.SetStateAction<string>>
+    setPhone: React.Dispatch<React.SetStateAction<any>>
+}
+
+export const RestaurantChefInfoComponent: React.FC<Props> = ({ 
+    name, address, phone, setName, setAddress, setPhone 
+}) => {
 
     return (
         <View>
@@ -13,8 +24,8 @@ export const RestaurantChefInfoComponent = () => {
                 <Text style={ editProfileUsersStyles.inputLabel }>RESTAURANT NAME</Text>
                 <TextInput 
                     placeholder={ "Amazing Meals" }
-                    // value={ username }
-                    // onChangeText={ setUsername }
+                    value={ name }
+                    onChangeText={ setName }
                     style={[ editProfileUsersStyles.inputField ]}
                 />
             </View>
@@ -23,9 +34,8 @@ export const RestaurantChefInfoComponent = () => {
                 <Text style={ editProfileUsersStyles.inputLabel }>ADDRESS</Text>
                 <TextInput 
                     placeholder={ "Beside CMPLH Bingham University" }
-                    // value={ email }
-                    // onChangeText={ setEmail }
-                    // editable={ false }
+                    value={ address }
+                    onChangeText={ setAddress }
                     style={[ editProfileUsersStyles.inputField ]}
                 />
             </View>
@@ -35,8 +45,8 @@ export const RestaurantChefInfoComponent = () => {
                 <TextInput 
                     placeholder={ "408-841-0926" }
                     inputMode="numeric"
-                    // value={ phone }
-                    // onChangeText={ setPhone }
+                    value={ phone }
+                    onChangeText={ setPhone }
                     style={[ editProfileUsersStyles.inputField ]}
                 />
             </View>

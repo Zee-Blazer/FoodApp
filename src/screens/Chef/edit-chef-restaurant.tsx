@@ -18,6 +18,15 @@ export const EditChefRestaurant = () => {
 
     const [pic, setPic] = useState();
 
+    // Restaurant details state
+    const [name, setName] = useState<string>("");
+    const [address, setAddress] = useState<string>("");
+    const [phone, setPhone] = useState<any>();
+
+    const saveRestaurantInfo = () => {
+        console.log(name, address, phone);
+    }
+
     return (
         <SafeAreaView style={{ backgroundColor: "#FFFFFF", flex: 1 }}>
             <View style={[ homeChefScreenStyles.body, {  backgroundColor: "white" } ]}>
@@ -31,13 +40,20 @@ export const EditChefRestaurant = () => {
 
                     <EditProfilePicComponent 
                         userPic={ "" }
-                        pic={ "" }
+                        pic={ pic }
                         setPic={ setPic }
                         setProceed={ setPic }
                         screen='chef'
                     />
                     
-                    <RestaurantChefInfoComponent />
+                    <RestaurantChefInfoComponent 
+                        name={ name }
+                        address={ address }
+                        phone={ phone }
+                        setName={ setName }
+                        setAddress={ setAddress }
+                        setPhone={ setPhone }
+                    />
                 
                 </View>
                 
@@ -46,7 +62,7 @@ export const EditChefRestaurant = () => {
             <View style={ homeChefScreenStyles.horiSpacer }>
                 <FormBtnComponent 
                     title='SAVE'
-                    func={ () => {} }
+                    func={ saveRestaurantInfo }
                 />
             </View>
 
