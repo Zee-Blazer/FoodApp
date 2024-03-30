@@ -56,8 +56,20 @@ const restaurantDetailsInfoDB = (
         )
     }
 
+};
+
+const restaurantInfoDetails = ( 
+    userId: string, setRestaurant: React.Dispatch<React.SetStateAction<any>> 
+) => {
+    onValue(
+        ref( database, `Restaurant_Info/${userId}` ),
+        (snapshot) => {
+            setRestaurant(snapshot.val());
+        }
+    )
 }
 
 export {
-    restaurantDetailsInfoDB
+    restaurantDetailsInfoDB,
+    restaurantInfoDetails
 }
