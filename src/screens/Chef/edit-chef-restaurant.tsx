@@ -24,6 +24,7 @@ export const EditChefRestaurant = () => {
 
     const [pic, setPic] = useState();
     const [proceed, setProceed] = useState<boolean>(false);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     // Restaurant details state
     const [name, setName] = useState<string>("");
@@ -34,18 +35,20 @@ export const EditChefRestaurant = () => {
 
         const userId = user.uid;
 
+        setIsLoading(true);
+
         if(proceed) {
             const source = { uri: pic };
             const response = await fetch(source.uri);
             const blob = await response.blob(); 
 
-            // restaurantDetailsInfoDB();
+            restaurantDetailsInfoDB(userId, name, address, phone, source, blob, setIsLoading);
         }
         else {
             const source = null;
             const blob = null; 
 
-            console.log("Having little issues");
+            restaurantDetailsInfoDB(userId, name, address, phone, source, blob, setIsLoading);
         }
     }
 
@@ -83,7 +86,8 @@ export const EditChefRestaurant = () => {
 
             <View style={ homeChefScreenStyles.horiSpacer }>
                 <FormBtnComponent 
-                    title='SAVE'
+                    title={ isLoading ? "SAVING..." : 'SAVE' }
+                    loading={ isLoading }
                     func={ saveRestaurantInfo }
                 />
             </View>
