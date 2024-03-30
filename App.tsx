@@ -4,8 +4,11 @@ import 'react-native-gesture-handler';
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from './src/firebaseConfig';
 
-// Authentication Context
+// Authentication Context Provider
 import { AuthContextProvider } from './src/services/Context/auth.context';
+
+// Restaurant Context Provider
+import { RestaurantContextProvider } from './src/services/Context/restaurant.context';
 
 import { StatusBar } from 'expo-status-bar';
 import {  Text } from 'react-native';
@@ -32,7 +35,9 @@ export default function App() {
 
   return (
     <AuthContextProvider>
-      <Navigation />
+      <RestaurantContextProvider>
+        <Navigation />
+      </RestaurantContextProvider>
     </AuthContextProvider>
   );
 }
