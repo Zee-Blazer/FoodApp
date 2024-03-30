@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 
 import { View, SafeAreaView, Text } from 'react-native';
+
+// Authentication Context
+import { AuthContext } from '../../services/Context/auth.context';
 
 // Styling
 import { homeChefScreenStyles } from '../../styles/screens/home-chef.styles';
@@ -16,15 +19,34 @@ import { FormBtnComponent } from '../../components/Auth-Comp/form-btn.component'
 
 export const EditChefRestaurant = () => {
 
+    // Authentication context to get details
+    const { user } = useContext(AuthContext);
+
     const [pic, setPic] = useState();
+    const [proceed, setProceed] = useState<boolean>(false);
 
     // Restaurant details state
     const [name, setName] = useState<string>("");
     const [address, setAddress] = useState<string>("");
     const [phone, setPhone] = useState<any>();
 
-    const saveRestaurantInfo = () => {
-        console.log(name, address, phone);
+    const saveRestaurantInfo = async () => {
+
+        const userId = user.uid;
+
+        if(proceed) {
+            const source = { uri: pic };
+            const response = await fetch(source.uri);
+            const blob = await response.blob(); 
+
+            // restaurantDetailsInfoDB();
+        }
+        else {
+            const source = null;
+            const blob = null; 
+
+            console.log("Having little issues");
+        }
     }
 
     return (
@@ -42,7 +64,7 @@ export const EditChefRestaurant = () => {
                         userPic={ "" }
                         pic={ pic }
                         setPic={ setPic }
-                        setProceed={ setPic }
+                        setProceed={ setProceed }
                         screen='chef'
                     />
                     

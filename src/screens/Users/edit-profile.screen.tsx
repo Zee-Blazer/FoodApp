@@ -64,7 +64,6 @@ export const EditProfileScreen = () => {
             updateProfileDetails(username, email, phone, bio, user.uid, source, blob, setIsLoading, setSendLoc, setGoBack);
         }
         else{
-            console.log("Working here");
             const source = null;
             const blob = null; 
 
