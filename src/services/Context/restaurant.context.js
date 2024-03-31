@@ -16,15 +16,13 @@ export const RestaurantContextProvider = ({ children }) => {
     const [restaurantInfo, setRestaurantInfo] = useState();
 
     useEffect( () => {
-        restaurantInfoDetails(user.uid, setRestaurantInfo);
-    }, [] )
-
-    console.log(restaurant);
+        user && restaurantInfoDetails(user.uid, setRestaurantInfo);
+    }, [ user ] )
 
     return (
         <RestaurantContext.Provider
             value={{
-                restaurant
+                restaurantInfo
             }}
         >
             { children }

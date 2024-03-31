@@ -62,13 +62,16 @@ export const InfoDisplayContainerComponent: React.FC<Props> = ({ data, screen })
                             </View>
                         </View>
 
-                        <TouchableOpacity
-                            onPress={ () => navigation.navigate("RestaurantEdit") }
-                        >
-                            <Text
-                                style={[ profileUsersStyles.chefEditBtn ]}
-                            >EDIT</Text>
-                        </TouchableOpacity>
+                        {
+                            screen == "chef" && 
+                            <TouchableOpacity
+                                onPress={ () => navigation.navigate("RestaurantEdit") }
+                            >
+                                <Text
+                                    style={[ profileUsersStyles.chefEditBtn ]}
+                                >EDIT</Text>
+                            </TouchableOpacity>
+                        }
 
                     </View>
                 ) }

@@ -1,9 +1,12 @@
 import React, { useState, useContext } from 'react';
 
-import { View, SafeAreaView, Text } from 'react-native';
+import { View, SafeAreaView, } from 'react-native';
 
 // Authentication Context
 import { AuthContext } from '../../services/Context/auth.context';
+
+// Restaurant Context
+import { RestaurantContext } from '../../services/Context/restaurant.context';
 
 // Styling
 import { homeChefScreenStyles } from '../../styles/screens/home-chef.styles';
@@ -21,6 +24,9 @@ export const EditChefRestaurant = () => {
 
     // Authentication context to get details
     const { user } = useContext(AuthContext);
+
+    // Restaurant context
+    const { restaurantInfo } = useContext(RestaurantContext);
 
     const [pic, setPic] = useState();
     const [proceed, setProceed] = useState<boolean>(false);
@@ -51,6 +57,8 @@ export const EditChefRestaurant = () => {
             restaurantDetailsInfoDB(userId, name, address, phone, source, blob, setIsLoading);
         }
     }
+
+    console.log(restaurantInfo);
 
     return (
         <SafeAreaView style={{ backgroundColor: "#FFFFFF", flex: 1 }}>
