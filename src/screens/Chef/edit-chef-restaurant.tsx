@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 
-import { View, SafeAreaView, } from 'react-native';
+import { View, SafeAreaView } from 'react-native';
 
 // Authentication Context
 import { AuthContext } from '../../services/Context/auth.context';

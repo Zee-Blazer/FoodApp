@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { View, SafeAreaView, Text } from "react-native";
+import { View, SafeAreaView } from "react-native";
 
 // Styling
 import { homeChefScreenStyles } from "../../styles/screens/home-chef.styles";
