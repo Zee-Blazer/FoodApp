@@ -13,6 +13,7 @@ export const RestaurantContextProvider = ({ children }) => {
     // Authentication Context instance of the user
     const { user } = useContext(AuthContext);
 
+    // State management
     const [restaurantInfo, setRestaurantInfo] = useState();
 
     useEffect( () => {
