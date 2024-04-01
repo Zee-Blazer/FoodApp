@@ -1,7 +1,7 @@
 
 // Firebase Database
 import { database } from "../../../firebaseConfig";
-import { ref, onValue, set } from 'firebase/database';
+import { ref, set } from 'firebase/database';
 
 const becomeAdmin = (id: string, userRecord: any) => {
     const userInfo = {
