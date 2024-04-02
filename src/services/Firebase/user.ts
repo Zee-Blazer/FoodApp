@@ -7,6 +7,7 @@ import { updateProfile } from "firebase/auth";
 import { database } from "../../firebaseConfig";
 import { ref, onValue, set } from 'firebase/database';
 
+// Function is not being used now
 const displayUser = () => {
     console.log(auth.currentUser);
 }
