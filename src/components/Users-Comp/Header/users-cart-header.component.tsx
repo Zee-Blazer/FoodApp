@@ -14,7 +14,7 @@ import { usersCartUsersStyles } from "../../../styles/screens/users-cart-users.s
 
 interface Props {
     title: string,
-    screenType: string,
+    screenType?: string,
     action?: boolean
 }
 
@@ -60,16 +60,17 @@ export const UsersCartHeaderComponent: React.FC<Props> = ({ title, screenType, a
                 </Text>
             </View>
 
-            <TouchableOpacity
-                onPress={ checkAndNavigate }
-            >
-                <Text style={[ usersCartUsersStyles.upperEditTxt, { color: "#FF7622" } ]}>
-                    { screenType == "Cart" ?  "EDIT ITEMS" : "EDIT" }
-                </Text>
-                {/* <Text style={[ usersCartUsersStyles.upperEditTxt, { color: "#059C6A" } ]}>
-                    DONE
-                </Text> */}
-            </TouchableOpacity>
+            {
+                screenType ?
+                <TouchableOpacity
+                    onPress={ checkAndNavigate }
+                >
+                    <Text style={[ usersCartUsersStyles.upperEditTxt, { color: "#FF7622" } ]}>
+                        { screenType == "Cart" ?  "EDIT ITEMS" : "EDIT" }
+                    </Text>
+                </TouchableOpacity> :
+                <View style={{ marginVertical: 18 }}></View>
+            }
         </View>
     )
 }

@@ -18,7 +18,7 @@ export const RestaurantContextProvider = ({ children }) => {
 
     useEffect( () => {
         user && restaurantInfoDetails(user.uid, setRestaurantInfo);
-    }, [ user ] )
+    }, [ user ] )   
 
     return (
         <RestaurantContext.Provider

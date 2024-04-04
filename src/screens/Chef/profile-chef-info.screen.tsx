@@ -19,7 +19,6 @@ export const ProfileChefInfoScreen = () => {
 
                     <UsersCartHeaderComponent 
                         title="Profile Info"
-                        screenType="ProfileInfo"
                     />
 
                     <ProfileDetailsComponent 
