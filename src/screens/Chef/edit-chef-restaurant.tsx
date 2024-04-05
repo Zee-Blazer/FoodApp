@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 import { View, SafeAreaView } from 'react-native';
 
@@ -37,6 +37,15 @@ export const EditChefRestaurant = () => {
     const [address, setAddress] = useState<string>("");
     const [phone, setPhone] = useState<any>();
 
+    useEffect( () => {
+        if(restaurantInfo) {
+            setAddress(restaurantInfo.restaurant_address);
+            setName(restaurantInfo.restaurant_name);
+            setPhone(restaurantInfo.restaurant_phone);
+            setPic(restaurantInfo.restaurant_logo);
+        }
+    }, [] )
+
     const saveRestaurantInfo = async () => {
 
         const userId = user.uid;
@@ -57,8 +66,6 @@ export const EditChefRestaurant = () => {
             restaurantDetailsInfoDB(userId, name, address, phone, source, blob, setIsLoading);
         }
     }
-
-    console.log(restaurantInfo);
 
     return (
         <SafeAreaView style={{ backgroundColor: "#FFFFFF", flex: 1 }}>
