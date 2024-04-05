@@ -1,7 +1,6 @@
 
 // Firebase Authentication
 import { auth } from "../../firebaseConfig";
-import { updateProfile } from "firebase/auth";
 
 // Firebase Database
 import { database } from "../../firebaseConfig";
