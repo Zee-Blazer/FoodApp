@@ -6,10 +6,12 @@ import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import { homeChefScreenStyles } from "../../../../styles/screens/home-chef.styles";
 import { addScreenChefStyles } from "../../../../styles/screens/add-screen-chef.styles";
 
+// Component
+import { SelectOptContComponent } from './selected-opt-cont.component';
+
 export const ItemPriceFormComponent = () => {
 
-    const [pickUp, setPickUp] = useState<boolean>(false);
-    const [delivery, setDelivery] = useState<boolean>(false);
+    const [stateVal, setStateVal] = useState<string>("");
 
     return (
         <View 
@@ -26,35 +28,17 @@ export const ItemPriceFormComponent = () => {
                     style={[ addScreenChefStyles.textInputItem, addScreenChefStyles.fullSize, { flex: 1 } ]}
                 />
                 
-                <TouchableOpacity 
-                    style={[ 
-                        addScreenChefStyles.checkableOption, 
-                        pickUp && addScreenChefStyles.checkableOptionActive 
-                    ]}
-                    onPress={ () => setPickUp(!pickUp) }
-                >
-                    <Text 
-                        style={[
-                            addScreenChefStyles.checkableOptionTxt,
-                            pickUp && addScreenChefStyles.checkableOptionTxtActive
-                        ]}
-                    >Pick up</Text>
-                </TouchableOpacity>
+                <SelectOptContComponent 
+                    val="Pick up"
+                    stateVal={ stateVal }
+                    stateObj={ setStateVal }
+                />
 
-                <TouchableOpacity 
-                    style={[ 
-                        addScreenChefStyles.checkableOption, 
-                        delivery && addScreenChefStyles.checkableOptionActive 
-                    ]}
-                    onPress={ () => setDelivery(!delivery) }
-                >
-                    <Text 
-                        style={[
-                            addScreenChefStyles.checkableOptionTxt,
-                            delivery && addScreenChefStyles.checkableOptionTxtActive
-                        ]}
-                    >Delivery</Text>
-                </TouchableOpacity>
+                <SelectOptContComponent 
+                    val="Delivery"
+                    stateVal={ stateVal }
+                    stateObj={ setStateVal }
+                />
             </View>
         </View>
     )

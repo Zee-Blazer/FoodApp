@@ -30,13 +30,13 @@ export const ItemSelectFormComponent = () => {
                 />
 
                 <SelectOptContComponent 
-                    val="Food"
+                    val="Drink"
                     stateVal={ stateVal }
                     stateObj={ setStateVal }
                 />
 
                 <SelectOptContComponent 
-                    val="Food"
+                    val="Snacks"
                     stateVal={ stateVal }
                     stateObj={ setStateVal }
                 />

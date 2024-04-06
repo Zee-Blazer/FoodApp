@@ -59,10 +59,11 @@ export const addScreenChefStyles = StyleSheet.create({
     checkableOption: {
         borderWidth: 2,
         borderColor: "#E8EAED",
-        paddingVertical: 14,
+        paddingVertical: 12,
         paddingHorizontal: 16,
         borderRadius: 10,
         backgroundColor: "#FDFDFD",
+        marginHorizontal: 8
     },
     checkableOptionTxt: {
         fontFamily: theme.fonts.body,
