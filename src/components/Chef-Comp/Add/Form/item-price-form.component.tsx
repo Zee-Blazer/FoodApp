@@ -20,10 +20,10 @@ export const ItemPriceFormComponent = () => {
         >
             <Text style={ addScreenChefStyles.formLabelTxt }>PRICE</Text>
 
-            <View style={[ homeChefScreenStyles.flexDesign ]}>
+            <View style={[ homeChefScreenStyles.flexDesign, { justifyContent: "flex-start" } ]}>
                 <TextInput 
                     placeholder="$50"
-                    style={[ addScreenChefStyles.textInputItem, addScreenChefStyles.fullSize ]}
+                    style={[ addScreenChefStyles.textInputItem, addScreenChefStyles.fullSize, { flex: 1 } ]}
                 />
                 
                 <TouchableOpacity 
