@@ -5,7 +5,12 @@ import { View, Text, TextInput } from "react-native";
 import { homeChefScreenStyles } from "../../../../styles/screens/home-chef.styles";
 import { addScreenChefStyles } from "../../../../styles/screens/add-screen-chef.styles";
 
-export const ItemDetailsFormComponent = () => {
+interface Props {
+    details: string, 
+    setDetails: React.Dispatch<React.SetStateAction<string>>,
+}
+
+export const ItemDetailsFormComponent: React.FC<Props> = ({ details, setDetails }) => {
 
     return (
         <View style={[ homeChefScreenStyles.horiSpacer, { marginVertical: 10 } ]}>
@@ -16,6 +21,8 @@ export const ItemDetailsFormComponent = () => {
                 multiline
                 numberOfLines={3}
                 style={[ addScreenChefStyles.textInputItem, { paddingTop: 18, maxHeight: 78 } ]}
+                value={ details }
+                onChangeText={ setDetails }
             />
         </View>
     )

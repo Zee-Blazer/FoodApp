@@ -75,5 +75,11 @@ export const addScreenChefStyles = StyleSheet.create({
     },
     checkableOptionTxtActive: {
         color: "#FB6D3A"
+    },
+    currencySign: {
+        marginTop: 12,
+        fontSize: 16,
+        fontFamily: theme.fonts.body,
+        marginRight: 4
     }
 });

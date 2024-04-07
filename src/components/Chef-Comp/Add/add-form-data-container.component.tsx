@@ -57,7 +57,10 @@ export const AddFormDataContainerComponent: React.FC<Props> = ({
                         setCategory={ setCategory }
                     />
 
-                    <ItemDetailsFormComponent />
+                    <ItemDetailsFormComponent 
+                        details={ details }
+                        setDetails={ setDetails }
+                    />
 
                 </KeyboardAvoidingView>
 

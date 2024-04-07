@@ -36,8 +36,9 @@ export const ItemPriceFormComponent: React.FC<Props> = ({
             <Text style={ addScreenChefStyles.formLabelTxt }>PRICE</Text>
 
             <View style={[ homeChefScreenStyles.flexDesign, { justifyContent: "flex-start" } ]}>
+                <Text style={[ addScreenChefStyles.currencySign ]}>$</Text>
                 <TextInput 
-                    placeholder="$50"
+                    placeholder="50"
                     style={[ addScreenChefStyles.textInputItem, addScreenChefStyles.fullSize, { flex: 1 } ]}
                     value={ price }
                     onChangeText={ setPrice }
