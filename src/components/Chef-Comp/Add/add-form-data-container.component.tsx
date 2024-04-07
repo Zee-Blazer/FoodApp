@@ -12,18 +12,20 @@ import { ItemSelectFormComponent } from "./Form/item-select-form.component"; // 
 interface Props {
     name: string,
     pic: string,
-    price: [],
+    price: any,
+    deliveryType: string,
     category: string,
     details: string,
     setName: React.Dispatch<React.SetStateAction<string>>,
     setPic: React.Dispatch<React.SetStateAction<string>>,
-    setPrice: React.Dispatch<React.SetStateAction<[any]>>,
+    setPrice: React.Dispatch<React.SetStateAction<any>>,
+    setDeliveryType: React.Dispatch<React.SetStateAction<string>>,
     setCategory: React.Dispatch<React.SetStateAction<string>>,
     setDetails: React.Dispatch<React.SetStateAction<string>>
 }
 
 export const AddFormDataContainerComponent: React.FC<Props> = ({
-    name, pic, price, category, details, setName, setPic, setPrice, setCategory, setDetails
+    name, pic, price, deliveryType, category, details, setName, setPic, setPrice, setDeliveryType, setCategory, setDetails
 }) => {
 
     return (
@@ -43,7 +45,12 @@ export const AddFormDataContainerComponent: React.FC<Props> = ({
                         setPic={ setPic }
                     />
 
-                    <ItemPriceFormComponent />
+                    <ItemPriceFormComponent 
+                        price={ price }
+                        deliveryType={ deliveryType }
+                        setPrice={ setPrice }
+                        setDeliveryType={ setDeliveryType }
+                    />
 
                     <ItemSelectFormComponent />
 

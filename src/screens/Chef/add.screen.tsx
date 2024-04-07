@@ -14,7 +14,8 @@ export const ChefAddScreen = () => {
 
     const [name, setName] = useState<string>("");
     const [pic, setPic] = useState<string>("");
-    const [price, setPrice] = useState<any>([]);
+    const [price, setPrice] = useState<any>();
+    const [deliveryType, setDeliveryType] = useState<string>("");
     const [category, setCategory] = useState<string>("");
     const [details, setDetails] = useState<string>("");
 
@@ -36,11 +37,13 @@ export const ChefAddScreen = () => {
                     name={ name }
                     pic={pic}
                     price={ price }
+                    deliveryType={ deliveryType }
                     category={ category }
                     details={ details }
                     setName={ setName }
                     setPic={ setPic }
                     setPrice={ setPrice }
+                    setDeliveryType={ setDeliveryType }
                     setCategory={ setCategory }
                     setDetails={ setDetails }
                 />
@@ -50,7 +53,7 @@ export const ChefAddScreen = () => {
             <View style={[ homeChefScreenStyles.horiSpacer, { marginBottom: 54 } ]}>
                 <FormBtnComponent 
                     title="SAVE"
-                    func={ () => {} }
+                    func={ () => console.log(name, price, deliveryType) }
                 />
             </View>
         </SafeAreaView>

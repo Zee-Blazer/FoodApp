@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
 
@@ -9,9 +9,22 @@ import { addScreenChefStyles } from "../../../../styles/screens/add-screen-chef.
 // Component
 import { SelectOptContComponent } from './selected-opt-cont.component';
 
-export const ItemPriceFormComponent = () => {
+interface Props {
+    price: any,
+    deliveryType: string,
+    setPrice: React.Dispatch<React.SetStateAction<any>>,
+    setDeliveryType: React.Dispatch<React.SetStateAction<string>>,
+}
+
+export const ItemPriceFormComponent: React.FC<Props> = ({ 
+    price, deliveryType, setPrice, setDeliveryType 
+}) => {
 
     const [stateVal, setStateVal] = useState<string>("");
+
+    useEffect( () => {
+        setDeliveryType(stateVal);
+    }, [stateVal] )
 
     return (
         <View 
@@ -26,6 +39,8 @@ export const ItemPriceFormComponent = () => {
                 <TextInput 
                     placeholder="$50"
                     style={[ addScreenChefStyles.textInputItem, addScreenChefStyles.fullSize, { flex: 1 } ]}
+                    value={ price }
+                    onChangeText={ setPrice }
                 />
                 
                 <SelectOptContComponent 
