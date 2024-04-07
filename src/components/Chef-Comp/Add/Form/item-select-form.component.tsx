@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { View, Text } from 'react-native';
 
@@ -9,9 +9,16 @@ import { addScreenChefStyles } from '../../../../styles/screens/add-screen-chef.
 //Components
 import { SelectOptContComponent } from './selected-opt-cont.component';
 
-export const ItemSelectFormComponent = () => {
+interface Props {
+    category: string,
+    setCategory: React.Dispatch<React.SetStateAction<string>>
+}
+
+export const ItemSelectFormComponent: React.FC<Props> = ({ category, setCategory }) => {
 
     const [stateVal, setStateVal] = useState<string>("");
+
+    useEffect( () => setCategory(stateVal), [stateVal] );
 
     return (
         <View

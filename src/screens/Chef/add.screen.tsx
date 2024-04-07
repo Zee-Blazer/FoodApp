@@ -53,7 +53,7 @@ export const ChefAddScreen = () => {
             <View style={[ homeChefScreenStyles.horiSpacer, { marginBottom: 54 } ]}>
                 <FormBtnComponent 
                     title="SAVE"
-                    func={ () => console.log(name, price, deliveryType) }
+                    func={ () => console.log(name, price, deliveryType, category) }
                 />
             </View>
         </SafeAreaView>

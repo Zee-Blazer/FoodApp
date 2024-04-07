@@ -52,7 +52,10 @@ export const AddFormDataContainerComponent: React.FC<Props> = ({
                         setDeliveryType={ setDeliveryType }
                     />
 
-                    <ItemSelectFormComponent />
+                    <ItemSelectFormComponent 
+                        category={ category }
+                        setCategory={ setCategory }
+                    />
 
                     <ItemDetailsFormComponent />
 
