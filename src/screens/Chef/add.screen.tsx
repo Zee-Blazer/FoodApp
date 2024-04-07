@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 
 import { View, SafeAreaView } from "react-native";
 
@@ -11,13 +12,38 @@ import { FormBtnComponent } from "../../components/Auth-Comp/form-btn.component"
 
 export const ChefAddScreen = () => {
 
+    const [name, setName] = useState<string>("");
+    const [pic, setPic] = useState<string>("");
+    const [price, setPrice] = useState<any>([]);
+    const [category, setCategory] = useState<string>("");
+    const [details, setDetails] = useState<string>("");
+
+    const resetAll = () => {
+        setName("");
+        setPic("");
+        setPrice([]);
+        setCategory("");
+        setDetails("");
+    }
+
     return (
         <SafeAreaView style={{ backgroundColor: "#F7F8F9", flex: 1 }}>
             <View style={ homeChefScreenStyles.body }>
 
                 <ChefAddHeaderComponent />
 
-                <AddFormDataContainerComponent />
+                <AddFormDataContainerComponent 
+                    name={ name }
+                    pic={pic}
+                    price={ price }
+                    category={ category }
+                    details={ details }
+                    setName={ setName }
+                    setPic={ setPic }
+                    setPrice={ setPrice }
+                    setCategory={ setCategory }
+                    setDetails={ setDetails }
+                />
 
             </View>
 

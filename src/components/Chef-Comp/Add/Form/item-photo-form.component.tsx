@@ -5,7 +5,12 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import { homeChefScreenStyles } from "../../../../styles/screens/home-chef.styles";
 import { addScreenChefStyles } from "../../../../styles/screens/add-screen-chef.styles";
 
-export const ItemPhotoFormComponent = () => {
+interface Props {
+    pic: string,
+    setPic: React.Dispatch<React.SetStateAction<string>>
+}
+
+export const ItemPhotoFormComponent: React.FC<Props> = ({ pic, setPic }) => {
 
     return (
         <View style={[ homeChefScreenStyles.horiSpacer, { marginVertical: 10 } ]}>
