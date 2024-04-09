@@ -5,6 +5,12 @@ import { View, SafeAreaView } from "react-native";
 // Restaurant Context
 import { RestaurantContext } from '../../services/Context/restaurant.context';
 
+// Authentication Context
+import { AuthContext } from '../../services/Context/auth.context';
+
+// Category Firebase Function
+import { createNewCate } from '../../services/Firebase/Chef/Category/create-category';
+
 // Styling
 import { homeChefScreenStyles } from "../../styles/screens/home-chef.styles";
 
@@ -16,6 +22,7 @@ import { FormBtnComponent } from "../../components/Auth-Comp/form-btn.component"
 export const ChefAddScreen = () => {
 
     const { restaurantInfo } = useContext(RestaurantContext); // The Restaurant Info Context
+    const { user } = useContext(AuthContext);
 
     const [name, setName] = useState<string>("");
     const [pic, setPic] = useState<string>("");
@@ -23,6 +30,8 @@ export const ChefAddScreen = () => {
     const [deliveryType, setDeliveryType] = useState<string>("");
     const [category, setCategory] = useState<string>("");
     const [details, setDetails] = useState<string>("");
+
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     // const restaurantInfo = { restaurantInfo.restaurant_name, restaurantInfo.restaurant_logo }
 
@@ -32,6 +41,38 @@ export const ChefAddScreen = () => {
         setPrice([]);
         setCategory("");
         setDetails("");
+    }
+
+    const newCategory = async () => {
+        setIsLoading(true);
+
+        if(name && pic && price && deliveryType && category && details){
+            const source = { uri: pic };
+            const response = await fetch(source.uri);
+            const blob = await response.blob();
+
+            const id = user.uid;
+            const restaurant_name = restaurantInfo.restaurant_name;
+            const restaurant_logo = restaurantInfo.restaurant_logo;
+
+            createNewCate(
+                id, 
+                name, 
+                source, 
+                blob, 
+                price, 
+                deliveryType, 
+                category, 
+                details,
+                restaurant_name, 
+                restaurant_logo,
+                setIsLoading
+            );
+        }
+        else{
+            console.log("Something needs to fully be filled");
+            setIsLoading(false);
+        }
     }
 
     // console.log(restaurantInfo.restaurant_name, restaurantInfo.restaurant_logo);
@@ -61,8 +102,9 @@ export const ChefAddScreen = () => {
 
             <View style={[ homeChefScreenStyles.horiSpacer, { marginBottom: 54 } ]}>
                 <FormBtnComponent 
-                    title="SAVE"
-                    func={ () => console.log(name, price, deliveryType, category) }
+                    title={ isLoading ? "SAVING..." : "SAVE" }
+                    loading={ isLoading }
+                    func={ () => newCategory() }
                 />
             </View>
         </SafeAreaView>
