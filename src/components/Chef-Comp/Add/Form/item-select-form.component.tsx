@@ -11,14 +11,19 @@ import { SelectOptContComponent } from './selected-opt-cont.component';
 
 interface Props {
     category: string,
+    stateRemove: boolean,
     setCategory: React.Dispatch<React.SetStateAction<string>>
 }
 
-export const ItemSelectFormComponent: React.FC<Props> = ({ category, setCategory }) => {
+export const ItemSelectFormComponent: React.FC<Props> = ({ category, stateRemove, setCategory }) => {
 
     const [stateVal, setStateVal] = useState<string>("");
 
     useEffect( () => setCategory(stateVal), [stateVal] );
+
+    useEffect( () => {
+        stateRemove && setStateVal("");
+    }, [stateRemove] )
 
     return (
         <View

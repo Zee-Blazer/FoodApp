@@ -1,7 +1,7 @@
 
 // Firebase Database
 import { database } from "../../../../firebaseConfig";
-import { ref, set } from 'firebase/database';
+import { ref, set, setPriority } from 'firebase/database';
 
 // Firebase Storage
 import { storage } from "../../../../firebaseConfig";
@@ -18,7 +18,8 @@ export const createNewCate = (
     details: any,
     restaurant_name: any,
     restaurant_logo: any,
-    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
+    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
+    setProceed: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
     if(image != null){
         const filename = image.uri.substring(image.uri.lastIndexOf('/') + 1);
@@ -52,6 +53,7 @@ export const createNewCate = (
                         }
                     )
                     setIsLoading(false);
+                    setProceed(true);
                 } )
             }
         )

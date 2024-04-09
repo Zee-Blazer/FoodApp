@@ -12,12 +12,13 @@ import { SelectOptContComponent } from './selected-opt-cont.component';
 interface Props {
     price: any,
     deliveryType: string,
+    stateRemove: boolean,
     setPrice: React.Dispatch<React.SetStateAction<any>>,
     setDeliveryType: React.Dispatch<React.SetStateAction<string>>,
 }
 
 export const ItemPriceFormComponent: React.FC<Props> = ({ 
-    price, deliveryType, setPrice, setDeliveryType 
+    price, deliveryType, stateRemove, setPrice, setDeliveryType 
 }) => {
 
     const [stateVal, setStateVal] = useState<string>("");
@@ -25,6 +26,10 @@ export const ItemPriceFormComponent: React.FC<Props> = ({
     useEffect( () => {
         setDeliveryType(stateVal);
     }, [stateVal] )
+
+    useEffect( () => {
+        stateRemove && setStateVal("");
+    }, [stateRemove] )
 
     return (
         <View 

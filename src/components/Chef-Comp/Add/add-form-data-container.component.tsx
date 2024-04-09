@@ -16,6 +16,7 @@ interface Props {
     deliveryType: string,
     category: string,
     details: string,
+    stateRemove: boolean,
     setName: React.Dispatch<React.SetStateAction<string>>,
     setPic: React.Dispatch<React.SetStateAction<string>>,
     setPrice: React.Dispatch<React.SetStateAction<any>>,
@@ -25,7 +26,10 @@ interface Props {
 }
 
 export const AddFormDataContainerComponent: React.FC<Props> = ({
-    name, pic, price, deliveryType, category, details, setName, setPic, setPrice, setDeliveryType, setCategory, setDetails
+    name, pic, price, deliveryType, 
+    category, details, stateRemove, 
+    setName, setPic, setPrice, 
+    setDeliveryType, setCategory, setDetails
 }) => {
 
     return (
@@ -48,12 +52,14 @@ export const AddFormDataContainerComponent: React.FC<Props> = ({
                     <ItemPriceFormComponent 
                         price={ price }
                         deliveryType={ deliveryType }
+                        stateRemove={ stateRemove }
                         setPrice={ setPrice }
                         setDeliveryType={ setDeliveryType }
                     />
 
                     <ItemSelectFormComponent 
                         category={ category }
+                        stateRemove={ stateRemove }
                         setCategory={ setCategory }
                     />
 

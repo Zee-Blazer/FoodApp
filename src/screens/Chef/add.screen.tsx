@@ -31,16 +31,21 @@ export const ChefAddScreen = () => {
     const [category, setCategory] = useState<string>("");
     const [details, setDetails] = useState<string>("");
 
-    const [isLoading, setIsLoading] = useState<boolean>(false);
-
-    // const restaurantInfo = { restaurantInfo.restaurant_name, restaurantInfo.restaurant_logo }
+    const [isLoading, setIsLoading] = useState<boolean>(false); // For the load time
+    const [stateRemove, setStateRemove] = useState<boolean>(false); // To set the StateVal
+    const [proceed, setProceed] = useState<boolean>(false);
 
     const resetAll = () => {
         setName("");
         setPic("");
-        setPrice([]);
+        setPrice("");
+        setDeliveryType("")
         setCategory("");
         setDetails("");
+        setStateRemove(true);
+        setInterval( () => {
+            setStateRemove(false);
+        }, 2000 )
     }
 
     const newCategory = async () => {
@@ -66,7 +71,8 @@ export const ChefAddScreen = () => {
                 details,
                 restaurant_name, 
                 restaurant_logo,
-                setIsLoading
+                setIsLoading,
+                setProceed
             );
         }
         else{
@@ -75,13 +81,13 @@ export const ChefAddScreen = () => {
         }
     }
 
-    // console.log(restaurantInfo.restaurant_name, restaurantInfo.restaurant_logo);
-
     return (
         <SafeAreaView style={{ backgroundColor: "#F7F8F9", flex: 1 }}>
             <View style={ homeChefScreenStyles.body }>
 
-                <ChefAddHeaderComponent />
+                <ChefAddHeaderComponent 
+                    func={ resetAll }
+                />
 
                 <AddFormDataContainerComponent 
                     name={ name }
@@ -90,6 +96,7 @@ export const ChefAddScreen = () => {
                     deliveryType={ deliveryType }
                     category={ category }
                     details={ details }
+                    stateRemove={ stateRemove }
                     setName={ setName }
                     setPic={ setPic }
                     setPrice={ setPrice }
