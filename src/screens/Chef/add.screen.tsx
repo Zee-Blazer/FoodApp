@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 import { View, SafeAreaView } from "react-native";
 
@@ -34,6 +34,15 @@ export const ChefAddScreen = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false); // For the load time
     const [stateRemove, setStateRemove] = useState<boolean>(false); // To set the StateVal
     const [proceed, setProceed] = useState<boolean>(false);
+
+    useEffect( () => {
+        if(proceed){
+            resetAll();
+            setInterval( () => {
+                setProceed(false);
+            }, 2000 )
+        }
+    }, [proceed] )
 
     const resetAll = () => {
         setName("");
