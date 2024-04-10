@@ -86,7 +86,7 @@ export const ChefAddScreen = () => {
             );
         }
         else{
-            console.log("Something needs to fully be filled");
+            setErrMsg("Please fill in all necessary information");
             setIsLoading(false);
         }
     }
