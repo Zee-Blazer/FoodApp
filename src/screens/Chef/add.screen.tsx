@@ -33,8 +33,8 @@ export const ChefAddScreen = () => {
 
     const [isLoading, setIsLoading] = useState<boolean>(false); // For the load time
     const [stateRemove, setStateRemove] = useState<boolean>(false); // To set the StateVal
-    const [proceed, setProceed] = useState<boolean>(false);
-    const [errMsg, setErrMsg] = useState<string>();
+    const [proceed, setProceed] = useState<boolean>(false); // To create the state of all the inputs
+    const [errMsg, setErrMsg] = useState<string>(); // Error message to be displayed to the chef
 
     useEffect( () => {
         if(proceed){
