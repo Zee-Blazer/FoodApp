@@ -18,6 +18,14 @@ export const homeChefScreenStyles = StyleSheet.create({
     statsMarginBottom: {
         marginBottom: 54
     },
+    errorMsg: {
+        fontSize: 12,
+        fontFamily: theme.fonts.body,
+        textAlign: 'center',
+        marginHorizontal: 24,
+        color: 'red',
+        marginVertical: 6
+    },
     flexDesign: {
         flexDirection: "row",
         justifyContent: "space-between"

@@ -61,7 +61,7 @@ export const ChefAddScreen = () => {
     const newCategory = async () => {
         setIsLoading(true);
 
-        if(restaurantInfo.restaurant_name == null){
+        if(restaurantInfo !== null){
             if(name && pic && price && deliveryType && category && details){
                 const source = { uri: pic };
                 const response = await fetch(source.uri);
@@ -107,7 +107,9 @@ export const ChefAddScreen = () => {
                     func={ resetAll }
                 />
 
-                <Text style={{ color: 'red' }}>{ errMsg && errMsg }</Text>
+                <Text 
+                    style={[ homeChefScreenStyles.errorMsg ]}
+                >{ errMsg && errMsg }</Text>
 
                 <AddFormDataContainerComponent 
                     name={ name }
