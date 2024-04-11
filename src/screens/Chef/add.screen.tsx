@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 
-import { View, SafeAreaView } from "react-native";
+import { View, SafeAreaView, Text } from "react-native";
 
 // Restaurant Context
 import { RestaurantContext } from '../../services/Context/restaurant.context';
@@ -61,35 +61,43 @@ export const ChefAddScreen = () => {
     const newCategory = async () => {
         setIsLoading(true);
 
-        if(name && pic && price && deliveryType && category && details){
-            const source = { uri: pic };
-            const response = await fetch(source.uri);
-            const blob = await response.blob();
+        if(restaurantInfo.restaurant_name == null){
+            if(name && pic && price && deliveryType && category && details){
+                const source = { uri: pic };
+                const response = await fetch(source.uri);
+                const blob = await response.blob();
 
-            const id = user.uid;
-            const restaurant_name = restaurantInfo.restaurant_name;
-            const restaurant_logo = restaurantInfo.restaurant_logo;
+                const id = user.uid;
+                const restaurant_name = restaurantInfo.restaurant_name;
+                const restaurant_logo = restaurantInfo.restaurant_logo;
 
-            createNewCate(
-                id, 
-                name, 
-                source, 
-                blob, 
-                price, 
-                deliveryType, 
-                category, 
-                details,
-                restaurant_name, 
-                restaurant_logo,
-                setIsLoading,
-                setProceed
-            );
+                createNewCate(
+                    id, 
+                    name, 
+                    source, 
+                    blob, 
+                    price, 
+                    deliveryType, 
+                    category, 
+                    details,
+                    restaurant_name, 
+                    restaurant_logo,
+                    setIsLoading,
+                    setProceed
+                );
+            }
+            else{
+                setErrMsg("Please fill in all necessary information");
+                setIsLoading(false);
+            }
         }
-        else{
-            setErrMsg("Please fill in all necessary information");
+        else {
+            setErrMsg("You need to create a restaurant before adding to it's category");
             setIsLoading(false);
         }
     }
+
+    console.log(restaurantInfo);
 
     return (
         <SafeAreaView style={{ backgroundColor: "#F7F8F9", flex: 1 }}>
@@ -98,6 +106,8 @@ export const ChefAddScreen = () => {
                 <ChefAddHeaderComponent 
                     func={ resetAll }
                 />
+
+                <Text style={{ color: 'red' }}>{ errMsg && errMsg }</Text>
 
                 <AddFormDataContainerComponent 
                     name={ name }
