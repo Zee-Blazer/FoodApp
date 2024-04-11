@@ -97,8 +97,6 @@ export const ChefAddScreen = () => {
         }
     }
 
-    console.log(restaurantInfo);
-
     return (
         <SafeAreaView style={{ backgroundColor: "#F7F8F9", flex: 1 }}>
             <View style={ homeChefScreenStyles.body }>

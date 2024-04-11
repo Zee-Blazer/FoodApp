@@ -1,5 +1,9 @@
+import React, { useContext } from 'react';
 
 import { View, Text, TextInput } from 'react-native';
+
+// Restaurant Context
+import { RestaurantContext } from '../../../../services/Context/restaurant.context';
 
 // Styling
 import { editProfileUsersStyles } from '../../../../styles/screens/edit-profile-users.styles';
@@ -16,6 +20,8 @@ interface Props {
 export const RestaurantChefInfoComponent: React.FC<Props> = ({ 
     name, address, phone, setName, setAddress, setPhone 
 }) => {
+
+    const { restaurantInfo } = useContext(RestaurantContext);
 
     return (
         <View>

@@ -5,6 +5,9 @@ import { View } from "react-native";
 // Authentication Context
 import { AuthContext } from "../../../services/Context/auth.context";
 
+// Restaurant Context
+import { RestaurantContext } from "../../../services/Context/restaurant.context";
+
 // Component
 import { InfoDisplayContainerComponent } from "./info-display-container.component";
 
@@ -14,7 +17,8 @@ interface Props {
 
 export const InfoDisplayComponent: React.FC<Props> = ({ screen }) => {
 
-    const { user } = useContext(AuthContext);
+    const { user } = useContext(AuthContext); // The User Context
+    const { restaurantInfo } = useContext(RestaurantContext); // The Restaurant Info Context
 
     const data = [
         { 
@@ -38,7 +42,7 @@ export const InfoDisplayComponent: React.FC<Props> = ({ screen }) => {
         {
             iconUri: require("../../../../assets/Images/Icons/restaurant.png"), 
             title: "RESTAURANT DETAILS", 
-            subTitle: "Amazing Meals"
+            subTitle: restaurantInfo ? "Amazing meals" : "Add Info!!"
         }
     ]
 
