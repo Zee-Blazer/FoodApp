@@ -1,11 +1,18 @@
+import React, { useContext } from 'react';
 
+// Default React Native Components
 import { View } from "react-native";
+
+// Details Context for Users Food ordering 
+import { DetailsContext } from '../../../services/Context/details.context';
 
 // Component
 import { CategoriesHeaderText } from "../Categories/category-header-text.component";
 import { RestaurantDetailComponent } from "./restaurant-details.component";
 
 export const RestaurantDetailContainerComponent = () => {
+
+    const { restaurantsData } = useContext(DetailsContext);
 
     return (
         <View>

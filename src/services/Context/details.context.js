@@ -8,16 +8,16 @@ export const DetailsContext = createContext();
 
 export const DetailsContextProvider = ({ children }) => {
 
-    const [restaurantData, setRestaurantData] = useState([]);
+    const [restaurantsData, setRestaurantsData] = useState([]);
 
     useEffect( () => {
-        getAllRestaurantsForUser(setRestaurantData);
+        getAllRestaurantsForUser(setRestaurantsData);
     }, [] )
 
     return (
         <DetailsContext.Provider
             value={{
-                restaurantData
+                restaurantsData
             }}
         >
             { children }
