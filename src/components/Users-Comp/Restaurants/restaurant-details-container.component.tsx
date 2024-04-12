@@ -1,32 +1,11 @@
-import React, { useEffect, useState } from 'react';
 
 import { View } from "react-native";
-
-// Firebase functionalities
-// The get all Restaurant Info
-import { getAllRestaurantsForUser } from '../../../services/Firebase/User/Restaurants/details.restaurants';
 
 // Component
 import { CategoriesHeaderText } from "../Categories/category-header-text.component";
 import { RestaurantDetailComponent } from "./restaurant-details.component";
 
-interface Item {
-    ownerId: string,
-    restaurant_address: string,
-    restaurant_logo: string,
-    restaurant_name: string,
-    restaurant_phone: any
-}
-
 export const RestaurantDetailContainerComponent = () => {
-
-    const [restaurantData, setRestaurantData] = useState<Item[]>([]);
-
-    useEffect( () => {
-        getAllRestaurantsForUser(setRestaurantData);
-    }, [] )
-
-    console.log(restaurantData)
 
     return (
         <View>

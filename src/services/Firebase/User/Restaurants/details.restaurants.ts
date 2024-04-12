@@ -15,12 +15,10 @@ const getAllRestaurantsForUser = (
     setData: React.Dispatch<React.SetStateAction<Item[]>>
 ) => {
     onValue( ref( database, `Restaurant` ), (snapshot) => {
-        // console.log(snapshot.val());
-
         let newArr = [];
-        
+
         Object.entries(snapshot.val()).forEach( ([key, value]) => {
-            // console.log(key, value.restaurant_address);
+            
             newArr.push(
                 {
                     ownerId: key,
