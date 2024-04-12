@@ -15,6 +15,7 @@ const restaurantDetailsInfoDB = (
     image: any,
     result: any,
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
+    setProceed: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
     
     if(image != null){
@@ -41,6 +42,7 @@ const restaurantDetailsInfoDB = (
                             }
                         )
                         setIsLoading(false);
+                        setProceed(true);
                     } )
                     .catch( err => {
                         console.log(err);
@@ -50,10 +52,16 @@ const restaurantDetailsInfoDB = (
         )
     }
     else{
-        set(
+        update(
             ref( database, `Restaurant_Info/${userId}` ),
-            { restaurant_name: name, restaurant_address: address, restaurant_phone: phone }
+            { 
+                restaurant_name: name, 
+                restaurant_logo: result, 
+                restaurant_address: address, 
+                restaurant_phone: phone 
+            }
         )
+        setProceed(true);
     }
 
 };

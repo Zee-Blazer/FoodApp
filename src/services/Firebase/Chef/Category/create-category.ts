@@ -1,7 +1,7 @@
 
 // Firebase Database
 import { database } from "../../../../firebaseConfig";
-import { ref, set, setPriority } from 'firebase/database';
+import { ref, set, push, setPriority } from 'firebase/database';
 
 // Firebase Storage
 import { storage } from "../../../../firebaseConfig";
@@ -37,7 +37,7 @@ export const createNewCate = (
             async () => {
                 getDownloadURL(uploadTask.snapshot.ref)
                 .then( (downloadUrl) => {
-                    set(
+                    push(
                         ref(database, `Category/${category}/${id}`),
                         {
                             item_name: name,

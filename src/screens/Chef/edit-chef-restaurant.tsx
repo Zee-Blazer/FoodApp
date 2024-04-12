@@ -8,6 +8,9 @@ import { AuthContext } from '../../services/Context/auth.context';
 // Restaurant Context
 import { RestaurantContext } from '../../services/Context/restaurant.context';
 
+// Navigation
+import { useNavigation } from '@react-navigation/native';
+
 // Styling
 import { homeChefScreenStyles } from '../../styles/screens/home-chef.styles';
 
@@ -22,6 +25,8 @@ import { FormBtnComponent } from '../../components/Auth-Comp/form-btn.component'
 
 export const EditChefRestaurant = () => {
 
+    const navigation = useNavigation();
+
     // Authentication context to get details
     const { user } = useContext(AuthContext);
 
@@ -30,6 +35,7 @@ export const EditChefRestaurant = () => {
 
     const [pic, setPic] = useState();
     const [proceed, setProceed] = useState<boolean>(false);
+    const [changeScreen, setChangeScreen] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
     // Restaurant details state
@@ -46,6 +52,10 @@ export const EditChefRestaurant = () => {
         }
     }, [] )
 
+    useEffect( () => {
+        changeScreen && navigation.goBack();
+    }, [changeScreen] )
+
     const saveRestaurantInfo = async () => {
 
         const userId = user.uid;
@@ -57,13 +67,13 @@ export const EditChefRestaurant = () => {
             const response = await fetch(source.uri);
             const blob = await response.blob(); 
 
-            restaurantDetailsInfoDB(userId, name, address, phone, source, blob, setIsLoading);
+            restaurantDetailsInfoDB(userId, name, address, phone, source, blob, setIsLoading, setChangeScreen);
         }
         else {
             const source = null;
-            const blob = null; 
+            const blob = restaurantInfo.restaurant_logo; 
 
-            restaurantDetailsInfoDB(userId, name, address, phone, source, blob, setIsLoading);
+            restaurantDetailsInfoDB(userId, name, address, phone, source, blob, setIsLoading, setChangeScreen);
         }
     }
 

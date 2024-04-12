@@ -42,7 +42,7 @@ export const InfoDisplayComponent: React.FC<Props> = ({ screen }) => {
         {
             iconUri: require("../../../../assets/Images/Icons/restaurant.png"), 
             title: "RESTAURANT DETAILS", 
-            subTitle: restaurantInfo ? "Amazing meals" : "Add Info!!"
+            subTitle: restaurantInfo ? restaurantInfo.restaurant_name : "Add Info!!"
         }
     ]
 
