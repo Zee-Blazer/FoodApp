@@ -19,8 +19,6 @@ export const HomeScreen = () => {
 
     const { user } = useContext(AuthContext);
 
-    console.log(user)
-
     return (
         <SafeAreaView style={{ backgroundColor: "white", flex: 1 }}>
             <View style={ homeUsersScreenStyles.body }>
