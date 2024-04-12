@@ -33,7 +33,7 @@ const restaurantDetailsInfoDB = (
                 getDownloadURL(uploadTask.snapshot.ref)
                     .then( res => {
                         set(
-                            ref( database, `Restaurant_Info/${userId}` ),
+                            ref( database, `Restaurant/${userId}` ),
                             { 
                                 restaurant_name: name, 
                                 restaurant_address: address, 
@@ -53,7 +53,7 @@ const restaurantDetailsInfoDB = (
     }
     else{
         update(
-            ref( database, `Restaurant_Info/${userId}` ),
+            ref( database, `Restaurant/${userId}` ),
             { 
                 restaurant_name: name, 
                 restaurant_logo: result, 
@@ -70,7 +70,7 @@ const restaurantInfoDetails = (
     userId: string, setRestaurant: React.Dispatch<React.SetStateAction<any>> 
 ) => {
     onValue(
-        ref( database, `Restaurant_Info/${userId}` ),
+        ref( database, `Restaurant/${userId}` ),
         (snapshot) => {
             setRestaurant(snapshot.val());
         }
