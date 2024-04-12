@@ -2,6 +2,9 @@ import React, { useContext } from "react";
 
 import { NavigationContainer } from "@react-navigation/native";
 
+// Details User Context Provider
+import { DetailsContextProvider } from "../../services/Context/details.context";
+
 // Authentication Context
 import { AuthContext } from "../../services/Context/auth.context";
 
@@ -27,14 +30,26 @@ export const Navigation = () => {
         <GestureHandlerRootView  style={{ flex: 1 }}>
             <NavigationContainer>
                 { 
+                    // isAuthenticated is checking if the value is undefined 
+                    // to load the appropriate page
                     isAuthenticated == undefined ?
+                        // Loading Navigation helps the app stay in section 
+                        // so it can display the appropriate page 
+                        // for either the user, chef or login
                         <LoadingNavigation /> 
                         :
+                        // Is Authenticated is checking if there is a active user logged In
+                        // So it can redirect to the appropriate screen
                         isAuthenticated ? 
                             !isAdmin ? 
-                            <UsersNavigation /> : <MainNavigation /> 
+                                    // The Details Context Provider is raping the User Navigation
+                                    <DetailsContextProvider>
+                                        <UsersNavigation />
+                                    </DetailsContextProvider>
+                                :
+                                    <MainNavigation /> 
                             :
-                            <AuthNavigation /> 
+                                <AuthNavigation /> 
                 }
             </NavigationContainer>
         </GestureHandlerRootView>
