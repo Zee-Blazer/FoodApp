@@ -1,5 +1,9 @@
+import React, { useContext } from 'react';
 
 import { SafeAreaView, View, ScrollView, } from "react-native";
+
+// Authentication User Details Context
+import { AuthContext } from '../../services/Context/auth.context';
 
 // Stylings
 import { homeUsersScreenStyles } from "../../styles/screens/home-users.styles";
@@ -13,6 +17,10 @@ import { RestaurantDetailContainerComponent } from "../../components/Users-Comp/
 
 export const HomeScreen = () => {
 
+    const { user } = useContext(AuthContext);
+
+    console.log(user)
+
     return (
         <SafeAreaView style={{ backgroundColor: "white", flex: 1 }}>
             <View style={ homeUsersScreenStyles.body }>
@@ -25,7 +33,7 @@ export const HomeScreen = () => {
                 >
 
                     <Greetingscomponent 
-                        name="Halal"
+                        name={ user && user.username }
                     />
 
                     <SearchBarContComponent 
