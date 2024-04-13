@@ -19,6 +19,7 @@ const getAllRestaurantsForUser = (
 
         Object.entries(snapshot.val()).forEach( ([key, value]) => {
             
+            console.log(value.item)
             newArr.push(
                 {
                     ownerId: key,

@@ -52,8 +52,23 @@ export const createNewCate = (
                             }
                         }
                     )
-                    setIsLoading(false);
-                    setProceed(true);
+                    .then( res => {
+                        push(
+                            ref(database, `Restaurant/${id}/item`),
+                            {
+                                item_name: name,
+                                item_img: downloadUrl,
+                                item_catergory: category,
+                            }
+                        )
+                        setIsLoading(false);
+                        setProceed(true);
+                    } )
+                    .catch( err => {
+                        setIsLoading(false);
+                        console.log(err)
+                    } )
+                    
                 } )
             }
         )
