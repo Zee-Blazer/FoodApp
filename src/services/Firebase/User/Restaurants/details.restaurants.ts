@@ -3,7 +3,7 @@
 import { database } from '../../../../firebaseConfig';
 import { ref, onValue, set } from 'firebase/database';
 
-
+// The Interface for the type of data that would be accepted in the TS code 
 interface Item {
     ownerId: string,
     restaurant_address: string,
@@ -13,6 +13,7 @@ interface Item {
     item_obj: any
 }
 
+// The function helps get all the info for all restaurants
 const getAllRestaurantsForUser = (
     setData: React.Dispatch<React.SetStateAction<Item[]>>
 ) => {
@@ -21,7 +22,6 @@ const getAllRestaurantsForUser = (
 
         Object.entries(snapshot.val()).forEach( ([key, value]) => {
             
-            // console.log(value.item)
             newArr.push(
                 {
                     ownerId: key,
