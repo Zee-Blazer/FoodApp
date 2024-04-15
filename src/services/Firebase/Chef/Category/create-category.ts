@@ -23,8 +23,10 @@ export const createNewCate = (
 ) => {
     // Condition to check for the image availiability 
     if(image != null){
+        // Getting the real file path to the selected image
         const filename = image.uri.substring(image.uri.lastIndexOf('/') + 1);
 
+        // The directory to store the data in the Firebase Storage
         const storageRef = real(storage, `Category/${category}/${filename}`);
 
         const uploadTask = uploadBytesResumable(storageRef, result);
