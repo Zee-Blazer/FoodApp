@@ -36,11 +36,12 @@ export const createNewCate = (
             "state_changed",
             ( snapshot ) => {},
             ( err ) => { 
-
+                // Console.log an error if there is any and stops the page from loading
                 console.log(err);
                 setIsLoading(false);
             },
             async () => {
+                // The image URL and store in the realtime database
                 getDownloadURL(uploadTask.snapshot.ref)
                 .then( (downloadUrl) => {
                     push(
