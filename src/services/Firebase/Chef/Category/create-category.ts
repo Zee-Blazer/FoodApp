@@ -29,11 +29,14 @@ export const createNewCate = (
         // The directory to store the data in the Firebase Storage
         const storageRef = real(storage, `Category/${category}/${filename}`);
 
+        // Upload the buffer file and send a response so we can get the 
+        // image URI
         const uploadTask = uploadBytesResumable(storageRef, result);
         uploadTask.on(
             "state_changed",
             ( snapshot ) => {},
             ( err ) => { 
+
                 console.log(err);
                 setIsLoading(false);
             },
