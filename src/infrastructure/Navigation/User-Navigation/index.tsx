@@ -20,6 +20,7 @@ import { ProfileInfoScreen } from "../../../screens/Users/profile-info.screen";
 import { AddressUsersScreen } from "../../../screens/Users/address.users.screen";
 import { EditProfileScreen } from "../../../screens/Users/edit-profile.screen";
 
+// Stack initialization
 const UsersStack = createStackNavigator();
 
 export const UsersNavigation = () => {

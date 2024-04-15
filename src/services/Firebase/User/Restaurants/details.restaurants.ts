@@ -20,6 +20,7 @@ const getAllRestaurantsForUser = (
     onValue( ref( database, `Restaurant` ), (snapshot) => {
         let newArr = [];
 
+        // Breaking the obj from the DB into a simple list
         Object.entries(snapshot.val()).forEach( ([key, value]) => {
             
             newArr.push(
