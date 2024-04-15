@@ -21,6 +21,7 @@ export const createNewCate = (
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
     setProceed: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
+    // Condition to check for the image availiability 
     if(image != null){
         const filename = image.uri.substring(image.uri.lastIndexOf('/') + 1);
 
