@@ -8,14 +8,14 @@ import { storage } from "../../../../firebaseConfig";
 import { ref as real, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 
 export const createNewCate = (
-    id: string,
-    name: string, 
-    image: any, 
-    result: any, 
-    price: any, 
-    deliveryType: any,
-    category: any,
-    details: any,
+    id: string, // The Id of the user
+    name: string, // The user name
+    image: any, // The image to be uploaded if any
+    result: any, // The blob file if any
+    price: any, // The price of the item
+    deliveryType: any, // The type of delivery
+    category: any, // Either FOOD | SNACK | DRINKS
+    details: any, // Short description of the item
     restaurant_name: any,
     restaurant_logo: any,
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
