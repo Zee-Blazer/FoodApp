@@ -48,7 +48,7 @@ export const AuthContextProvider = ({ children }) => {
     // Function to check if a user is logged in or not
     const isUserLoggedIn = async () => {
         onAuthStateChanged(auth, ( user ) => {
-            console.log(user.uid);
+            console.log(user);
             if(user){
                 onValue( ref( database, `Users/${user.uid}` ), (snapshot) => {
                     const data = snapshot.val();
