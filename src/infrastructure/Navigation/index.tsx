@@ -26,6 +26,8 @@ export const Navigation = () => {
     // Context
     const { isAuthenticated, isAdmin } = useContext(AuthContext);
 
+    console.log(isAuthenticated);
+
     return (
         <GestureHandlerRootView  style={{ flex: 1 }}>
             <NavigationContainer>
