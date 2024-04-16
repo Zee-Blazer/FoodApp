@@ -16,10 +16,10 @@ export const createNewCate = (
     deliveryType: any, // The type of delivery
     category: any, // Either FOOD | SNACK | DRINKS
     details: any, // Short description of the item
-    restaurant_name: any,
-    restaurant_logo: any,
-    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
-    setProceed: React.Dispatch<React.SetStateAction<boolean>>
+    restaurant_name: any, // The restaurant name to be attached to the item
+    restaurant_logo: any, // The restaurant logo to be attached to the item
+    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>, // Set the loading state
+    setProceed: React.Dispatch<React.SetStateAction<boolean>> // Set the proceed state for next item
 ) => {
     // Condition to check for the image availiability 
     if(image != null){
