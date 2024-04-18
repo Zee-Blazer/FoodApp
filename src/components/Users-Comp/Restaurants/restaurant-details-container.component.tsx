@@ -14,6 +14,9 @@ export const RestaurantDetailContainerComponent = () => {
 
     const { restaurantsData } = useContext(DetailsContext);
 
+    console.log("Working fine");
+    console.log(restaurantsData);
+
     return (
         <View>
             <CategoriesHeaderText 

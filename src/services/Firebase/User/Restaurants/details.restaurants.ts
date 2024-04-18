@@ -1,7 +1,7 @@
 
 // Firebase Database
 import { database } from '../../../../firebaseConfig';
-import { ref, onValue, set } from 'firebase/database';
+import { ref, onValue, set, limitToFirst, query } from 'firebase/database';
 
 // The Interface for the type of data that would be accepted in the TS code 
 interface Item {
@@ -14,10 +14,14 @@ interface Item {
 }
 
 // The function helps get all the info for all restaurants
-const getAllRestaurantsForUser = (
+const getAllRestaurantsForUser = async (
     setData: React.Dispatch<React.SetStateAction<Item[]>>
 ) => {
-    onValue( ref( database, `Restaurant` ), (snapshot) => {
+
+    // Collect the restaurant data from the restaurant 
+    // collection and stored it in the setData array 
+    // with limit to the data collected
+    onValue( query(ref( database, `Restaurant` ), limitToFirst(4)), (snapshot) => {
         let newArr = [];
 
         // Breaking the obj from the DB into a simple list
@@ -36,6 +40,7 @@ const getAllRestaurantsForUser = (
             setData( newArr );
         } )
     } )
+
 }
 
 export {
