@@ -31,7 +31,7 @@ export const RestaurantDetailComponent: React.FC<Props> = ({
             onPress={ () => link && navigation.navigate(link) }
         >
             <Image 
-                source={ imgUri }
+                source={{ uri: imgUri }}
                 style={ homeUsersScreenStyles.restaurantImg }
             />
             <Text style={ homeUsersScreenStyles.restaurantContHeaderTxt }>
