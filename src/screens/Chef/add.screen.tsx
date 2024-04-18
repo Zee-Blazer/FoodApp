@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 
-import { View, SafeAreaView, Text, Keyboard, Dimensions } from "react-native";
+import { View, SafeAreaView, Text, Keyboard, Dimensions, Platform } from "react-native";
 
 // Restaurant Context
 import { RestaurantContext } from '../../services/Context/restaurant.context';
@@ -38,15 +38,20 @@ export const ChefAddScreen = () => {
     const [proceed, setProceed] = useState<boolean>(false); // To create the state of all the inputs
     const [errMsg, setErrMsg] = useState<string>(); // Error message to be displayed to the chef
 
-    const [keyboardState, setKeyboardState] = useState(false);
+    const [keyboardState, setKeyboardState] = useState(false); // To check for active keyboard
+    const [bottomSpace, setBottomSpace] = useState<string>("100%");
 
     const keyboardActiveListenerShow = () => setKeyboardState(true)
-    const keyboardActiveListenerHide = () => setKeyboardState(false)
+    const keyboardActiveListenerHide = () => {
+        setKeyboardState(false);
+        setBottomSpace("100%");
+    }
 
     Keyboard.addListener("keyboardDidShow", keyboardActiveListenerShow);
     Keyboard.addListener('keyboardDidHide', keyboardActiveListenerHide);
 
     console.log("Keyboard", keyboardState);
+    console.log(Dimensions);
 
     useEffect( () => {
         if(proceed){
@@ -70,9 +75,7 @@ export const ChefAddScreen = () => {
         }, 2000 )
     }
 
-    const inputFocus = () => {
-        console.log("Working fine!!");
-    }
+    const inputFocus = (e: string) => setBottomSpace(e);
 
     const newCategory = async () => {
         setIsLoading(true);
@@ -115,7 +118,7 @@ export const ChefAddScreen = () => {
 
     return (
         <SafeAreaView style={{ backgroundColor: "#F7F8F9", flex: 1 }}>
-            <View style={ homeChefScreenStyles.body }>
+            <View style={[ homeChefScreenStyles.body ]}>
 
                 <ChefAddHeaderComponent 
                     func={ resetAll }
@@ -140,6 +143,7 @@ export const ChefAddScreen = () => {
                     setCategory={ setCategory }
                     setDetails={ setDetails }
                     inputFocus={ inputFocus }
+                    bottomSpace={ bottomSpace }
                 />
 
             </View>

@@ -8,9 +8,10 @@ import { addScreenChefStyles } from "../../../../styles/screens/add-screen-chef.
 interface Props {
     details: string, 
     setDetails: React.Dispatch<React.SetStateAction<string>>,
+    inputFocus: (e: string) => void
 }
 
-export const ItemDetailsFormComponent: React.FC<Props> = ({ details, setDetails }) => {
+export const ItemDetailsFormComponent: React.FC<Props> = ({ details, setDetails, inputFocus }) => {
 
     return (
         <View style={[ homeChefScreenStyles.horiSpacer, { marginVertical: 10 } ]}>
@@ -23,6 +24,7 @@ export const ItemDetailsFormComponent: React.FC<Props> = ({ details, setDetails 
                 style={[ addScreenChefStyles.textInputItem, { paddingTop: 18, maxHeight: 78 } ]}
                 value={ details }
                 onChangeText={ setDetails }
+                onFocus={ () => inputFocus("64%") }
             />
         </View>
     )

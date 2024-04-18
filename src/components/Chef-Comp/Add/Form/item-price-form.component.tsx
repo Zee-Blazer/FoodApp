@@ -15,10 +15,12 @@ interface Props {
     stateRemove: boolean,
     setPrice: React.Dispatch<React.SetStateAction<any>>,
     setDeliveryType: React.Dispatch<React.SetStateAction<string>>,
+    inputFocus: (e: string) => void
 }
 
 export const ItemPriceFormComponent: React.FC<Props> = ({ 
-    price, deliveryType, stateRemove, setPrice, setDeliveryType 
+    price, deliveryType, stateRemove, 
+    setPrice, setDeliveryType, inputFocus
 }) => {
 
     const [stateVal, setStateVal] = useState<string>("");
@@ -47,6 +49,7 @@ export const ItemPriceFormComponent: React.FC<Props> = ({
                     style={[ addScreenChefStyles.textInputItem, addScreenChefStyles.fullSize, { flex: 1 } ]}
                     value={ price }
                     onChangeText={ setPrice }
+                    onFocus={ () => inputFocus("67%") }
                 />
                 
                 <SelectOptContComponent 

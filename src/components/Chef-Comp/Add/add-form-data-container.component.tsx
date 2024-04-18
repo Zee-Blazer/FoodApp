@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { View, ScrollView, KeyboardAvoidingView } from "react-native";
+import { View, ScrollView, Text, KeyboardAvoidingView, Platform } from "react-native";
 
 // Components
 import { ItemNameFormComponent } from "./Form/item-name-form.component";
@@ -23,20 +23,25 @@ interface Props {
     setDeliveryType: React.Dispatch<React.SetStateAction<string>>,
     setCategory: React.Dispatch<React.SetStateAction<string>>,
     setDetails: React.Dispatch<React.SetStateAction<string>>,
-    inputFocus: () => void
+    inputFocus: (e: string) => void,
+    bottomSpace: string
 }
 
 export const AddFormDataContainerComponent: React.FC<Props> = ({
     name, pic, price, deliveryType, 
     category, details, stateRemove, 
     setName, setPic, setPrice, 
-    setDeliveryType, setCategory, setDetails
+    setDeliveryType, setCategory, 
+    setDetails, inputFocus, bottomSpace
 }) => {
 
     return (
         <View>
 
-            <ScrollView>
+            <ScrollView
+                // scrollEnabled={ false }
+                style={{ paddingBottom: 224, height: `${Platform.OS !== "ios"} ? ${bottomSpace} : "100%"` }}
+            >
                 
                 <KeyboardAvoidingView>
 
@@ -56,6 +61,7 @@ export const AddFormDataContainerComponent: React.FC<Props> = ({
                         stateRemove={ stateRemove }
                         setPrice={ setPrice }
                         setDeliveryType={ setDeliveryType }
+                        inputFocus={ inputFocus }
                     />
 
                     <ItemSelectFormComponent 
@@ -67,11 +73,14 @@ export const AddFormDataContainerComponent: React.FC<Props> = ({
                     <ItemDetailsFormComponent 
                         details={ details }
                         setDetails={ setDetails }
+                        inputFocus={ inputFocus }
                     />
 
                 </KeyboardAvoidingView>
 
             </ScrollView>
+
+            <View style={{ marginVertical: 122 }}></View>
 
         </View>
     )
