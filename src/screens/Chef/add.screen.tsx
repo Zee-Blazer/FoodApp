@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 
-import { View, SafeAreaView, Text } from "react-native";
+import { View, SafeAreaView, Text, Keyboard, Dimensions } from "react-native";
 
 // Restaurant Context
 import { RestaurantContext } from '../../services/Context/restaurant.context';
@@ -19,6 +19,8 @@ import { ChefAddHeaderComponent } from "../../components/Chef-Comp/Add/add-heade
 import { AddFormDataContainerComponent } from "../../components/Chef-Comp/Add/add-form-data-container.component";
 import { FormBtnComponent } from "../../components/Auth-Comp/form-btn.component";
 
+const windowHeight = Dimensions.get("window").height;
+
 export const ChefAddScreen = () => {
 
     const { restaurantInfo } = useContext(RestaurantContext); // The Restaurant Info Context
@@ -35,6 +37,16 @@ export const ChefAddScreen = () => {
     const [stateRemove, setStateRemove] = useState<boolean>(false); // To set the StateVal
     const [proceed, setProceed] = useState<boolean>(false); // To create the state of all the inputs
     const [errMsg, setErrMsg] = useState<string>(); // Error message to be displayed to the chef
+
+    const [keyboardState, setKeyboardState] = useState(false);
+
+    const keyboardActiveListenerShow = () => setKeyboardState(true)
+    const keyboardActiveListenerHide = () => setKeyboardState(false)
+
+    Keyboard.addListener("keyboardDidShow", keyboardActiveListenerShow);
+    Keyboard.addListener('keyboardDidHide', keyboardActiveListenerHide);
+
+    console.log("Keyboard", keyboardState);
 
     useEffect( () => {
         if(proceed){
@@ -56,6 +68,10 @@ export const ChefAddScreen = () => {
         setInterval( () => {
             setStateRemove(false);
         }, 2000 )
+    }
+
+    const inputFocus = () => {
+        console.log("Working fine!!");
     }
 
     const newCategory = async () => {
@@ -95,7 +111,7 @@ export const ChefAddScreen = () => {
             setErrMsg("You need to create a restaurant before adding to it's category");
             setIsLoading(false);
         }
-    }
+    } 
 
     return (
         <SafeAreaView style={{ backgroundColor: "#F7F8F9", flex: 1 }}>
@@ -123,6 +139,7 @@ export const ChefAddScreen = () => {
                     setDeliveryType={ setDeliveryType }
                     setCategory={ setCategory }
                     setDetails={ setDetails }
+                    inputFocus={ inputFocus }
                 />
 
             </View>

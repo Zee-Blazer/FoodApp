@@ -6,7 +6,7 @@ import { View, ScrollView, KeyboardAvoidingView } from "react-native";
 import { ItemNameFormComponent } from "./Form/item-name-form.component";
 import { ItemPhotoFormComponent } from "./Form/item-photo-form.component";
 import { ItemPriceFormComponent } from "./Form/item-price-form.component";
-import { ItemDetailsFormComponent } from "./Form/item-details-form.component";
+import { ItemDetailsFormComponent } from "./Form/item-details-form.component"; //
 import { ItemSelectFormComponent } from "./Form/item-select-form.component"; // Category selector
 
 interface Props {
@@ -22,7 +22,8 @@ interface Props {
     setPrice: React.Dispatch<React.SetStateAction<any>>,
     setDeliveryType: React.Dispatch<React.SetStateAction<string>>,
     setCategory: React.Dispatch<React.SetStateAction<string>>,
-    setDetails: React.Dispatch<React.SetStateAction<string>>
+    setDetails: React.Dispatch<React.SetStateAction<string>>,
+    inputFocus: () => void
 }
 
 export const AddFormDataContainerComponent: React.FC<Props> = ({

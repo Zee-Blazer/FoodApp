@@ -17,7 +17,7 @@ export const ChefAddHeaderComponent: React.FC<Props> = ({ func }) => {
             <Text style={ notificationChefStyles.headerNotificationTxt }>Add New Items</Text>
             
             <TouchableOpacity
-                onPress={ func }
+                onPress={ func } 
             >
                 <Text style={ addScreenChefStyles.resetTxBtn }>RESET</Text>
             </TouchableOpacity>
