@@ -7,7 +7,22 @@ import { AntDesign } from '@expo/vector-icons';
 // Stylings
 import { searchUsersStyles } from "../../../styles/screens/serach-users.styles";
 
-export const SearchBoxOptComponent = () => {
+interface Item {
+    name: string,
+    UID: string,
+    inner_id: any,
+    type: string,
+    category: any
+}
+
+interface Props {
+    data: Item[]
+}
+
+export const SearchBoxOptComponent: React.FC<Props> = ({ data }) => {
+
+    console.log("Working perfectly");
+    console.log(data)
 
     return (
         <>
@@ -18,7 +33,7 @@ export const SearchBoxOptComponent = () => {
                 />
                 <Text
                     style={[ searchUsersStyles.searchBoxOptTxt ]}
-                >Working perfectly well!!</Text>
+                >{ data.name }</Text>
             </TouchableOpacity>
         </>
     )

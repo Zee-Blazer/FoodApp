@@ -78,7 +78,9 @@ export const SearchBarContComponent: React.FC<Props> = ({ redirect }) => {
                         <FlatList 
                             data={ searchResult }
                             renderItem={ ({ item }) => (
-                                <SearchBoxOptComponent />
+                                <SearchBoxOptComponent 
+                                    data={ item }
+                                />
                             ) }
                             key={ item => `${item.UID}-${item.name}` }
                         />
