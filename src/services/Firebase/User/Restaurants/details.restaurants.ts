@@ -43,41 +43,74 @@ const getAllRestaurantsForUser = async (
 
 }
 
+
+// The function helps to get the data from the individual record that it is on the database 
+// so it can be combined to form a singlar data model
+
+const getDataInfoFromCategory = (cate: string) => {
+    
+    if(!cate === "Restaurant"){
+        let mainDataRecord = []; // For the main user record
+        let dataCopy = [];
+
+        onValue( ref(database, `Category/${cate}`), (snapshot) => {
+            
+            Object.entries(snapshot.val()).forEach( ([key, value]) => {
+                
+                mainDataRecord.push({
+                    mainKey: key,
+                    data: value
+                })
+            } )
+
+            Object.entries(mainDataRecord).forEach( ([mainKey, value]) => {
+                const userId = value.mainKey;
+
+                Object.entries(value.data).forEach( ([key, value]) => {
+                    dataCopy.push({
+                        UID: userId,
+                        inner_id: key,
+                        type: "restaurant",
+                        category: cate,
+                        name: value.item_name
+                    })
+
+                } )
+            } )
+        } )
+
+        return dataCopy;
+    }
+    else{
+        let allDataInfo = [];
+
+        onValue( ref(database, `Restaurant`), (snapshot) => {
+            Object.entries(snapshot.val()).forEach( ([key, value]) => {
+                allDataInfo.push({
+                    name: value.restaurant_name,
+                    UID: key,
+                    inner_id: undefined,
+                    type: "restaurant",
+                    category: undefined
+                });
+            } )
+        } )
+
+        return allDataInfo;
+    }
+
+}
+
 const generalGetAllInfoSearch = () => {
-    let allDataInfo = [];
+    
+    const restaurants = getDataInfoFromCategory("Restaurant");
+    const drinks = getDataInfoFromCategory("Drink");
+    const snacks = getDataInfoFromCategory("Snacks");
+    const food = getDataInfoFromCategory("Food");
 
-    onValue( ref(database, `Restaurant`), (snapshot) => {
-        Object.entries(snapshot.val()).forEach( ([key, value]) => {
-            allDataInfo.push({
-                name: value.restaurant_name,
-                uid: key,
-                inner_id: undefined,
-                type: "restaurant",
-                category: undefined
-            });
-        } )
-    } )
-
-    onValue( ref(database, `Category/Drink`), (snapshot) => {
-        let mainKeyUID = []; // For the main user record
-        let subKeyUID; // The main item record ID
-        let itemData = []; // The Item data object
-        
-        Object.entries(snapshot.val()).forEach( ([key, value]) => {
-            mainKeyUID.push(key);
-            itemData.push(value);
-            console.log(value);
-            // console.log(value);
-        } )
-
-        // console.log(itemData.length);
-
-        Object.entries(itemData).forEach( ([key, value]) => {
-            subKeyUID = key;
-            // console.log("Working fine!!");
-            // console.log(value);
-        } )
-    } )
+    return {
+        restaurants, drinks, snacks, food
+    }
 
 }
 
