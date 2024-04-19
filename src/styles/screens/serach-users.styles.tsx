@@ -83,5 +83,30 @@ export const searchUsersStyles = StyleSheet.create({
         fontFamily: theme.fonts.body,
         color: "#646982",
         marginTop: 5
+    },
+    searchBoxOptCont: {
+        position: "absolute",
+        backgroundColor: "#ECF0F4",
+        width: '100%',
+        top: "17%",
+        zIndex: 1,
+        padding: 12,
+        borderBottomLeftRadius: 7,
+        borderBottomRightRadius: 7,
+        maxHeight: 300,
+        overflow: "hidden",
+    },
+    searchBoxOpt: {
+        flexDirection: "row",
+        marginVertical: 6
+    },
+    searchBoxOptIcon: {
+        marginRight: 7,
+        marginTop: 2
+    },
+    searchBoxOptTxt: {
+        fontSize: 14, 
+        fontFamily: theme.fonts.body,
+        color: "#646982"
     }
 });
