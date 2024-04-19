@@ -47,9 +47,9 @@ const getAllRestaurantsForUser = async (
 // The function helps to get the data from the individual record that it is on the database 
 // so it can be combined to form a singlar data model
 
-const getDataInfoFromCategory = (cate: string) => {
+const getDataInfoFromCategory = (cate: string, type: boolean) => {
     
-    if(!cate === "Restaurant"){
+    if(type){
         let mainDataRecord = []; // For the main user record
         let dataCopy = [];
 
@@ -101,15 +101,30 @@ const getDataInfoFromCategory = (cate: string) => {
 
 }
 
-const generalGetAllInfoSearch = () => {
+const generalGetAllInfoSearch = (type: string) => {
     
-    const restaurants = getDataInfoFromCategory("Restaurant");
-    const drinks = getDataInfoFromCategory("Drink");
-    const snacks = getDataInfoFromCategory("Snacks");
-    const food = getDataInfoFromCategory("Food");
+    const restaurants = getDataInfoFromCategory("Restaurant", false);
+    const drinks = getDataInfoFromCategory("Drink", true);
+    const snacks = getDataInfoFromCategory("Snacks", true);
+    const food = getDataInfoFromCategory("Food", true);
 
-    return {
-        restaurants, drinks, snacks, food
+    if(type === "drinks"){
+        return drinks;
+    }
+    else if(type === "snacks"){
+        return snacks;
+    }
+    else if(type === "food"){
+        return food;
+    }
+    else if(type === "restaurants"){
+        return restaurants;
+    }
+    else if(type === "all"){
+        return [...restaurants, ...drinks, ...food, ...snacks];
+    }
+    else{
+        return "No type found in database collection";
     }
 
 }
