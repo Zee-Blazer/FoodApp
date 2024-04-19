@@ -47,35 +47,9 @@ export const SearchBarContComponent: React.FC<Props> = ({ redirect }) => {
 
             <View style={[ searchUsersStyles.searchBoxOptCont ]}>
                 <ScrollView>
-                    <View style={[ searchUsersStyles.searchBoxOpt ]}>
-                        <AntDesign 
-                            name="search1" size={14} color="#A0A5BA" 
-                            style={[ searchUsersStyles.searchBoxOptIcon ]}
-                        />
-                        <Text
-                            style={[ searchUsersStyles.searchBoxOptTxt ]}
-                        >Working perfectly well!!</Text>
-                    </View>
 
-                    <View style={[ searchUsersStyles.searchBoxOpt ]}>
-                        <AntDesign 
-                            name="search1" size={14} color="#A0A5BA" 
-                            style={[ searchUsersStyles.searchBoxOptIcon ]}
-                        />
-                        <Text
-                            style={[ searchUsersStyles.searchBoxOptTxt ]}
-                        >Working perfectly well!!</Text>
-                    </View>
-
-                    <View style={[ searchUsersStyles.searchBoxOpt ]}>
-                        <AntDesign 
-                            name="search1" size={14} color="#A0A5BA" 
-                            style={[ searchUsersStyles.searchBoxOptIcon ]}
-                        />
-                        <Text
-                            style={[ searchUsersStyles.searchBoxOptTxt ]}
-                        >Working perfectly well!!</Text>
-                    </View>
+                    <SearchBoxOptComponent />
+                    <SearchBoxOptComponent />
                     
                 </ScrollView>
             </View>
