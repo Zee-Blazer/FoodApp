@@ -71,7 +71,7 @@ export const SearchBarContComponent: React.FC<Props> = ({ redirect }) => {
             </View>
 
             {
-                !redirect && searchItemTxt && searchItemTxt.length > 1 && 
+                !redirect && searchItemTxt && searchItemTxt.length > 0 && 
                 <View style={[ searchUsersStyles.searchBoxOptCont ]}>
                     <ScrollView>
 

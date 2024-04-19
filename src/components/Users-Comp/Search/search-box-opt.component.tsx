@@ -38,9 +38,15 @@ export const SearchBoxOptComponent: React.FC<Props> = ({ data }) => {
 
                 {
                     data.type === "category" ?
-                    <Ionicons name="fast-food" size={16} color="#FF7622" />
+                    <Ionicons 
+                        name="fast-food" size={16} color="#FF7622" 
+                        style={[ searchUsersStyles.searchBoxOptRightIcon ]} 
+                    />
                     :
-                    <Ionicons name="restaurant" size={16} color="#FF7622" />
+                    <Ionicons 
+                        name="restaurant" size={16} color="#FF7622" 
+                        style={[ searchUsersStyles.searchBoxOptRightIcon ]} 
+                    />
                 }
             </TouchableOpacity>
         </>
