@@ -45,14 +45,17 @@ export const SearchBarContComponent: React.FC<Props> = ({ redirect }) => {
                 {/* <MaterialIcons name="cancel" size={15} color="#CDCDCF" /> */}
             </View>
 
-            <View style={[ searchUsersStyles.searchBoxOptCont ]}>
-                <ScrollView>
+            {
+                !redirect && 
+                <View style={[ searchUsersStyles.searchBoxOptCont ]}>
+                    <ScrollView>
 
-                    <SearchBoxOptComponent />
-                    <SearchBoxOptComponent />
-                    
-                </ScrollView>
-            </View>
+                        <SearchBoxOptComponent />
+                        <SearchBoxOptComponent />
+                        
+                    </ScrollView>
+                </View>
+            }
         </>
     )
 }

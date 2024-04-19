@@ -43,6 +43,45 @@ const getAllRestaurantsForUser = async (
 
 }
 
+const generalGetAllInfoSearch = () => {
+    let allDataInfo = [];
+
+    onValue( ref(database, `Restaurant`), (snapshot) => {
+        Object.entries(snapshot.val()).forEach( ([key, value]) => {
+            allDataInfo.push({
+                name: value.restaurant_name,
+                uid: key,
+                inner_id: undefined,
+                type: "restaurant",
+                category: undefined
+            });
+        } )
+    } )
+
+    onValue( ref(database, `Category/Drink`), (snapshot) => {
+        let mainKeyUID = []; // For the main user record
+        let subKeyUID; // The main item record ID
+        let itemData = []; // The Item data object
+        
+        Object.entries(snapshot.val()).forEach( ([key, value]) => {
+            mainKeyUID.push(key);
+            itemData.push(value);
+            console.log(value);
+            // console.log(value);
+        } )
+
+        // console.log(itemData.length);
+
+        Object.entries(itemData).forEach( ([key, value]) => {
+            subKeyUID = key;
+            // console.log("Working fine!!");
+            // console.log(value);
+        } )
+    } )
+
+}
+
 export {
-    getAllRestaurantsForUser
+    getAllRestaurantsForUser,
+    generalGetAllInfoSearch
 }
