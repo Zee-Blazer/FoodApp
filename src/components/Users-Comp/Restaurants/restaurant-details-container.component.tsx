@@ -35,8 +35,6 @@ export const RestaurantDetailContainerComponent = () => {
                     dataList.forEach( e => descrip.push(e.item_name) );
                     const textDescrip = descrip.join(" - ");
 
-                    console.log(item.restaurant_logo);
-
                     return (
                         <RestaurantDetailComponent 
                             restaurantName={ item.restaurant_name }
