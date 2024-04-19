@@ -26,12 +26,6 @@ export const DetailsContextProvider = ({ children }) => {
         setAllItemRecord(generalGetAllInfoSearch("all"));
     }, [] )
 
-    // console.log(drinkRecords);
-    // console.log(foodRecords);
-    // console.log(snacksRecord);
-    // console.log(restaurantsRecord);
-    // console.log(allItemRecord);
-
     return (
         <DetailsContext.Provider
             value={{

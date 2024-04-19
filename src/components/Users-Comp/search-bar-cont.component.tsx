@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 
 // Icons
 import { AntDesign } from '@expo/vector-icons';
@@ -24,6 +24,8 @@ export const SearchBarContComponent: React.FC<Props> = ({ redirect }) => {
 
     const textInputRef = useRef<TextInput | null>(null);
 
+    const [searchItemTxt, setSearchItemTxt] = useState();
+
     useEffect(() => {
         // Automatically focus on the TextInput when the component mounts
         if (textInputRef.current && !redirect) {
@@ -40,6 +42,8 @@ export const SearchBarContComponent: React.FC<Props> = ({ redirect }) => {
                     placeholder="Search"
                     placeholderTextColor="#676767"
                     style={ homeUsersScreenStyles.searchBarTxt }
+                    onChangeText={ setSearchItemTxt }
+                    value={ searchItemTxt }
                     onFocus={ () => redirect && navigation.navigate("Search") }
                 />
                 {/* <MaterialIcons name="cancel" size={15} color="#CDCDCF" /> */}
