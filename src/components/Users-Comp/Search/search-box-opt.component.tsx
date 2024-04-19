@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity } from "react-native";
 
 // Icons
 import { AntDesign } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 
 // Stylings
 import { searchUsersStyles } from "../../../styles/screens/serach-users.styles";
@@ -34,6 +35,13 @@ export const SearchBoxOptComponent: React.FC<Props> = ({ data }) => {
                 <Text
                     style={[ searchUsersStyles.searchBoxOptTxt ]}
                 >{ data.name }</Text>
+
+                {
+                    data.type === "category" ?
+                    <Ionicons name="fast-food" size={16} color="#FF7622" />
+                    :
+                    <Ionicons name="restaurant" size={16} color="#FF7622" />
+                }
             </TouchableOpacity>
         </>
     )

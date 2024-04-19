@@ -70,7 +70,7 @@ const getDataInfoFromCategory = (cate: string, type: boolean) => {
                     dataCopy.push({
                         UID: userId,
                         inner_id: key,
-                        type: "restaurant",
+                        type: "category",
                         category: cate,
                         name: value.item_name
                     })
