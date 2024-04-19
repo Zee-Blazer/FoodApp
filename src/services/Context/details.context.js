@@ -14,17 +14,25 @@ export const DetailsContextProvider = ({ children }) => {
     const [drinkRecords, setDrinkRecords] = useState();
     const [foodRecords, setFoodRecords] = useState();
     const [snacksRecord, setSnacksRecord] = useState();
-    const [restaurantsRecord, setRestaurantsRecord] = useState();
+    const [restaurantsRecord, setRestaurantsRecord] = useState(); 
     const [allItemRecord, setAllItemRecord] = useState();
 
-    useEffect( () => {
-        getAllRestaurantsForUser(setRestaurantsData);
+    const [searchResult, setSearchResult] = useState();
+
+    const getDataMain = () => {
         setDrinkRecords(generalGetAllInfoSearch("drinks"));
         setFoodRecords(generalGetAllInfoSearch("food"));
         setSnacksRecord(generalGetAllInfoSearch("snacks"));
         setRestaurantsRecord(generalGetAllInfoSearch("restaurants"));
         setAllItemRecord(generalGetAllInfoSearch("all"));
+    }
+
+    useEffect( () => {
+        getAllRestaurantsForUser(setRestaurantsData);
+        getDataMain();
     }, [] )
+
+    // console.log(allItemRecord);
 
     return (
         <DetailsContext.Provider
@@ -34,7 +42,10 @@ export const DetailsContextProvider = ({ children }) => {
                 foodRecords,
                 snacksRecord,
                 allItemRecord,
-                restaurantsRecord
+                restaurantsRecord,
+                getDataMain,
+                searchResult, 
+                setSearchResult
             }}
         >
             { children }

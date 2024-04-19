@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useContext } from 'react';
 
 // Icons
 import { AntDesign } from '@expo/vector-icons';
@@ -6,7 +6,10 @@ import { AntDesign } from '@expo/vector-icons';
 // Navigation 
 import { useNavigation } from '@react-navigation/native';
 
-import { View, TextInput, Text } from 'react-native';
+// Details Context ("For all important information")
+import { DetailsContext } from '../../services/Context/details.context';
+
+import { View, TextInput, FlatList } from 'react-native';
 
 // Styling 
 import { homeUsersScreenStyles } from '../../styles/screens/home-users.styles';
@@ -22,16 +25,34 @@ export const SearchBarContComponent: React.FC<Props> = ({ redirect }) => {
 
     const navigation = useNavigation();
 
+    const { allItemRecord, getDataMain, setSearchResult, searchResult } = useContext(DetailsContext);
+
     const textInputRef = useRef<TextInput | null>(null);
 
     const [searchItemTxt, setSearchItemTxt] = useState();
+
+    const searchVal = (e: string) => {
+        setSearchItemTxt(e);
+
+        const lowCaseQuery = e.toLowerCase();
+
+        const dataRecord = allItemRecord.filter( records => {
+            return records.name.toLowerCase().includes(lowCaseQuery);
+        } )
+
+        setSearchResult(dataRecord);
+    }
 
     useEffect(() => {
         // Automatically focus on the TextInput when the component mounts
         if (textInputRef.current && !redirect) {
           textInputRef.current.focus();
         }
-      }, []);
+    }, []);
+
+    useEffect( () => {
+        getDataMain();
+    }, [] )
 
     return (
         <>
@@ -42,7 +63,7 @@ export const SearchBarContComponent: React.FC<Props> = ({ redirect }) => {
                     placeholder="Search"
                     placeholderTextColor="#676767"
                     style={ homeUsersScreenStyles.searchBarTxt }
-                    onChangeText={ setSearchItemTxt }
+                    onChangeText={ e => searchVal(e) }
                     value={ searchItemTxt }
                     onFocus={ () => redirect && navigation.navigate("Search") }
                 />
@@ -50,12 +71,17 @@ export const SearchBarContComponent: React.FC<Props> = ({ redirect }) => {
             </View>
 
             {
-                !redirect && 
+                !redirect && searchItemTxt && searchItemTxt.length > 1 && 
                 <View style={[ searchUsersStyles.searchBoxOptCont ]}>
                     <ScrollView>
 
-                        <SearchBoxOptComponent />
-                        <SearchBoxOptComponent />
+                        <FlatList 
+                            data={ searchResult }
+                            renderItem={ ({ item }) => (
+                                <SearchBoxOptComponent />
+                            ) }
+                            key={ item => `${item.UID}-${item.name}` }
+                        />
                         
                     </ScrollView>
                 </View>
