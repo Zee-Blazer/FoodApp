@@ -67,7 +67,6 @@ export const SearchBarContComponent: React.FC<Props> = ({ redirect }) => {
                     value={ searchItemTxt }
                     onFocus={ () => redirect && navigation.navigate("Search") }
                 />
-                {/* <MaterialIcons name="cancel" size={15} color="#CDCDCF" /> */}
             </View>
 
             {
