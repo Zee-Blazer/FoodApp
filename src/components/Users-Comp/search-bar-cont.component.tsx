@@ -32,6 +32,7 @@ export const SearchBarContComponent: React.FC<Props> = ({ redirect }) => {
     const [searchItemTxt, setSearchItemTxt] = useState();
 
     const searchVal = (e: string) => {
+        // Stores the text input value in a state variable ("Which is not really necessary")
         setSearchItemTxt(e);
 
         const lowCaseQuery = e.toLowerCase();
