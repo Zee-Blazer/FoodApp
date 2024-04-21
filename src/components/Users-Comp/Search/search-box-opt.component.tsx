@@ -37,6 +37,8 @@ export const SearchBoxOptComponent: React.FC<Props> = ({ data }) => {
                 >{ data.name }</Text>
 
                 {
+                    // Reading the data and checking for the ones that belong to restaurant and the 
+                    // ones that belong to a category of meal
                     data.type === "category" ?
                     <Ionicons 
                         name="fast-food" size={16} color="#FF7622" 
