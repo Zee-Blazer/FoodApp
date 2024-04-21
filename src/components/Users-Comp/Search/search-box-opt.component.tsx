@@ -8,6 +8,7 @@ import { Ionicons } from '@expo/vector-icons';
 // Stylings
 import { searchUsersStyles } from "../../../styles/screens/serach-users.styles";
 
+// The Item structure
 interface Item {
     name: string,
     UID: string,
@@ -16,6 +17,7 @@ interface Item {
     category: any
 }
 
+// List of items 
 interface Props {
     data: Item[]
 }
@@ -34,7 +36,9 @@ export const SearchBoxOptComponent: React.FC<Props> = ({ data }) => {
                 />
                 <Text
                     style={[ searchUsersStyles.searchBoxOptTxt ]}
-                >{ data.name }</Text>
+                >
+                    { data.name }
+                </Text>
 
                 {
                     // Reading the data and checking for the ones that belong to restaurant and the 
