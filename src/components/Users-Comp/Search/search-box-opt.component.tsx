@@ -17,7 +17,7 @@ interface Item {
     category: any
 }
 
-// List of items 
+// List of items structure
 interface Props {
     data: Item[]
 }
