@@ -16,7 +16,7 @@ import { FastFoodContainerComponent } from '../../components/Users-Comp/Search/f
 
 export const SearchScreen = () => {
 
-    const navigation = useNavigation();
+    // const navigation = useNavigation();
 
     return (
         <SafeAreaView style={{ backgroundColor: "white", flex: 1 }}>
