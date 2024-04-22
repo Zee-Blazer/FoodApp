@@ -72,6 +72,7 @@ export const SearchBarContComponent: React.FC<Props> = ({ redirect }) => {
             </View>
 
             {
+                // First checks if the search bar doesn't want to navigate to another parth
                 !redirect && searchItemTxt && searchItemTxt.length > 0 && 
                 <View style={[ searchUsersStyles.searchBoxOptCont ]}>
                     <ScrollView>
