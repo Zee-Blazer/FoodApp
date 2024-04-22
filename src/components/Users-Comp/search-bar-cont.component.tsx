@@ -35,6 +35,7 @@ export const SearchBarContComponent: React.FC<Props> = ({ redirect }) => {
         // Stores the text input value in a state variable ("Which is not really necessary")
         setSearchItemTxt(e);
 
+        // Coverts the value of the input all to lower case characters
         const lowCaseQuery = e.toLowerCase();
 
         const dataRecord = allItemRecord.filter( records => {
@@ -52,7 +53,7 @@ export const SearchBarContComponent: React.FC<Props> = ({ redirect }) => {
     }, []);
 
     useEffect( () => {
-        getDataMain();
+        getDataMain(); // Not fully necessary but just for incasity
     }, [] )
 
     return (
