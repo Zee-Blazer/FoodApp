@@ -27,6 +27,7 @@ export const EditProfileScreen = () => {
 
     const navigation = useNavigation(); // Navigation instance
 
+    // Loading state
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [sendLoc, setSendLoc] = useState<boolean>(false);
 
