@@ -42,6 +42,7 @@ export const EditProfileScreen = () => {
     const [proceed, setProceed] = useState<boolean>(false);
     const [goBack, setGoBack] = useState<boolean>(true);
 
+    // The useEffect funtion helps find out if user is logged In
     useEffect( () => {
         if(sendLoc){
             navigation.goBack();
