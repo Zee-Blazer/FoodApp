@@ -31,6 +31,7 @@ export const EditProfileScreen = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [sendLoc, setSendLoc] = useState<boolean>(false);
 
+    // All the users credentials 
     const [username, setUsername] = useState<string>("");
     const [email, setEmail] = useState<string>("");
     const [phone, setPhone] = useState<any>();
