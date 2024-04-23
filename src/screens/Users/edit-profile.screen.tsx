@@ -57,6 +57,8 @@ export const EditProfileScreen = () => {
         }
     }, [goBack] )
 
+    // The function to properly save the data and call the firebase function 
+    // for either there is an image oor not
     const saveData = async () => {
         setIsLoading(true);
 
