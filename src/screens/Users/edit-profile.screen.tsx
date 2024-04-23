@@ -50,6 +50,7 @@ export const EditProfileScreen = () => {
         }
     }, [sendLoc] )
 
+    // Proper navigation back after storing in Database and Data Storage
     useEffect( () => {
         if(!goBack){
             navigation.goBack();
