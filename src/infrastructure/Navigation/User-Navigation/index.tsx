@@ -41,6 +41,7 @@ export const UsersNavigation = () => {
             <UsersStack.Screen name="FoodDetails" component={ FoodDetailsScreen } />
             <UsersStack.Screen name="RestaurantView" component={ RestaurantViewScreen } />
             <UsersStack.Screen name="UsersCart" component={ UsersCartScreen } />
+            <UsersStack.Screen name="OnlyRestaurant" component={ OnlyRestaurantScreen } />
             <UsersStack.Screen name="Payment" component={ PaymentScreen } />
             <UsersStack.Screen name="AddCart" component={ AddCardScreen } />
             <UsersStack.Screen name="Success" component={ SuccessScreen } />
