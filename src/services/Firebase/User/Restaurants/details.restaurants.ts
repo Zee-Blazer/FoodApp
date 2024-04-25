@@ -67,6 +67,7 @@ const getDataInfoFromCategory = (cate: string, type: boolean) => {
                 const userId = value.mainKey;
 
                 Object.entries(value.data).forEach( ([key, value]) => {
+                    console.log(value.restaurant_info);
                     dataCopy.push({
                         UID: userId,
                         inner_id: key,
