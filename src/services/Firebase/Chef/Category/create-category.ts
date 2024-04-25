@@ -18,6 +18,7 @@ export const createNewCate = (
     details: any, // Short description of the item
     restaurant_name: any, // The restaurant name to be attached to the item
     restaurant_logo: any, // The restaurant logo to be attached to the item
+    restaurant_id: any, // The restaurant Id to be identified to the item
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>, // Set the loading state
     setProceed: React.Dispatch<React.SetStateAction<boolean>> // Set the proceed state for next item
 ) => {
@@ -55,7 +56,8 @@ export const createNewCate = (
                             item_details: details,
                             restaurant_info: {
                                 restaurant_logo,
-                                restaurant_name
+                                restaurant_name,
+                                restaurant_id
                             }
                         }
                     )

@@ -50,9 +50,6 @@ export const ChefAddScreen = () => {
     Keyboard.addListener("keyboardDidShow", keyboardActiveListenerShow);
     Keyboard.addListener('keyboardDidHide', keyboardActiveListenerHide);
 
-    console.log("Keyboard", keyboardState);
-    console.log(Dimensions);
-
     useEffect( () => {
         if(proceed){
             resetAll();
@@ -89,6 +86,7 @@ export const ChefAddScreen = () => {
                 const id = user.uid;
                 const restaurant_name = restaurantInfo.restaurant_name;
                 const restaurant_logo = restaurantInfo.restaurant_logo;
+                const restaurant_id = user.uid;
 
                 createNewCate(
                     id, 
@@ -101,6 +99,7 @@ export const ChefAddScreen = () => {
                     details,
                     restaurant_name, 
                     restaurant_logo,
+                    restaurant_id,
                     setIsLoading,
                     setProceed
                 );
