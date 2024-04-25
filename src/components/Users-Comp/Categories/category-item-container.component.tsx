@@ -28,19 +28,19 @@ export const CategoryItemContainerComponent = () => {
                 />
 
                 <CategoryOptionsComponent 
-                    snackName="Hot Dog"
+                    snackName="Food"
                     start={ false }
                     uri={ require("../../../../assets/Images/Hot-Dog/dog1.jpg") }
                 />
 
                 <CategoryOptionsComponent 
-                    snackName="Burger"
+                    snackName="Snacks"
                     start={ false }
                     uri={ require("../../../../assets/Images/Burger/burger1.jpg") }
                 />
 
                 <CategoryOptionsComponent 
-                    snackName="Pizza"
+                    snackName="Drinks"
                     start={ false }
                     uri={ require("../../../../assets/Images/Pizza/pizza1.jpg") }
                 />
