@@ -16,7 +16,11 @@ import { breakDownSimple } from '../../../Utils/primary.utils';
 import { CategoriesHeaderText } from "../Categories/category-header-text.component";
 import { RestaurantDetailComponent } from "./restaurant-details.component"; 
 
-export const RestaurantDetailContainerComponent = () => {
+interface Props {
+    show?: boolean
+}
+
+export const RestaurantDetailContainerComponent: React.FC<Props> = ({ show }) => {
 
     // const navigation = useNavigation();
 
@@ -25,9 +29,11 @@ export const RestaurantDetailContainerComponent = () => {
     return (
         <View>
             <CategoriesHeaderText 
-                cateName="Open Restaurants"
-                seeAll={ true }
+                cateName={ !show ? "Open Restaurants" : "" }
+                seeAll={ show ? false : true }
             />
+
+            <View style={ show && { marginTop: -32 } }></View>
 
             <FlatList 
                 data={restaurantsData}

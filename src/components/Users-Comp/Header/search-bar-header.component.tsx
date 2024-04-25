@@ -12,7 +12,11 @@ import { View, Text, TouchableOpacity } from "react-native";
 import { homeUsersScreenStyles } from '../../../styles/screens/home-users.styles';
 import { searchUsersStyles } from '../../../styles/screens/serach-users.styles';
 
-export const SerachBarHeaderComponent = () => {
+interface Props {
+    header?: string
+}
+
+export const SerachBarHeaderComponent: React.FC<Props> = ({ header }) => {
 
     const navigation = useNavigation();
 
@@ -35,7 +39,7 @@ export const SerachBarHeaderComponent = () => {
                     />
                 </TouchableOpacity>
                 <Text style={ searchUsersStyles.serachHeaderTxt }>
-                    Search
+                    { header ? header : "Search" }
                 </Text>
             </View>
 
