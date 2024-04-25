@@ -20,6 +20,9 @@ import { ProfileInfoScreen } from "../../../screens/Users/profile-info.screen";
 import { AddressUsersScreen } from "../../../screens/Users/address.users.screen";
 import { EditProfileScreen } from "../../../screens/Users/edit-profile.screen";
 
+// Screen that only displays Restaurant contents
+import { OnlyRestaurantScreen } from "../../../screens/Users/only-restaurant.screen";
+
 // Stack initialization
 const UsersStack = createStackNavigator();
 
