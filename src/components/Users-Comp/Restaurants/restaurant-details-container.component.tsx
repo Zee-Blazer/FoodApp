@@ -31,6 +31,7 @@ export const RestaurantDetailContainerComponent: React.FC<Props> = ({ show }) =>
             <CategoriesHeaderText 
                 cateName={ !show ? "Open Restaurants" : "" }
                 seeAll={ show ? false : true }
+                screen="OnlyRestaurant"
             />
 
             <View style={ show && { marginTop: -32 } }></View>

@@ -5,7 +5,6 @@ import { View, SafeAreaView } from "react-native";
 import { homeUsersScreenStyles } from "../../styles/screens/home-users.styles";
 
 // Components
-import { CategoriesHeaderText } from "../../components/Users-Comp/Categories/category-header-text.component";
 import { RestaurantDetailContainerComponent } from "../../components/Users-Comp/Restaurants/restaurant-details-container.component";
 import { SerachBarHeaderComponent } from "../../components/Users-Comp/Header/search-bar-header.component";
 

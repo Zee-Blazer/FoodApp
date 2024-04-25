@@ -12,10 +12,11 @@ import { homeUsersScreenStyles } from '../../../styles/screens/home-users.styles
 
 interface Props {
     cateName: string,
-    seeAll: boolean
+    seeAll: boolean,
+    screen?: string
 }
 
-export const CategoriesHeaderText: React.FC<Props> = ({ cateName, seeAll }) => {
+export const CategoriesHeaderText: React.FC<Props> = ({ cateName, seeAll, screen }) => {
 
     const navigation = useNavigation();
 
@@ -31,7 +32,7 @@ export const CategoriesHeaderText: React.FC<Props> = ({ cateName, seeAll }) => {
             {
                 seeAll &&
                 <TouchableOpacity
-                    onPress={ () => seeAll && navigation.navigate("OnlyRestaurant") }
+                    onPress={ () => seeAll && screen && navigation.navigate(screen) }
                 >
                     <Text style={ homeUsersScreenStyles.cateSeeAllTxt }>
                         See All <Feather name="chevron-right" size={14} color="#A0A5BA" />
