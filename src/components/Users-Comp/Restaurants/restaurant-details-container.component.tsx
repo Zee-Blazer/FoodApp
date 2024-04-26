@@ -3,9 +3,6 @@ import React, { useContext } from 'react';
 // Default React Native Components
 import { View, FlatList, Text } from "react-native";
 
-// Navigation
-import { useNavigation } from '@react-navigation/native';
-
 // Details Context for Users Food ordering 
 import { DetailsContext } from '../../../services/Context/details.context';
 
@@ -21,8 +18,6 @@ interface Props {
 }
 
 export const RestaurantDetailContainerComponent: React.FC<Props> = ({ show }) => {
-
-    // const navigation = useNavigation();
 
     const { restaurantsData } = useContext(DetailsContext);
 
