@@ -27,14 +27,14 @@ export const RestaurantDetailContainerComponent: React.FC<Props> = ({ show }) =>
     const { restaurantsData } = useContext(DetailsContext);
 
     return (
-        <View>
+        <View style={ show && { paddingBottom: 54 } }>
             <CategoriesHeaderText 
                 cateName={ !show ? "Open Restaurants" : "" }
                 seeAll={ show ? false : true }
                 screen="OnlyRestaurant"
             />
 
-            <View style={ show && { marginTop: -32 } }></View>
+            <View style={ show && { marginTop: -36 } }></View>
 
             <FlatList 
                 showsVerticalScrollIndicator={false}
@@ -60,6 +60,7 @@ export const RestaurantDetailContainerComponent: React.FC<Props> = ({ show }) =>
                     )
                 } }
                 keyExtractor={ item => item.ownerId }
+                // style={ show && { paddingBottom: 102 } }
             />
 
         </View>
