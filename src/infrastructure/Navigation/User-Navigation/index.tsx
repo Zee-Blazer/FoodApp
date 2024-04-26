@@ -23,6 +23,9 @@ import { EditProfileScreen } from "../../../screens/Users/edit-profile.screen";
 // Screen that only displays Restaurant contents
 import { OnlyRestaurantScreen } from "../../../screens/Users/only-restaurant.screen";
 
+// Screen to display all the category contexts on the screen
+import { CategoryViewScreen } from "../../../screens/Users/category-view.screen";
+
 // Stack initialization
 const UsersStack = createStackNavigator();
 
@@ -42,6 +45,7 @@ export const UsersNavigation = () => {
             <UsersStack.Screen name="RestaurantView" component={ RestaurantViewScreen } />
             <UsersStack.Screen name="UsersCart" component={ UsersCartScreen } />
             <UsersStack.Screen name="OnlyRestaurant" component={ OnlyRestaurantScreen } />
+            <UsersStack.Screen name="CategoryView" component={ CategoryViewScreen } />
             <UsersStack.Screen name="Payment" component={ PaymentScreen } />
             <UsersStack.Screen name="AddCart" component={ AddCardScreen } />
             <UsersStack.Screen name="Success" component={ SuccessScreen } />
