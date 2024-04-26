@@ -19,6 +19,8 @@ export const CategoryViewScreen = ({ route }) => {
     const { title } = route.params;
 
     let template;
+
+    console.log(title == "All Categories");
     
     switch(title){
         case "All Categories":
@@ -26,21 +28,46 @@ export const CategoryViewScreen = ({ route }) => {
                 <>
                     <PopularMealComponent 
                         cateName='Food'
-                        data={ foodRecords }
+                        data={ foodRecords.slice(0,4) }
+                    />
+
+                    <PopularMealComponent 
+                        cateName='Drinks'
+                        data={ drinkRecords.slice(0,4) }
+                    />
+
+                    <PopularMealComponent 
+                        cateName='Snacks'
+                        data={ snacksRecord.slice(0,4) }
                     />
                 </>
             )
         case "Drinks": 
             template = (
-                <></>
+                <>
+                    <PopularMealComponent 
+                        cateName='Drinks'
+                        data={ drinkRecords.slice(0,8) }
+                    />
+                </>
             )
         case "Food": 
             template = (
-                <></>
+                <>
+                    <PopularMealComponent 
+                        cateName='Food'
+                        data={ foodRecords.slice(0,8) }
+                    />
+                </>
             )
         case "Snacks":
             template = (
-                <></>
+                <>
+                    <PopularMealComponent 
+                        cateName='Snacks'
+                        data={ snacksRecord.slice(0,8) }
+                    />
+                </>
             )
     }
 
@@ -57,16 +84,7 @@ export const CategoryViewScreen = ({ route }) => {
                 <ScrollView
                     showsVerticalScrollIndicator={false}
                 >
-                    {/* { template } */}
-                    <PopularMealComponent 
-                        cateName='Food'
-                        data={ foodRecords.slice(0,4) }
-                    />
-
-                    <PopularMealComponent 
-                        cateName='Drinks'
-                        data={ drinkRecords.slice(0,4) }
-                    />
+                    { template }
                 </ScrollView>
             </View>
         </SafeAreaView>

@@ -63,6 +63,11 @@ export const PopularMealComponent: React.FC<Props> = ({ cateName, data }) => {
                                 />
                             ) }
                             keyExtractor={ item => `${item.UID}-${item.inner_id}` }
+                            contentContainerStyle={[
+                                homeUsersScreenStyles.flexDisplay, 
+                                homeUsersScreenStyles.flexDesign,
+                                { flexWrap: "wrap" }
+                            ]}
                         />
                     : 
 
