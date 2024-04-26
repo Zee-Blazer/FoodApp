@@ -1,8 +1,12 @@
+import React, { useContext } from 'react';
 
 import { View, ScrollView, Text, TouchableOpacity } from "react-native";
 
 // Navigation
 import { useNavigation } from "@react-navigation/native";
+
+// Authentication Context
+import { AuthContext } from '../../../services/Context/auth.context';
 
 // Styling
 import { homeUsersScreenStyles } from "../../../styles/screens/home-users.styles";
@@ -14,6 +18,10 @@ import { searchUsersStyles } from "../../../styles/screens/serach-users.styles";
 export const RecentKeywordComponent = () => {
 
     const navigation = useNavigation();
+
+    const { user } = useContext(AuthContext);
+
+    console.log(user.uid);
 
     return (
         <View>
