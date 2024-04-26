@@ -10,7 +10,7 @@ import { CategoryOptionsComponent } from "./category-options.component";
 
 export const CategoryItemContainerComponent = () => {
 
-    const params = { title: "All" }
+    const params = { title: "All Categories" }
 
     return (
         <View>

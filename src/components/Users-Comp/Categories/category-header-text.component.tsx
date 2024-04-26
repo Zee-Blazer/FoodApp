@@ -37,7 +37,11 @@ export const CategoriesHeaderText: React.FC<Props> = ({ cateName, seeAll, screen
             {
                 seeAll &&
                 <TouchableOpacity
-                    onPress={ () => params ? navigation.navigate(screen, { ...params }) : navigation.navigate(screen) }
+                    onPress={ () => params ? 
+                            navigation.navigate(screen, { ...params }) 
+                        : 
+                            navigation.navigate(screen) 
+                    }
                 >
                     <Text style={ homeUsersScreenStyles.cateSeeAllTxt }>
                         See All <Feather name="chevron-right" size={14} color="#A0A5BA" />

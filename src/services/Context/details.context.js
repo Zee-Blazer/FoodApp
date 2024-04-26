@@ -32,8 +32,6 @@ export const DetailsContextProvider = ({ children }) => {
         getDataMain();
     }, [] )
 
-    // console.log(allItemRecord);
-
     return (
         <DetailsContext.Provider
             value={{
