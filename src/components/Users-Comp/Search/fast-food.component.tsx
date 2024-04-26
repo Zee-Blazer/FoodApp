@@ -16,7 +16,9 @@ interface Props {
     foodType: string,
     imgUri: string,
     amount: number,
-    link: string
+    link: string,
+    uid?: string,
+    inner_id?: string
 }
 
 export const FastFoodComponent: React.FC<Props> = ({ resName, foodType, imgUri, amount, link }) => {

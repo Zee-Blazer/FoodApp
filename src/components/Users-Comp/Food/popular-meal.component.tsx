@@ -8,11 +8,22 @@ import { homeUsersScreenStyles } from "../../../styles/screens/home-users.styles
 import { CategoriesHeaderText } from "../Categories/category-header-text.component";
 import { FastFoodComponent } from "../Search/fast-food.component";
 
-interface Props {
-    cateName: string
+interface Data {
+    name: string,
+    UID: string,
+    inner_id: any,
+    type: any,
+    category: any
 }
 
-export const PopularMealComponent: React.FC<Props> = ({ cateName }) => {
+interface Props {
+    cateName: string,
+    data?: Data[]
+}
+
+export const PopularMealComponent: React.FC<Props> = ({ cateName, data }) => {
+
+    console.log(data && data[0]);
 
     return (
         <View>
