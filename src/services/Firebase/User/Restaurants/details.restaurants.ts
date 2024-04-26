@@ -1,7 +1,7 @@
 
 // Firebase Database
 import { database } from '../../../../firebaseConfig';
-import { ref, onValue, set, limitToFirst, query } from 'firebase/database';
+import { ref, onValue, set, push, limitToFirst, query } from 'firebase/database';
 
 // The Interface for the type of data that would be accepted in the TS code 
 interface Item {
@@ -130,7 +130,18 @@ const generalGetAllInfoSearch = (type: string) => {
 
 }
 
+const saveNewKeyWord = (uid: any, keyword: string) => {
+    push(
+        ref(database, `Keyword/${uid}`),
+        {
+            keyword
+        }
+    )
+    // console.log(uid, keyword);
+}
+
 export {
     getAllRestaurantsForUser,
-    generalGetAllInfoSearch
+    generalGetAllInfoSearch,
+    saveNewKeyWord
 }

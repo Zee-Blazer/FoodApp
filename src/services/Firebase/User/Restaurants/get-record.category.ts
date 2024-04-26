@@ -21,4 +21,16 @@ const getSpecificCategoryRecord = (
     )
 }
 
-export { getSpecificCategoryRecord }
+const getAllSearchKeyword = (uid: string) => {
+    onValue(
+        ref(database, `Keyword/${uid}`),
+        (snapshot) => {
+            console.log(snapshot.val());
+        }
+    )
+}
+
+export { 
+    getSpecificCategoryRecord,
+    getAllSearchKeyword
+}

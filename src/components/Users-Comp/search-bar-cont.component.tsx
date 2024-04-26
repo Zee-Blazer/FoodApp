@@ -6,8 +6,14 @@ import { AntDesign } from '@expo/vector-icons';
 // Navigation 
 import { useNavigation } from '@react-navigation/native';
 
+// Firebase function to save new keyword
+import { saveNewKeyWord } from '../../services/Firebase/User/Restaurants/details.restaurants';
+
 // Details Context ("For all important information")
 import { DetailsContext } from '../../services/Context/details.context';
+
+// Authentication Context
+import { AuthContext } from '../../services/Context/auth.context';
 
 import { View, TextInput, FlatList } from 'react-native';
 
@@ -27,6 +33,8 @@ export const SearchBarContComponent: React.FC<Props> = ({ redirect }) => {
 
     const { allItemRecord, getDataMain, setSearchResult, searchResult } = useContext(DetailsContext);
 
+    const { user } = useContext(AuthContext);
+
     const textInputRef = useRef<TextInput | null>(null);
 
     const [searchItemTxt, setSearchItemTxt] = useState();
@@ -43,6 +51,10 @@ export const SearchBarContComponent: React.FC<Props> = ({ redirect }) => {
         } )
 
         setSearchResult(dataRecord);
+    }
+
+    const getKeyWord = () => {
+        saveNewKeyWord(user.uid, searchItemTxt.length > 1 && searchItemTxt)
     }
 
     useEffect(() => {
@@ -68,6 +80,7 @@ export const SearchBarContComponent: React.FC<Props> = ({ redirect }) => {
                     onChangeText={ e => searchVal(e) }
                     value={ searchItemTxt }
                     onFocus={ () => redirect && navigation.navigate("Search") }
+                    onSubmitEditing={ getKeyWord }
                 />
             </View>
 

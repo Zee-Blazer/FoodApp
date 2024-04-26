@@ -1,9 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 
 import { View, ScrollView, Text, TouchableOpacity } from "react-native";
 
 // Navigation
 import { useNavigation } from "@react-navigation/native";
+
+// Firebase function to get the all the searched keywords
+import { getAllSearchKeyword } from '../../../services/Firebase/User/Restaurants/get-record.category';
 
 // Authentication Context
 import { AuthContext } from '../../../services/Context/auth.context';
@@ -21,7 +24,9 @@ export const RecentKeywordComponent = () => {
 
     const { user } = useContext(AuthContext);
 
-    console.log(user.uid);
+    useEffect( () => {
+        getAllSearchKeyword(user.uid);
+    }, [] )
 
     return (
         <View>
