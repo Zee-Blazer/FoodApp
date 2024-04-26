@@ -17,7 +17,6 @@ export const CategoryViewScreen = ({ route }) => {
     const { drinkRecords, foodRecords, snacksRecord } = useContext(DetailsContext);
 
     const { title } = route.params;
-    console.log(title)
 
     let template;
     
@@ -64,10 +63,10 @@ export const CategoryViewScreen = ({ route }) => {
                         data={ foodRecords.slice(0,4) }
                     />
 
-                    {/* <PopularMealComponent 
+                    <PopularMealComponent 
                         cateName='Drinks'
                         data={ drinkRecords.slice(0,4) }
-                    /> */}
+                    />
                 </ScrollView>
             </View>
         </SafeAreaView>

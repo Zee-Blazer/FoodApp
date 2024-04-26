@@ -1,5 +1,5 @@
 
-import { View } from "react-native";
+import { View, FlatList } from "react-native";
 
 // Styling
 import { homeUsersScreenStyles } from "../../../styles/screens/home-users.styles";
@@ -23,7 +23,7 @@ interface Props {
 
 export const PopularMealComponent: React.FC<Props> = ({ cateName, data }) => {
 
-    console.log(data && data[0]);
+    // console.log(data && data[0]);
 
     return (
         <View>
@@ -41,35 +41,62 @@ export const PopularMealComponent: React.FC<Props> = ({ cateName, data }) => {
                     { flexWrap: "wrap" }
                 ]}
             >
+                { 
+                    data ? 
+                        <FlatList 
+                            data={ data }
+                            // style={[ 
+                            //     homeUsersScreenStyles.flexDisplay, 
+                            //     homeUsersScreenStyles.flexDesign,
+                            //     { flexWrap: "wrap" }
+                            // ]}
+                            renderItem={ ({item}) => (
+                                <FastFoodComponent 
+                                    foodType="European Pizza"
+                                    resName="Uttora Coffe House"
+                                    amount={ 40 }
+                                    imgUri={ require("../../../../assets/Images/Restaurants/resturant1.jpg") }
+                                    link="RestaurantView"
+                                    uid={ item.UID }
+                                    inner_id={ item.inner_id }
+                                    category={ item.category }
+                                />
+                            ) }
+                            keyExtractor={ item => `${item.UID}-${item.inner_id}` }
+                        />
+                    : 
 
-                <FastFoodComponent 
-                    foodType="European Pizza"
-                    resName="Uttora Coffe House"
-                    amount={ 40 }
-                    imgUri={ require("../../../../assets/Images/Restaurants/resturant1.jpg") }
-                    link="RestaurantView"
-                />
-                <FastFoodComponent 
-                    foodType="European Pizza"
-                    resName="Uttora Coffe House"
-                    amount={ 30 }
-                    imgUri={ require("../../../../assets/Images/Restaurants/resturant2.jpg") }
-                    link="RestaurantView"
-                />
-                <FastFoodComponent 
-                    foodType="European Pizza"
-                    resName="Uttora Coffe House"
-                    amount={ 45 }
-                    imgUri={ require("../../../../assets/Images/Restaurants/resturant4.jpg") }
-                    link="RestaurantView"
-                />
-                <FastFoodComponent 
-                    foodType="European Pizza"
-                    resName="Uttora Coffe House"
-                    amount={ 54 }
-                    imgUri={ require("../../../../assets/Images/Restaurants/resturant3.jpg") }
-                    link="RestaurantView"
-                />
+                        <>
+                            <FastFoodComponent 
+                                foodType="European Pizza"
+                                resName="Uttora Coffe House"
+                                amount={ 40 }
+                                imgUri={ require("../../../../assets/Images/Restaurants/resturant1.jpg") }
+                                link="RestaurantView"
+                            />
+                            <FastFoodComponent 
+                                foodType="European Pizza"
+                                resName="Uttora Coffe House"
+                                amount={ 30 }
+                                imgUri={ require("../../../../assets/Images/Restaurants/resturant2.jpg") }
+                                link="RestaurantView"
+                            />
+                            <FastFoodComponent 
+                                foodType="European Pizza"
+                                resName="Uttora Coffe House"
+                                amount={ 45 }
+                                imgUri={ require("../../../../assets/Images/Restaurants/resturant4.jpg") }
+                                link="RestaurantView"
+                            />
+                            <FastFoodComponent 
+                                foodType="European Pizza"
+                                resName="Uttora Coffe House"
+                                amount={ 54 }
+                                imgUri={ require("../../../../assets/Images/Restaurants/resturant3.jpg") }
+                                link="RestaurantView"
+                            />
+                        </>
+                }
 
             </View>
 
