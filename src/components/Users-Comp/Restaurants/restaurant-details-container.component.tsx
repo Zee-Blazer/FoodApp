@@ -37,6 +37,7 @@ export const RestaurantDetailContainerComponent: React.FC<Props> = ({ show }) =>
             <View style={ show && { marginTop: -32 } }></View>
 
             <FlatList 
+                showsVerticalScrollIndicator={false}
                 data={restaurantsData}
                 renderItem={ ({ item }) => {
 
