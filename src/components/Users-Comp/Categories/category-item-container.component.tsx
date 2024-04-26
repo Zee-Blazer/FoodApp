@@ -10,11 +10,15 @@ import { CategoryOptionsComponent } from "./category-options.component";
 
 export const CategoryItemContainerComponent = () => {
 
+    const params = { title: "All" }
+
     return (
         <View>
             <CategoriesHeaderText 
                 cateName="All Categories"
                 seeAll={ true }
+                screen="CategoryView"
+                params={ params }
             />
             <ScrollView 
                 style={[ homeUsersScreenStyles.boxSpacing, homeUsersScreenStyles.innerSpace ]} 
