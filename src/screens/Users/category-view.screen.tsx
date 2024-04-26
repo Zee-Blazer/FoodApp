@@ -19,11 +19,10 @@ export const CategoryViewScreen = ({ route }) => {
     const { title } = route.params;
 
     let template;
-
-    console.log(title == "All Categories");
     
     switch(title){
         case "All Categories":
+            console.log("Category");
             template = (
                 <>
                     <PopularMealComponent 
@@ -42,7 +41,9 @@ export const CategoryViewScreen = ({ route }) => {
                     />
                 </>
             )
-        case "Drinks": 
+            break;
+        case "Drinks":
+            console.log("Drinks"); 
             template = (
                 <>
                     <PopularMealComponent 
@@ -51,7 +52,9 @@ export const CategoryViewScreen = ({ route }) => {
                     />
                 </>
             )
+            break;
         case "Food": 
+            console.log("Food");
             template = (
                 <>
                     <PopularMealComponent 
@@ -60,7 +63,9 @@ export const CategoryViewScreen = ({ route }) => {
                     />
                 </>
             )
+            break
         case "Snacks":
+            console.log("Category");
             template = (
                 <>
                     <PopularMealComponent 
@@ -69,10 +74,8 @@ export const CategoryViewScreen = ({ route }) => {
                     />
                 </>
             )
+            break;
     }
-
-    // console.log(drinkRecords[0]);
-    // console.log(drinkRecords.length);
 
     return (
         <SafeAreaView  style={{ backgroundColor: "white", flex: 1 }}>

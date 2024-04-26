@@ -1,6 +1,9 @@
 
 import { Text, Image, TouchableOpacity } from 'react-native';
 
+// Navigation
+import { useNavigation } from "@react-navigation/native";
+
 // Styling
 import { homeUsersScreenStyles } from '../../../styles/screens/home-users.styles';
 
@@ -20,6 +23,8 @@ export const CategoryOptionsComponent: React.FC<Props> = ({
     snackName, start, uri, screen, params 
 }) => {
 
+    const navigation = useNavigation();
+
     return (
         <TouchableOpacity 
             style={[ 
@@ -28,6 +33,7 @@ export const CategoryOptionsComponent: React.FC<Props> = ({
                 homeUsersScreenStyles.boxShadow,
                 start ? homeUsersScreenStyles.specialBgColor : homeUsersScreenStyles.specialBgWhite, 
             ]}
+            onPress={ () => navigation.navigate(screen, { ...params }) }
         >
             <Image 
                 source={ uri } 
