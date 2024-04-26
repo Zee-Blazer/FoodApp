@@ -68,6 +68,7 @@ export const createNewCate = (
                                 item_name: name,
                                 item_img: downloadUrl,
                                 item_catergory: category,
+                                item_price: price
                             }
                         )
                         setIsLoading(false);
