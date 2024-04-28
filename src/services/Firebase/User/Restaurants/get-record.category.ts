@@ -21,11 +21,17 @@ const getSpecificCategoryRecord = (
     )
 }
 
-const getAllSearchKeyword = (uid: string) => {
+const getAllSearchKeyword = (
+    uid: string, setSearchKeywords: React.Dispatch<React.SetStateAction<any>>
+) => {
     onValue(
         ref(database, `Keyword/${uid}`),
         (snapshot) => {
-            console.log(snapshot.val());
+            let data = [];
+            snapshot.forEach( (childSnapshot) => {
+                data.push({key: childSnapshot.key, ...childSnapshot.val()});
+            } )
+            setSearchKeywords(data);
         }
     )
 }

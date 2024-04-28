@@ -1,6 +1,6 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
-import { View, ScrollView, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, FlatList } from "react-native";
 
 // Navigation
 import { useNavigation } from "@react-navigation/native";
@@ -24,39 +24,40 @@ export const RecentKeywordComponent = () => {
 
     const { user } = useContext(AuthContext);
 
+    const [searchedKeywords, setSearchKeywords] = useState();
+
     useEffect( () => {
-        getAllSearchKeyword(user.uid);
+        getAllSearchKeyword(user.uid, setSearchKeywords);
     }, [] )
 
     return (
-        <View>
-            <CategoriesHeaderText 
-                cateName="Recent Keywords"
-                seeAll={ false }
-            />
+        <>
+            {
+                searchedKeywords &&
+                    <View>
+                        <CategoriesHeaderText 
+                            cateName="Recent Keywords"
+                            seeAll={ false }
+                        />
 
-            <ScrollView
-                horizontal
-                showsHorizontalScrollIndicator={ false }
-                style={[ homeUsersScreenStyles.innerSpace, homeUsersScreenStyles.boxSpacing2 ]}
-            >
-                <TouchableOpacity style={ searchUsersStyles.searchKeyWordCont } onPress={ () => navigation.navigate("Food") }>
-                    <Text style={ searchUsersStyles.searchKeyWords }>Burger</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={ searchUsersStyles.searchKeyWordCont }>
-                    <Text style={ searchUsersStyles.searchKeyWords }>Pizza</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={ searchUsersStyles.searchKeyWordCont }>
-                    <Text style={ searchUsersStyles.searchKeyWords }>Hot Dog</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={ searchUsersStyles.searchKeyWordCont }>
-                    <Text style={ searchUsersStyles.searchKeyWords }>Sandwich</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={ searchUsersStyles.searchKeyWordCont }>
-                    <Text style={ searchUsersStyles.searchKeyWords }>Coffee</Text>
-                </TouchableOpacity>
-            </ScrollView>
+                        <FlatList 
+                            horizontal
+                            showsHorizontalScrollIndicator={ false }
+                            data={ searchedKeywords }
+                            renderItem={ ({ item }) => (
+                                <TouchableOpacity 
+                                    style={ searchUsersStyles.searchKeyWordCont } 
+                                    onPress={ () => navigation.navigate("Food") }
+                                >
+                                    <Text style={ searchUsersStyles.searchKeyWords }>{ item.keyword }</Text>
+                                </TouchableOpacity>
+                            ) }
+                            keyExtractor={ item => `${item.key}` }
+                            contentContainerStyle={[ homeUsersScreenStyles.innerSpace, homeUsersScreenStyles.boxSpacing2 ]}
+                        />
 
-        </View>
+                    </View>
+            }
+        </>
     )
 }
