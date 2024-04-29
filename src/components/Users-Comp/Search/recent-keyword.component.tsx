@@ -20,6 +20,7 @@ import { searchUsersStyles } from "../../../styles/screens/serach-users.styles";
 
 export const RecentKeywordComponent = () => {
 
+    // Navigation
     const navigation = useNavigation();
 
     const { user } = useContext(AuthContext);
