@@ -29,6 +29,7 @@ export const RecentKeywordComponent = () => {
     // Use state Declaration
     const [searchedKeywords, setSearchKeywords] = useState();
 
+    // Use Effect declaration
     useEffect( () => {
         getAllSearchKeyword(user.uid, setSearchKeywords);
     }, [] )
