@@ -26,6 +26,7 @@ export const RecentKeywordComponent = () => {
     // User Context
     const { user } = useContext(AuthContext);
 
+    // Use state Declaration
     const [searchedKeywords, setSearchKeywords] = useState();
 
     useEffect( () => {
