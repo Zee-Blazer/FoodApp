@@ -23,6 +23,7 @@ export const RecentKeywordComponent = () => {
     // Navigation
     const navigation = useNavigation();
 
+    // User Context
     const { user } = useContext(AuthContext);
 
     const [searchedKeywords, setSearchKeywords] = useState();
