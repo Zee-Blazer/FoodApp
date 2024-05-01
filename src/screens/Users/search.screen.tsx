@@ -1,9 +1,6 @@
 
 import { View, SafeAreaView, ScrollView } from 'react-native';
 
-// Navigation
-import { useNavigation } from '@react-navigation/native';
-
 // Styling
 import { homeUsersScreenStyles } from '../../styles/screens/home-users.styles';
 
@@ -15,8 +12,6 @@ import { SuggestedRestaurantContainerComponent } from '../../components/Users-Co
 import { FastFoodContainerComponent } from '../../components/Users-Comp/Search/fast-food-container.component';
 
 export const SearchScreen = () => {
-
-    // const navigation = useNavigation();
 
     return (
         <SafeAreaView style={{ backgroundColor: "white", flex: 1 }}>
