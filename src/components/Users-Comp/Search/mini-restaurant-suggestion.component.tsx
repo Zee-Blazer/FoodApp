@@ -8,13 +8,24 @@ import { FontAwesome } from '@expo/vector-icons';
 import { searchUsersStyles } from "../../../styles/screens/serach-users.styles";
 import { homeUsersScreenStyles } from "../../../styles/screens/home-users.styles";
 
+interface Item {
+    UID: string,
+    category: any,
+    inner_id: any,
+    name: any,
+    type: any
+}
+
 interface Props {
     resName: string,
     rating: string,
-    imgUri: string
+    imgUri: string,
+    item?: Item
 }
 
-export const MiniRestaurantSuggestioncomponent: React.FC<Props> = ({ resName, rating, imgUri }) => {
+export const MiniRestaurantSuggestioncomponent: React.FC<Props> = ({ resName, rating, imgUri, item }) => {
+
+    console.log(item);
 
     return (
         <View style={ searchUsersStyles.miniRestCont }>
