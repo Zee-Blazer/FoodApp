@@ -32,30 +32,11 @@ export const SuggestedRestaurantContainerComponent = () => {
                 data={ data }
                 renderItem={ ({ item }) => (
                     <MiniRestaurantSuggestioncomponent 
-                        resName="Pansi Restaurant"
-                        rating="4.7"
-                        imgUri={ require("../../../../assets/Images/Restaurants/resturant2.jpg") }
                         item={ item }
                     />
                 ) }
                 keyExtractor={ item => `${ item.uid }-${ item.name }` }
             />
-            
-            {/* <MiniRestaurantSuggestioncomponent 
-                resName="Pansi Restaurant"
-                rating="4.7"
-                imgUri={ require("../../../../assets/Images/Restaurants/resturant2.jpg") }
-            />
-            <MiniRestaurantSuggestioncomponent 
-                resName="American Spicy Burger Shop"
-                rating="4.3"
-                imgUri={ require("../../../../assets/Images/Restaurants/resturant3.jpg") }
-            />
-            <MiniRestaurantSuggestioncomponent 
-                resName="Cafenio Coffee Club"
-                rating="4.0"
-                imgUri={ require("../../../../assets/Images/Restaurants/resturant4.jpg") }
-            /> */}
             
         </View>
     )
