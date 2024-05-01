@@ -1,6 +1,9 @@
 
 import { View, FlatList } from "react-native";
 
+// Breaking down into simple data utility function
+import { breakDownSimple } from '../../../Utils/primary.utils';
+
 // Components
 import { CategoriesHeaderText } from "../Categories/category-header-text.component";
 import { RestaurantDetailComponent } from "../Restaurants/restaurant-details.component";
@@ -30,7 +33,7 @@ export const OpenRestaurantscomponent: React.FC<Props> = ({ data }) => {
                 data={ data }
                 renderItem={ ({ item }) => {
 
-                    // const data = breakDownSimple(item.item_obj);
+                    const data = breakDownSimple(item.item_obj);
                     const dataList = data.length > 3 ? data.slice(0,3) : data;
 
                     let descrip:string [] = [];
