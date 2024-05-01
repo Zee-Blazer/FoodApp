@@ -1,8 +1,12 @@
+import React, { useState, useEffect } from 'react';
 
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 
 // Icons
 import { FontAwesome } from '@expo/vector-icons';
+
+// Firebase function
+import { getSpecificRestaurant } from "../../../services/Firebase/User/Restaurants/get-record.restaurant";
 
 // Styling
 import { searchUsersStyles } from "../../../styles/screens/serach-users.styles";
@@ -17,20 +21,22 @@ interface Item {
 }
 
 interface Props {
-    resName: string,
-    rating: string,
-    imgUri: string,
     item?: Item
 }
 
-export const MiniRestaurantSuggestioncomponent: React.FC<Props> = ({ resName, rating, imgUri, item }) => {
+export const MiniRestaurantSuggestioncomponent: React.FC<Props> = ({ item }) => {
 
-    console.log(item);
+    const [resName, setResName] = useState();
+    const [resUri, setResUri] = useState();
+
+    useEffect( () => {
+        getSpecificRestaurant(item.UID, setResName, setResUri);
+    }, [] )
 
     return (
-        <View style={ searchUsersStyles.miniRestCont }>
+        <TouchableOpacity style={ searchUsersStyles.miniRestCont }>
             <Image 
-                source={ imgUri }
+                source={{ uri: resUri }}
                 style={ searchUsersStyles.miniResImg }
             />
             <View>
@@ -42,9 +48,11 @@ export const MiniRestaurantSuggestioncomponent: React.FC<Props> = ({ resName, ra
                     ]}
                 >
                     <FontAwesome name="star-o" size={20} color="#FF7622" />
-                    <Text style={ searchUsersStyles.iconText }>{ rating }</Text>
+                    <Text style={ searchUsersStyles.iconText }>
+                        { (Math.random() * (5.0 - 4.1) + 4.1).toFixed(1) }
+                    </Text>
                 </View>
             </View>
-        </View>
+        </TouchableOpacity>
     )
 }
