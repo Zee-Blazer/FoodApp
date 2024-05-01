@@ -48,14 +48,21 @@ export const RecentKeywordComponent = () => {
                             horizontal
                             showsHorizontalScrollIndicator={ false }
                             data={ searchedKeywords }
-                            renderItem={ ({ item }) => (
-                                <TouchableOpacity 
-                                    style={ searchUsersStyles.searchKeyWordCont } 
-                                    onPress={ () => navigation.navigate("Food") }
-                                >
-                                    <Text style={ searchUsersStyles.searchKeyWords }>{ item.keyword }</Text>
-                                </TouchableOpacity>
-                            ) }
+                            renderItem={ ({ item }) => {
+                                console.log(item);
+
+                                return (
+                                    <TouchableOpacity 
+                                        style={ searchUsersStyles.searchKeyWordCont } 
+                                        onPress={ () => navigation.navigate(
+                                            "Food", 
+                                            { keyword: item.keyword }
+                                        ) }
+                                    >
+                                        <Text style={ searchUsersStyles.searchKeyWords }>{ item.keyword }</Text>
+                                    </TouchableOpacity>
+                                )
+                            } }
                             keyExtractor={ item => `${item.key}` }
                             contentContainerStyle={[ homeUsersScreenStyles.innerSpace, homeUsersScreenStyles.boxSpacing2 ]}
                         />

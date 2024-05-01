@@ -1,6 +1,9 @@
 
 import { View, SafeAreaView, ScrollView } from "react-native";
 
+// Router Info (Navigation)
+import { useRoute } from "@react-navigation/native";
+
 // Styling
 import { homeUsersScreenStyles } from "../../styles/screens/home-users.styles";
 
@@ -10,6 +13,11 @@ import { PopularMealComponent } from "../../components/Users-Comp/Food/popular-m
 import { OpenRestaurantscomponent } from "../../components/Users-Comp/Food/open-restaurants.component";
 
 export const FoodScreen = () => {
+
+    const route = useRoute();
+    const { params } = route;
+
+    console.log(params.keyword);
 
     return (
         <SafeAreaView style={{ backgroundColor: "white", flex: 1 }}>
