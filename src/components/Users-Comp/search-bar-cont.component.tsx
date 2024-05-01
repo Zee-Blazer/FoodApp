@@ -54,7 +54,9 @@ export const SearchBarContComponent: React.FC<Props> = ({ redirect }) => {
     }
 
     const getKeyWord = () => {
-        saveNewKeyWord(user.uid, searchItemTxt.length > 1 && searchItemTxt)
+        if(searchItemTxt !== undefined && searchItemTxt.length > 1 ){
+            saveNewKeyWord(user.uid, searchItemTxt.length >= 1 && searchItemTxt)
+        }
     }
 
     useEffect(() => {

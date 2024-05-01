@@ -14,7 +14,11 @@ import { homeUsersScreenStyles } from "../../../styles/screens/home-users.styles
 import { searchUsersStyles } from "../../../styles/screens/serach-users.styles";
 import { foodUserStyles } from "../../../styles/screens/food-users.styles";
 
-export const FoodHeaderComponent = () => {
+interface Props {
+    keyword: string
+}
+
+export const FoodHeaderComponent: React.FC<Props> = ({ keyword }) => {
 
     const navigation = useNavigation();
 
@@ -44,7 +48,7 @@ export const FoodHeaderComponent = () => {
                     ]}
                 >
                     <Text style={ searchUsersStyles.serachHeaderTxt }>
-                        BURGER
+                        { keyword }
                     </Text>
                     <AntDesign 
                         name="caretdown" 
