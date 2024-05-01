@@ -1,5 +1,9 @@
+import React, { useContext } from 'react';
 
 import { View } from "react-native";
+
+// Details Context 
+import { DetailsContext } from '../../../services/Context/details.context';
 
 // Styling
 import { homeUsersScreenStyles } from "../../../styles/screens/home-users.styles";
@@ -7,53 +11,18 @@ import { homeUsersScreenStyles } from "../../../styles/screens/home-users.styles
 // Components
 import { CategoriesHeaderText } from "../Categories/category-header-text.component";
 import { FastFoodComponent } from "./fast-food.component";
+import { PopularMealComponent } from "../Food/popular-meal.component";
 
 export const FastFoodContainerComponent = () => {
 
+    const { foodRecords } = useContext(DetailsContext);
+
     return (
-        <View>
-            <CategoriesHeaderText 
-                cateName="Popular Fast Food"
-                seeAll={ false }
-            />
-
-            <View style={{ marginTop: 24 }}></View>
-
-            <View 
-                style={[ 
-                    homeUsersScreenStyles.flexDisplay, 
-                    homeUsersScreenStyles.flexDesign,
-                    { flexWrap: "wrap" }
-                ]}
-            >
-
-                <FastFoodComponent 
-                    foodType="European Pizza"
-                    resName="Uttora Coffe House"
-                    amount={ 40 }
-                    imgUri={ require("../../../../assets/Images/Restaurants/resturant1.jpg") }
-                />
-                <FastFoodComponent 
-                    foodType="European Pizza"
-                    resName="Uttora Coffe House"
-                    amount={ 30 }
-                    imgUri={ require("../../../../assets/Images/Restaurants/resturant2.jpg") }
-                />
-                <FastFoodComponent 
-                    foodType="European Pizza"
-                    resName="Uttora Coffe House"
-                    amount={ 45 }
-                    imgUri={ require("../../../../assets/Images/Restaurants/resturant4.jpg") }
-                />
-                <FastFoodComponent 
-                    foodType="European Pizza"
-                    resName="Uttora Coffe House"
-                    amount={ 54 }
-                    imgUri={ require("../../../../assets/Images/Restaurants/resturant3.jpg") }
-                />
-
-            </View>
-            
-        </View>
+        <>
+            <PopularMealComponent 
+                cateName='Popular Fast Food'
+                data={ foodRecords.slice(0,4) }
+            />  
+        </>
     )
 }

@@ -22,7 +22,7 @@ export const CategoryViewScreen = ({ route }) => {
     
     switch(title){
         case "All Categories":
-            console.log("Category");
+
             template = (
                 <>
                     <PopularMealComponent 
@@ -43,7 +43,7 @@ export const CategoryViewScreen = ({ route }) => {
             )
             break;
         case "Drinks":
-            console.log("Drinks"); 
+
             template = (
                 <>
                     <PopularMealComponent 
@@ -54,7 +54,7 @@ export const CategoryViewScreen = ({ route }) => {
             )
             break;
         case "Food": 
-            console.log("Food");
+
             template = (
                 <>
                     <PopularMealComponent 
@@ -65,7 +65,7 @@ export const CategoryViewScreen = ({ route }) => {
             )
             break
         case "Snacks":
-            console.log("Category");
+            
             template = (
                 <>
                     <PopularMealComponent 
