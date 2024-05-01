@@ -1,11 +1,23 @@
 
-import { View } from "react-native";
+import { View, FlatList } from "react-native";
 
 // Components
 import { CategoriesHeaderText } from "../Categories/category-header-text.component";
 import { RestaurantDetailComponent } from "../Restaurants/restaurant-details.component";
 
-export const OpenRestaurantscomponent = () => {
+interface Data {
+    UID: string,
+    category: any,
+    inner_id: any,
+    name: any,
+    type: any
+}
+
+interface Props {
+    data: Data
+}
+
+export const OpenRestaurantscomponent: React.FC<Props> = ({ data }) => {
 
     return (
         <View style={{ marginTop: -24 }}>
@@ -14,13 +26,29 @@ export const OpenRestaurantscomponent = () => {
                 seeAll={ false }
             />
 
-            <RestaurantDetailComponent 
-                restaurantName="Pansi Restaurant"
-                restaurantItems="Pizza - Pie - Sandwitch - Wings"
-                imgUri={ require("../../../../assets/Images/Restaurants/resturant2.jpg") }
-                rating="3.2"
-                time={30}
-                link="FoodDetails"
+            <FlatList 
+                data={ data }
+                renderItem={ ({ item }) => {
+
+                    // const data = breakDownSimple(item.item_obj);
+                    const dataList = data.length > 3 ? data.slice(0,3) : data;
+
+                    let descrip:string [] = [];
+                    dataList.forEach( e => descrip.push(e.item_name) );
+                    const textDescrip = descrip.join(" - ");
+
+                    return (
+                        <RestaurantDetailComponent 
+                            restaurantName={ item.restaurant_name }
+                            restaurantItems={ textDescrip }
+                            imgUri={ item.restaurant_logo }
+                            rating={ (Math.random() * (5.0 - 4.1) + 4.1).toFixed(1) }
+                            time={20}
+                            link=""
+                        />
+                    )
+                } }
+                keyExtractor={ item => item.ownerId }
             />
         </View>
     )

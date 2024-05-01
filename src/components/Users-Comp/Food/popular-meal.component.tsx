@@ -44,12 +44,12 @@ export const PopularMealComponent: React.FC<Props> = ({ cateName, data }) => {
                 { 
                     data ? 
                         <FlatList 
+                            contentContainerStyle={[
+                                homeUsersScreenStyles.flexDisplay, 
+                                homeUsersScreenStyles.flexDesign,
+                                homeUsersScreenStyles.flexWrap
+                            ]}
                             data={ data }
-                            // style={[ 
-                            //     homeUsersScreenStyles.flexDisplay, 
-                            //     homeUsersScreenStyles.flexDesign,
-                            //     { flexWrap: "wrap" }
-                            // ]}
                             renderItem={ ({item}) => (
                                 <FastFoodComponent 
                                     foodType="European Pizza"
@@ -63,11 +63,6 @@ export const PopularMealComponent: React.FC<Props> = ({ cateName, data }) => {
                                 />
                             ) }
                             keyExtractor={ item => `${item.UID}-${item.inner_id}` }
-                            contentContainerStyle={[
-                                homeUsersScreenStyles.flexDisplay, 
-                                homeUsersScreenStyles.flexDesign,
-                                { flexWrap: "wrap" }
-                            ]}
                         />
                     : 
 

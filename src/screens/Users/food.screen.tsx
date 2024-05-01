@@ -25,7 +25,7 @@ export const FoodScreen = () => {
     const { keyword } = params;
 
     // Details Context
-    const { allItemRecord } = useContext(DetailsContext);
+    const { allItemRecord, restaurantsData } = useContext(DetailsContext);
 
     // State variables
     const [data, setData] = useState();
@@ -57,7 +57,9 @@ export const FoodScreen = () => {
                         data={ data }
                     />
 
-                    <OpenRestaurantscomponent />
+                    <OpenRestaurantscomponent 
+                        data={ restaurantsData.slice(0,3) }
+                    />
 
                 </ScrollView>
 

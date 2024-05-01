@@ -14,6 +14,9 @@ export const homeUsersScreenStyles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between"
     },
+    flexWrap: {
+        flexWrap: "wrap"
+    },
     flexDisplay: {
         flexDirection: "row",
     },
