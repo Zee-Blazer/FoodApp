@@ -12,11 +12,15 @@ import { FoodOptionContainer } from "../../components/Users-Comp/Restaurant View
 import { PopularMealComponent } from "../../components/Users-Comp/Food/popular-meal.component";
 import { CoverBgContainerComponent } from "../../components/Users-Comp/Restaurant View/cover-bg-container.component";
 
-export const RestaurantViewScreen: React.FC = () => {
+export const RestaurantViewScreen: React.FC = ({ route }) => {
+
+    const { params } = route;
 
     const [showCover, setShowCover] = useState<boolean>(false);
 
     const showFilter = () => setShowCover(!showCover);
+
+    console.log(params);
 
     return (
         <>

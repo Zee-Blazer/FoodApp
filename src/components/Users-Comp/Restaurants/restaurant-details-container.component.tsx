@@ -48,6 +48,7 @@ export const RestaurantDetailContainerComponent: React.FC<Props> = ({ show }) =>
                             restaurantName={ item.restaurant_name }
                             restaurantItems={ textDescrip }
                             imgUri={ item.restaurant_logo }
+                            uid={ item.ownerId }
                             rating="4.7"
                             time={20}
                             link=""

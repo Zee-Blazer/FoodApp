@@ -16,11 +16,12 @@ interface Props {
     imgUri: string,
     rating: string,
     time: number,
+    uid: any,
     link: string
 }
 
 export const RestaurantDetailComponent: React.FC<Props> = ({ 
-    restaurantName, restaurantItems, imgUri, rating, time, link
+    restaurantName, restaurantItems, imgUri, rating, time, link, uid
 }) => {
 
     const navigation = useNavigation();
@@ -28,7 +29,7 @@ export const RestaurantDetailComponent: React.FC<Props> = ({
     return (
         <TouchableOpacity 
             style={ homeUsersScreenStyles.restaurantCont }
-            onPress={ () => link && navigation.navigate(link) }
+            onPress={ () => navigation.navigate("RestaurantView", { uid }) }
         >
             <Image 
                 source={{ uri: imgUri }}
