@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { View, SafeAreaView, ScrollView } from "react-native";
+
+// Firebase function
+import { getRestaurantInfo } from '../../services/Firebase/User/Restaurants/restaurant-details';
 
 // Styling
 import { homeUsersScreenStyles } from "../../styles/screens/home-users.styles";
@@ -20,7 +23,9 @@ export const RestaurantViewScreen: React.FC = ({ route }) => {
 
     const showFilter = () => setShowCover(!showCover);
 
-    console.log(params);
+    useEffect( () => {
+        getRestaurantInfo(params.uid);
+    }, [] )
 
     return (
         <>
