@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 
 import { NavigationContainer } from "@react-navigation/native";
 
+import { View, Text } from "react-native";
+
 // Details User Context Provider
 import { DetailsContextProvider } from "../../services/Context/details.context";
 
