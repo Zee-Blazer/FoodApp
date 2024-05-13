@@ -21,7 +21,7 @@ export const OnlyRestaurantScreen = () => {
 
                 <RestaurantDetailContainerComponent 
                     show={ true }
-                />
+                /> 
 
             </View>
 
