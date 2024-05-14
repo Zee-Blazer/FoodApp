@@ -17,7 +17,7 @@ import { RestaurantDetailContainerComponent } from "../../components/Users-Comp/
 
 export const HomeScreen = () => {
 
-    const { user } = useContext(AuthContext);
+    const { user } = useContext(AuthContext); // Context
 
     return (
         <SafeAreaView style={{ backgroundColor: "white", flex: 1 }}>
