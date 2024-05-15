@@ -27,14 +27,6 @@ const getRestaurantInfo = (uid: string, setData: React.Dispatch<React.SetStateAc
     )
 }
 
-const getUriTesting = () => {
-    push(
-        ref(database, "database"),
-        { name: "Ganiyu Bolaji", age: 22 }
-    ).then( res => console.log(res.toString().replace(/\/+$/, '').split('/')[res.toString().replace(/\/+$/, '').split('/').length - 1]) )
-}
-
 export {
-    getRestaurantInfo,
-    getUriTesting
+    getRestaurantInfo
 }
