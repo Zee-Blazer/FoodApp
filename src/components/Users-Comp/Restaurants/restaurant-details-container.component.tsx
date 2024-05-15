@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
 // Default React Native Components
-import { View, FlatList, Text } from "react-native";
+import { View, FlatList, Platform } from "react-native";
 
 // Details Context for Users Food ordering 
 import { DetailsContext } from '../../../services/Context/details.context';
@@ -22,7 +22,7 @@ export const RestaurantDetailContainerComponent: React.FC<Props> = ({ show }) =>
     const { restaurantsData } = useContext(DetailsContext);
 
     return (
-        <View style={ show && { paddingBottom: 54 } }>
+        <View style={ show && { paddingBottom: Platform.OS == "android"? 74:  54 } }>
             <CategoriesHeaderText 
                 cateName={ !show ? "Open Restaurants" : "" }
                 seeAll={ show ? false : true }
