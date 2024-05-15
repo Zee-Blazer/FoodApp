@@ -7,18 +7,28 @@ import { restaurantViewUsersStyles } from "../../../styles/screens/restaurant-vi
 // Component
 import { RestaurantDetailInfoComponent } from "../Food Details/restaurant-detail.component";
 
-export const RestaurantViewInfoContainer = () => {
+interface Props {
+    restaurant_name: string,
+    restaurant_logo: string
+}
+
+export const RestaurantViewInfoContainer: React.FC<Props> = ({ restaurant_name, restaurant_logo }) => {
 
     return (
         <View style={{ marginTop: 24 }}>
             <Image 
-                source={ require("../../../../assets/Images/Burger/burger1.jpg") }
+                source={ 
+                    restaurant_logo ? 
+                            { uri: restaurant_logo } 
+                        :
+                            require("../../../../assets/Images/Burger/burger1.jpg") 
+                }
                 style={ restaurantViewUsersStyles.displayImg }
             />
             
             <RestaurantDetailInfoComponent 
-                restaurantName="Spicy restaurant"
-                restaurantItems="Maecenas sed diam eget risus varius blandit sit amet non magna. Integer posuere erat a ante venenatis dapibus posuere velit aliquet."
+                restaurantName={ restaurant_name && restaurant_name }
+                // restaurantItems="Maecenas sed diam eget risus varius blandit sit amet non magna. Integer posuere erat a ante venenatis dapibus posuere velit aliquet."
                 rating="4.7"
                 time={ 20 }
             />

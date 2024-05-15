@@ -28,6 +28,12 @@ export const RestaurantViewScreen: React.FC = ({ route }) => {
         getRestaurantInfo(params.uid, setData);
     }, [] )
 
+    const getItemName = () => {
+        Object.values(data.item).forEach( (e,i) => console.log(e.item_name) );
+    }
+
+    getItemName()
+
     return (
         <>
             <SafeAreaView style={{ backgroundColor: "white", flex: 1 }}>
@@ -42,12 +48,20 @@ export const RestaurantViewScreen: React.FC = ({ route }) => {
                         showsVerticalScrollIndicator={ false }
                     >
 
-                        <RestaurantViewInfoContainer />
+                        <RestaurantViewInfoContainer 
+                            restaurant_name={ data && data.restaurant_name }
+                            restaurant_logo={ data && data.restaurant_logo }
+                        />
 
                         <FoodOptionContainer />
 
                         <PopularMealComponent 
-                            cateName="Burger (10)"
+                            cateName={ 
+                                data ? 
+                                    `Avaliable Meals (${data.item && Object.keys(data.item).length})` 
+                                    : 
+                                    "Burger (10)" 
+                                }
                         />
 
                     </ScrollView>

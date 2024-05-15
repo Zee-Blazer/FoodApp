@@ -9,7 +9,7 @@ import { DeliveryDetailsComponent } from "../Restaurants/delivery-detail.compone
 
 interface Props {
     restaurantName: string,
-    restaurantItems: string,
+    restaurantItems?: string,
     rating: string,
     time: number
 }
@@ -23,9 +23,12 @@ export const RestaurantDetailInfoComponent: React.FC<Props> = ({ restaurantItems
             <Text style={ homeUsersScreenStyles.restaurantContHeaderTxt }>
                 { restaurantName }
             </Text>
-            <Text style={[ homeUsersScreenStyles.restaurantContSubHeaderTxt, { lineHeight: 24, marginTop: 7 } ]}>
-                { restaurantItems }
-            </Text>
+            {
+                restaurantItems &&
+                <Text style={[ homeUsersScreenStyles.restaurantContSubHeaderTxt, { lineHeight: 24, marginTop: 7 } ]}>
+                    { restaurantItems }
+                </Text>
+            }
 
             <DeliveryDetailsComponent 
                 rating={ rating }
