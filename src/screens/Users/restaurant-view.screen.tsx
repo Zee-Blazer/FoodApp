@@ -20,11 +20,12 @@ export const RestaurantViewScreen: React.FC = ({ route }) => {
     const { params } = route;
 
     const [showCover, setShowCover] = useState<boolean>(false);
+    const [data, setData] = useState<any>([]);
 
     const showFilter = () => setShowCover(!showCover);
 
     useEffect( () => {
-        getRestaurantInfo(params.uid);
+        getRestaurantInfo(params.uid, setData);
     }, [] )
 
     return (
@@ -33,7 +34,7 @@ export const RestaurantViewScreen: React.FC = ({ route }) => {
                 <View style={ homeUsersScreenStyles.body }>
                     
                     <RestaurantViewHeaderComponent 
-                        title="Restaurant View"
+                        title={ data ? data.restaurant_name : "Restaurant View" }
                         func={ showFilter }
                     />
 
