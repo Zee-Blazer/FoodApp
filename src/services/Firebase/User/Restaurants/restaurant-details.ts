@@ -1,7 +1,7 @@
 
 // Firebase Database
 import { database } from '../../../../firebaseConfig';
-import { ref, onValue } from 'firebase/database';
+import { ref, onValue, push } from 'firebase/database';
 
 interface List {
     item_category: string,
@@ -27,6 +27,14 @@ const getRestaurantInfo = (uid: string, setData: React.Dispatch<React.SetStateAc
     )
 }
 
+const getUriTesting = () => {
+    push(
+        ref(database, "database"),
+        { name: "Ganiyu Bolaji", age: 22 }
+    ).then( res => console.log(res.toString().replace(/\/+$/, '').split('/')[res.toString().replace(/\/+$/, '').split('/').length - 1]) )
+}
+
 export {
-    getRestaurantInfo
+    getRestaurantInfo,
+    getUriTesting
 }

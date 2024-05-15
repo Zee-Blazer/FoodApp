@@ -68,7 +68,8 @@ export const createNewCate = (
                                 item_name: name,
                                 item_img: downloadUrl,
                                 item_catergory: category,
-                                item_price: price
+                                item_price: price,
+                                item_uri: res.toString().replace(/\/+$/, '').split('/')[res.toString().replace(/\/+$/, '').split('/').length - 1]
                             }
                         )
                         setIsLoading(false);
