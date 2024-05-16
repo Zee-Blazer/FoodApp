@@ -20,6 +20,12 @@ export const homeUsersScreenStyles = StyleSheet.create({
     flexDisplay: {
         flexDirection: "row",
     },
+    notAvailableMsg: {
+        fontSize: 14,
+        color: "#A0A5BA",
+        fontFamily: theme.fonts.caption,
+        textAlign: "center"
+    },
     titleText: {
         color: theme.colors.text.tertiary,
         fontSize: theme.fontSizes.sm,
@@ -126,7 +132,7 @@ export const homeUsersScreenStyles = StyleSheet.create({
         fontSize: 21,
         fontFamily: theme.fonts.caption,
         color: "#A0A5BA",
-        marginVertical: "25%",
+        marginVertical: "18%",
         textAlign: "center"
     },
     displayImg: {

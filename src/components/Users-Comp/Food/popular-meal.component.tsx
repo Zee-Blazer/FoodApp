@@ -1,5 +1,5 @@
 
-import { View, FlatList } from "react-native";
+import { View, FlatList, Text } from "react-native";
 
 // Styling
 import { homeUsersScreenStyles } from "../../../styles/screens/home-users.styles";
@@ -42,7 +42,7 @@ export const PopularMealComponent: React.FC<Props> = ({ cateName, data }) => {
                 ]}
             >
                 { 
-                    data ? 
+                    data?.length !==0 ? 
                         <FlatList 
                             contentContainerStyle={[
                                 homeUsersScreenStyles.flexDisplay, 
@@ -66,36 +66,9 @@ export const PopularMealComponent: React.FC<Props> = ({ cateName, data }) => {
                         />
                     : 
 
-                        <>
-                            <FastFoodComponent 
-                                foodType="European Pizza"
-                                resName="Uttora Coffe House"
-                                amount={ 40 }
-                                imgUri={ require("../../../../assets/Images/Restaurants/resturant1.jpg") }
-                                link="RestaurantView"
-                            />
-                            <FastFoodComponent 
-                                foodType="European Pizza"
-                                resName="Uttora Coffe House"
-                                amount={ 30 }
-                                imgUri={ require("../../../../assets/Images/Restaurants/resturant2.jpg") }
-                                link="RestaurantView"
-                            />
-                            <FastFoodComponent 
-                                foodType="European Pizza"
-                                resName="Uttora Coffe House"
-                                amount={ 45 }
-                                imgUri={ require("../../../../assets/Images/Restaurants/resturant4.jpg") }
-                                link="RestaurantView"
-                            />
-                            <FastFoodComponent 
-                                foodType="European Pizza"
-                                resName="Uttora Coffe House"
-                                amount={ 54 }
-                                imgUri={ require("../../../../assets/Images/Restaurants/resturant3.jpg") }
-                                link="RestaurantView"
-                            />
-                        </>
+                        <Text
+                            style={ homeUsersScreenStyles.notAvailableMsg }
+                        >Not Available Currently</Text>
                 }
 
             </View>

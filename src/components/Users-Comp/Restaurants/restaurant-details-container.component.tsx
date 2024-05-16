@@ -64,6 +64,7 @@ export const RestaurantDetailContainerComponent: React.FC<Props> = ({ show }) =>
                     // style={ show && { paddingBottom: 102 } }
                 />
                 :
+                // Error display message when there is no database or the internet can't get the data
                 <Text
                     style={ homeUsersScreenStyles.noAvailableRestaurantError }
                 >No Available Restaurant At The Moment</Text>
