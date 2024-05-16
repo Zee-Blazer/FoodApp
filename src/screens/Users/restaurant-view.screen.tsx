@@ -26,13 +26,8 @@ export const RestaurantViewScreen: React.FC = ({ route }) => {
 
     useEffect( () => {
         getRestaurantInfo(params.uid, setData);
+        
     }, [] )
-
-    const getItemName = () => {
-        Object.values(data.item).forEach( (e,i) => console.log(e.item_name) );
-    }
-
-    getItemName()
 
     return (
         <>
@@ -53,7 +48,9 @@ export const RestaurantViewScreen: React.FC = ({ route }) => {
                             restaurant_logo={ data && data.restaurant_logo }
                         />
 
-                        <FoodOptionContainer />
+                        <FoodOptionContainer 
+                            data={ [] } // Error line
+                        />
 
                         <PopularMealComponent 
                             cateName={ 
