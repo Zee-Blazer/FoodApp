@@ -12,6 +12,7 @@ const restaurantDetailsInfoDB = (
     name: string, 
     address: string, 
     phone: any,
+    description: string,
     image: any,
     result: any,
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
@@ -38,7 +39,8 @@ const restaurantDetailsInfoDB = (
                                 restaurant_name: name, 
                                 restaurant_address: address, 
                                 restaurant_phone: phone,
-                                restaurant_logo: res
+                                restaurant_logo: res,
+                                restaurant_description: description
                             }
                         )
                         setIsLoading(false);
@@ -58,7 +60,8 @@ const restaurantDetailsInfoDB = (
                 restaurant_name: name, 
                 restaurant_logo: result, 
                 restaurant_address: address, 
-                restaurant_phone: phone 
+                restaurant_phone: phone,
+                restaurant_description: description
             }
         )
         setProceed(true);

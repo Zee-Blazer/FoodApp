@@ -50,6 +50,7 @@ export const EditChefRestaurant = () => {
             setName(restaurantInfo.restaurant_name);
             setPhone(restaurantInfo.restaurant_phone);
             setPic(restaurantInfo.restaurant_logo);
+            setDescription(restaurantInfo.restaurant_description);
         }
     }, [] )
 
@@ -68,13 +69,13 @@ export const EditChefRestaurant = () => {
             const response = await fetch(source.uri);
             const blob = await response.blob(); 
 
-            restaurantDetailsInfoDB(userId, name, address, phone, source, blob, setIsLoading, setChangeScreen);
+            restaurantDetailsInfoDB(userId, name, address, phone, description, source, blob, setIsLoading, setChangeScreen);
         }
         else {
             const source = null;
             const blob = restaurantInfo.restaurant_logo; 
 
-            restaurantDetailsInfoDB(userId, name, address, phone, source, blob, setIsLoading, setChangeScreen);
+            restaurantDetailsInfoDB(userId, name, address, phone, description, source, blob, setIsLoading, setChangeScreen);
         }
     }
 
