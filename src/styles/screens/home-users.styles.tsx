@@ -122,6 +122,13 @@ export const homeUsersScreenStyles = StyleSheet.create({
             },
           }),
     },
+    noAvailableRestaurantError: {
+        fontSize: 21,
+        fontFamily: theme.fonts.caption,
+        color: "#A0A5BA",
+        marginVertical: "25%",
+        textAlign: "center"
+    },
     displayImg: {
         width: 44,
         height: 44,

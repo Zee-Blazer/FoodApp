@@ -1,13 +1,16 @@
 import React, { useContext } from 'react';
 
 // Default React Native Components
-import { View, FlatList, Platform } from "react-native";
+import { View, FlatList, Platform, Text } from "react-native";
 
 // Details Context for Users Food ordering 
 import { DetailsContext } from '../../../services/Context/details.context';
 
 // Breaking down into simple data utility function
 import { breakDownSimple } from '../../../Utils/primary.utils';
+
+// Styling
+import { homeUsersScreenStyles } from '../../../styles/screens/home-users.styles';
 
 // Component
 import { CategoriesHeaderText } from "../Categories/category-header-text.component";
@@ -31,33 +34,40 @@ export const RestaurantDetailContainerComponent: React.FC<Props> = ({ show }) =>
 
             <View style={ show && { marginTop: -36 } }></View>
 
-            <FlatList 
-                showsVerticalScrollIndicator={false}
-                data={restaurantsData}
-                renderItem={ ({ item }) => {
+            {
+                restaurantsData.length !== 0 ? 
+                <FlatList 
+                    showsVerticalScrollIndicator={false}
+                    data={restaurantsData}
+                    renderItem={ ({ item }) => {
 
-                    const data = breakDownSimple(item.item_obj);
-                    const dataList = data.length > 3 ? data.slice(0,3) : data;
+                        const data = breakDownSimple(item.item_obj);
+                        const dataList = data.length > 3 ? data.slice(0,3) : data;
 
-                    let descrip:string [] = [];
-                    dataList.forEach( e => descrip.push(e.item_name) );
-                    const textDescrip = descrip.join(" - ");
+                        let descrip:string [] = [];
+                        dataList.forEach( e => descrip.push(e.item_name) );
+                        const textDescrip = descrip.join(" - ");
 
-                    return (
-                        <RestaurantDetailComponent 
-                            restaurantName={ item.restaurant_name }
-                            restaurantItems={ textDescrip }
-                            imgUri={ item.restaurant_logo }
-                            uid={ item.ownerId }
-                            rating="4.7"
-                            time={20}
-                            link=""
-                        />
-                    )
-                } }
-                keyExtractor={ item => item.ownerId }
-                // style={ show && { paddingBottom: 102 } }
-            />
+                        return (
+                            <RestaurantDetailComponent 
+                                restaurantName={ item.restaurant_name }
+                                restaurantItems={ textDescrip }
+                                imgUri={ item.restaurant_logo }
+                                uid={ item.ownerId }
+                                rating="4.7"
+                                time={20}
+                                link=""
+                            />
+                        )
+                    } }
+                    keyExtractor={ item => item.ownerId }
+                    // style={ show && { paddingBottom: 102 } }
+                />
+                :
+                <Text
+                    style={ homeUsersScreenStyles.noAvailableRestaurantError }
+                >No Available Restaurant At The Moment</Text>
+            }
 
         </View>
     )
