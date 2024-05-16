@@ -42,6 +42,7 @@ export const EditChefRestaurant = () => {
     const [name, setName] = useState<string>("");
     const [address, setAddress] = useState<string>("");
     const [phone, setPhone] = useState<any>();
+    const [description, setDescription] = useState<string>("");
 
     useEffect( () => {
         if(restaurantInfo) {
@@ -100,9 +101,11 @@ export const EditChefRestaurant = () => {
                         name={ name }
                         address={ address }
                         phone={ phone }
+                        description={ description }
                         setName={ setName }
                         setAddress={ setAddress }
                         setPhone={ setPhone }
+                        setDescription={ setDescription }
                     />
                 
                 </View>

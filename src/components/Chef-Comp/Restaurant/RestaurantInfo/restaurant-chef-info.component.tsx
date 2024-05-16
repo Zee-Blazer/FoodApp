@@ -12,13 +12,15 @@ interface Props {
     name: string,
     address: string,
     phone: any,
+    description: string,
     setName: React.Dispatch<React.SetStateAction<string>>,
     setAddress: React.Dispatch<React.SetStateAction<string>>
-    setPhone: React.Dispatch<React.SetStateAction<any>>
+    setPhone: React.Dispatch<React.SetStateAction<any>>,
+    setDescription: React.Dispatch<React.SetStateAction<string>>
 }
 
 export const RestaurantChefInfoComponent: React.FC<Props> = ({ 
-    name, address, phone, setName, setAddress, setPhone 
+    name, address, phone, setName, setAddress, setPhone, description, setDescription 
 }) => {
 
     const { restaurantInfo } = useContext(RestaurantContext);
@@ -53,6 +55,17 @@ export const RestaurantChefInfoComponent: React.FC<Props> = ({
                     inputMode="numeric"
                     value={ phone }
                     onChangeText={ setPhone }
+                    style={[ editProfileUsersStyles.inputField ]}
+                />
+            </View>
+
+            <View style={[ editProfileUsersStyles.inputContainer ]}>
+                <Text style={ editProfileUsersStyles.inputLabel }>RESTAURANT DESCRIPTION</Text>
+                <TextInput 
+                    placeholder={ "Describe Restaurant" }
+                    value={ description }
+                    multiline
+                    onChangeText={ setDescription }
                     style={[ editProfileUsersStyles.inputField ]}
                 />
             </View>
