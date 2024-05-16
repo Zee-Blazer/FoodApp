@@ -17,6 +17,12 @@ interface Item {
     restaurant_phone: any
 }
 
+interface Cate {
+    item_category: string,
+    item_img: string,
+    item_name: string
+}
+
 // Get specific restaurant details
 const getRestaurantInfo = (uid: string, setData: React.Dispatch<React.SetStateAction<Item[]>>) => {
     onValue(
@@ -28,5 +34,5 @@ const getRestaurantInfo = (uid: string, setData: React.Dispatch<React.SetStateAc
 }
 
 export {
-    getRestaurantInfo
+    getRestaurantInfo,
 }

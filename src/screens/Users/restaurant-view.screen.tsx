@@ -3,7 +3,9 @@ import React, { useState, useEffect } from 'react';
 import { View, SafeAreaView, ScrollView } from "react-native";
 
 // Firebase function
-import { getRestaurantInfo } from '../../services/Firebase/User/Restaurants/restaurant-details';
+import { 
+    getRestaurantInfo 
+} from '../../services/Firebase/User/Restaurants/restaurant-details';
 
 // Styling
 import { homeUsersScreenStyles } from "../../styles/screens/home-users.styles";
@@ -21,12 +23,12 @@ export const RestaurantViewScreen: React.FC = ({ route }) => {
 
     const [showCover, setShowCover] = useState<boolean>(false);
     const [data, setData] = useState<any>([]);
+    const [list, setList] = useState<any>([]);
 
     const showFilter = () => setShowCover(!showCover);
 
     useEffect( () => {
         getRestaurantInfo(params.uid, setData);
-        
     }, [] )
 
     return (
@@ -48,9 +50,9 @@ export const RestaurantViewScreen: React.FC = ({ route }) => {
                             restaurant_logo={ data && data.restaurant_logo }
                         />
 
-                        <FoodOptionContainer 
-                            data={ [] } // Error line
-                        />
+                        {/* <FoodOptionContainer 
+                            data={ list && list } // Error line
+                        /> */}
 
                         <PopularMealComponent 
                             cateName={ 

@@ -18,9 +18,7 @@ interface Props {
 
 export const FoodOptionContainer: React.FC<Props> = ({ data }) => {
 
-    // const getItemName = () => {
-    //     Object.values(data.item).forEach( (e,i) => console.log(e.item_name) );
-    // }
+    console.log(data);
 
     return (
         <ScrollView 
@@ -38,11 +36,11 @@ export const FoodOptionContainer: React.FC<Props> = ({ data }) => {
                 data={ data }
                 renderItem={ ({ item }) => (
                     <FoodOptionComponent 
-                        itemName="" 
+                        itemName="Data Center" 
                         active={ false }
                     />
                 ) }
-                keyExtractor={ item => `Item`}
+                // keyExtractor={ item => item.item_img}
             /> */}
 
             <FoodOptionComponent 
