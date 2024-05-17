@@ -1,6 +1,9 @@
-import React, { useMemo, useState, useRef } from "react";
+import React, { useMemo, useState, useEffect, useRef } from "react";
 
 import { View, SafeAreaView, ScrollView } from "react-native";
+
+// Firebase function
+import { getSpecificCategoryData } from "../../services/Firebase/User/Restaurants/category-details";
 
 // Bottom Sheet
 import BottomSheet from '@gorhom/bottom-sheet';
@@ -20,7 +23,7 @@ export const FoodDetailsScreen = ({ route }) => {
 
     const { inner_id, uid, category } = route.params;
 
-    console.log(inner_id, uid, category);
+    const [categoryData, setCategoryData] = useState<any>([]);
 
     const snapPoints = useMemo( () => ["25%"], [] );
     const bottomSheetRef = useRef<BottomSheet>(null);
@@ -28,6 +31,10 @@ export const FoodDetailsScreen = ({ route }) => {
     const [showBottomSheet, setShowBottomSheet] = useState<boolean>(false);
 
     const snapToIndex = (index: number) => bottomSheetRef.current?.snapToIndex(index);
+
+    useEffect( () => {
+        getSpecificCategoryData(uid, inner_id, category, setCategoryData);
+    }, [] )
 
     return (
         <SafeAreaView style={{ backgroundColor: "white", flex: 1 }}>
