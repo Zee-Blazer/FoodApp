@@ -46,6 +46,7 @@ const getRestaurantItems = (uid: string, setList: React.Dispatch<React.SetStateA
     )
 }
 
+
 export {
     getRestaurantInfo,
     getRestaurantItems

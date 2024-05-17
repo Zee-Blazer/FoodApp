@@ -15,7 +15,7 @@ interface Data {
     inner_id?: any,
     type?: any,
     category?: any,
-    item_category?: string,
+    item_catergory?: any,
     item_img?: string,
     item_name?: string,
     item_price?: any,
@@ -69,7 +69,7 @@ export const PopularMealSecondComponent: React.FC<Props> = ({
                                         link="FoodDetails"
                                         personalUID={ extraUid }
                                         inner_id={ item.item_uri }
-                                        category={ item.category }
+                                        category={ item.item_catergory }
                                     />
                                 )
                             } }

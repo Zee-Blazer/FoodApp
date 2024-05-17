@@ -18,9 +18,9 @@ import { BottomSheetCartComponent } from "../../components/Users-Comp/Food Detai
 
 export const FoodDetailsScreen = ({ route }) => {
 
-    const { inner_id, uid } = route.params;
+    const { inner_id, uid, category } = route.params;
 
-    console.log(inner_id, uid);
+    console.log(inner_id, uid, category);
 
     const snapPoints = useMemo( () => ["25%"], [] );
     const bottomSheetRef = useRef<BottomSheet>(null);
