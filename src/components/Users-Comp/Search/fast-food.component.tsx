@@ -16,7 +16,7 @@ import { searchUsersStyles } from '../../../styles/screens/serach-users.styles';
 import { homeUsersScreenStyles } from '../../../styles/screens/home-users.styles';
 
 interface Props {
-    resName: string,
+    resName: string | any,
     foodType: string,
     imgUri: string,
     amount: number,

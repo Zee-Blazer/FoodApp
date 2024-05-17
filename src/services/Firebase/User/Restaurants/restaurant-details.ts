@@ -33,6 +33,20 @@ const getRestaurantInfo = (uid: string, setData: React.Dispatch<React.SetStateAc
     )
 }
 
+const getRestaurantItems = (uid: string, setList: React.Dispatch<React.SetStateAction<Item[]>>) => {
+    onValue(
+        ref(database, `Restaurant/${uid}/item`),
+        ( snapshot ) => {
+            let data: any = [];
+            snapshot.forEach( (childSnapshot) => {
+                data.push(childSnapshot.val())
+            } )
+            setList(data);
+        }
+    )
+}
+
 export {
     getRestaurantInfo,
+    getRestaurantItems
 }

@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 
 import { View, FlatList, Text } from "react-native";
 
@@ -18,12 +19,14 @@ interface Data {
 
 interface Props {
     cateName: string,
-    data?: Data[]
+    data?: Data[],
+    extraUid?: string,
+    extraRestaurantName?: string
 }
 
-export const PopularMealComponent: React.FC<Props> = ({ cateName, data }) => {
-
-    // console.log(data && data[0]);
+export const PopularMealComponent: React.FC<Props> = ({ 
+    cateName, data, extraUid, extraRestaurantName 
+}) => {
 
     return (
         <View>
@@ -53,11 +56,11 @@ export const PopularMealComponent: React.FC<Props> = ({ cateName, data }) => {
                             renderItem={ ({item}) => (
                                 <FastFoodComponent 
                                     foodType="European Pizza"
-                                    resName="Uttora Coffe House"
+                                    resName={ extraRestaurantName }
                                     amount={ 40 }
                                     imgUri={ require("../../../../assets/Images/Restaurants/resturant1.jpg") }
                                     link="RestaurantView"
-                                    uid={ item.UID }
+                                    uid={ extraUid }
                                     inner_id={ item.inner_id }
                                     category={ item.category }
                                 />

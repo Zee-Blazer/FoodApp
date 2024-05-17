@@ -4,7 +4,8 @@ import { View, SafeAreaView, ScrollView } from "react-native";
 
 // Firebase function
 import { 
-    getRestaurantInfo 
+    getRestaurantInfo,
+    getRestaurantItems 
 } from '../../services/Firebase/User/Restaurants/restaurant-details';
 
 // Styling
@@ -29,7 +30,10 @@ export const RestaurantViewScreen: React.FC = ({ route }) => {
 
     useEffect( () => {
         getRestaurantInfo(params.uid, setData);
+        getRestaurantItems(params.uid, setList);
     }, [] )
+
+    console.log(list);
 
     return (
         <>
@@ -61,6 +65,9 @@ export const RestaurantViewScreen: React.FC = ({ route }) => {
                                     : 
                                     "Burger (10)" 
                                 }
+                            data={ list && list }
+                            extraRestaurantName={ data && data.restaurant_name }
+                            extraUid={ data && params.uid }
                         />
 
                     </ScrollView>
