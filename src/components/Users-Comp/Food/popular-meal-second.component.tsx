@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 
 import { View, FlatList, Text } from "react-native";
 
@@ -9,21 +10,28 @@ import { CategoriesHeaderText } from "../Categories/category-header-text.compone
 import { FastFoodComponent } from "../Search/fast-food.component";
 
 interface Data {
-    name: string,
-    UID: string,
-    inner_id: any,
-    type: any,
-    category: any
+    name?: string,
+    UID?: string,
+    inner_id?: any,
+    type?: any,
+    category?: any,
+    item_category?: string,
+    item_img?: string,
+    item_name?: string,
+    item_price?: any,
+    item_uri?: string
 }
 
 interface Props {
     cateName: string,
-    data?: Data[]
+    data?: Data[],
+    extraUid?: string,
+    extraRestaurantName?: string
 }
 
-export const PopularMealComponent: React.FC<Props> = ({ cateName, data }) => {
-
-    // console.log(data && data[0]);
+export const PopularMealSecondComponent: React.FC<Props> = ({ 
+    cateName, data, extraUid, extraRestaurantName 
+}) => {
 
     return (
         <View>
@@ -50,18 +58,23 @@ export const PopularMealComponent: React.FC<Props> = ({ cateName, data }) => {
                                 homeUsersScreenStyles.flexWrap
                             ]}
                             data={ data }
-                            renderItem={ ({item}) => (
-                                <FastFoodComponent 
-                                    foodType="European Pizza"
-                                    resName="Uttora Coffe House"
-                                    amount={ 40 }
-                                    imgUri={ require("../../../../assets/Images/Restaurants/resturant1.jpg") }
-                                    link="RestaurantView"
-                                    uid={ item.UID }
-                                    inner_id={ item.inner_id }
-                                    category={ item.category }
-                                />
-                            ) }
+                            renderItem={ ({item}) => {
+
+                                console.log(item);
+
+                                return (
+                                    <FastFoodComponent 
+                                        foodType={ item.item_name }
+                                        resName={ extraRestaurantName }
+                                        amount={ item.item_price }
+                                        imgUri={ item.item_img }
+                                        link="RestaurantView"
+                                        personalUID={ extraUid }
+                                        inner_id={ item.item_uri }
+                                        category={ item.category }
+                                    />
+                                )
+                            } }
                             keyExtractor={ item => `${item.UID}-${item.inner_id}` }
                         />
                     : 

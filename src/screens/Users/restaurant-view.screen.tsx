@@ -15,7 +15,7 @@ import { homeUsersScreenStyles } from "../../styles/screens/home-users.styles";
 import { RestaurantViewHeaderComponent } from "../../components/Users-Comp/Header/restaurant-view-header.component";
 import { RestaurantViewInfoContainer } from "../../components/Users-Comp/Restaurant View/restaurant-view-info-container.component";
 import { FoodOptionContainer } from "../../components/Users-Comp/Restaurant View/food-option-container.component";
-import { PopularMealComponent } from "../../components/Users-Comp/Food/popular-meal.component";
+import { PopularMealSecondComponent } from "../../components/Users-Comp/Food/popular-meal-second.component";
 import { CoverBgContainerComponent } from "../../components/Users-Comp/Restaurant View/cover-bg-container.component";
 
 export const RestaurantViewScreen: React.FC = ({ route }) => {
@@ -32,8 +32,6 @@ export const RestaurantViewScreen: React.FC = ({ route }) => {
         getRestaurantInfo(params.uid, setData);
         getRestaurantItems(params.uid, setList);
     }, [] )
-
-    console.log(list);
 
     return (
         <>
@@ -58,7 +56,7 @@ export const RestaurantViewScreen: React.FC = ({ route }) => {
                             data={ list && list } // Error line
                         /> */}
 
-                        <PopularMealComponent 
+                        <PopularMealSecondComponent 
                             cateName={ 
                                 data ? 
                                     `Avaliable Meals (${data.item && Object.keys(data.item).length})` 
