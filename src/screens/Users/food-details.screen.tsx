@@ -16,7 +16,11 @@ import { FoodIngridentComponent } from "../../components/Users-Comp/Food Details
 import { FormBtnComponent } from "../../components/Auth-Comp/form-btn.component";
 import { BottomSheetCartComponent } from "../../components/Users-Comp/Food Details/bottom-sheet-cart.component";
 
-export const FoodDetailsScreen = () => {
+export const FoodDetailsScreen = ({ route }) => {
+
+    const { inner_id, uid } = route.params;
+
+    console.log(inner_id, uid);
 
     const snapPoints = useMemo( () => ["25%"], [] );
     const bottomSheetRef = useRef<BottomSheet>(null);

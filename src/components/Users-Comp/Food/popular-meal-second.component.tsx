@@ -60,8 +60,6 @@ export const PopularMealSecondComponent: React.FC<Props> = ({
                             data={ data }
                             renderItem={ ({item}) => {
 
-                                console.log(item);
-
                                 return (
                                     <FastFoodComponent 
                                         foodType={ item.item_name }

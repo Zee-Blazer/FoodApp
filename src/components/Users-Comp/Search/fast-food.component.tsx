@@ -46,7 +46,10 @@ export const FastFoodComponent: React.FC<Props> = ({
 
     return (
         <TouchableOpacity 
-            onPress={ () => link && navigation.navigate(link) }
+            onPress={ () => link && navigation.navigate(
+                link, 
+                { uid: uid || personalUID, inner_id }
+            ) }
         >
             <Image 
                 source={ uid ? { uri: itemUri && itemUri } : { uri: imgUri } }
