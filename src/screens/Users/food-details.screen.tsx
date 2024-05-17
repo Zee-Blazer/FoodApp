@@ -43,15 +43,15 @@ export const FoodDetailsScreen = () => {
 
                     <FoodIngridentComponent />
 
-                    <FormBtnComponent 
-                        title="ADD TO CART"
-                        func={ () => {
-                            setShowBottomSheet(true);
-                            snapToIndex(0);
-                        } }
-                    />
-                    
                 </ScrollView>
+
+                <FormBtnComponent 
+                    title="ADD TO CART"
+                    func={ () => {
+                        setShowBottomSheet(true);
+                        snapToIndex(0);
+                    } }
+                />
 
             </View>
             {

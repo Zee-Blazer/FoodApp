@@ -56,7 +56,7 @@ export const PopularMealComponent: React.FC<Props> = ({ cateName, data }) => {
                                     resName="Uttora Coffe House"
                                     amount={ 40 }
                                     imgUri={ require("../../../../assets/Images/Restaurants/resturant1.jpg") }
-                                    link="RestaurantView"
+                                    link="FoodDetails"
                                     uid={ item.UID }
                                     inner_id={ item.inner_id }
                                     category={ item.category }
