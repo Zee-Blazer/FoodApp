@@ -75,7 +75,9 @@ export const FoodDetailsScreen = ({ route }) => {
                     ref={ bottomSheetRef }
                     backgroundStyle={{ backgroundColor: "#F0F5FA" }}
                 >
-                    <BottomSheetCartComponent />
+                    <BottomSheetCartComponent 
+                        price={ categoryData.item_price }
+                    />
                 </BottomSheet>
             }
         </SafeAreaView>

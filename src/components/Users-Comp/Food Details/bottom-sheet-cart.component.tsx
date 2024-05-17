@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 
 import { View, Text, TouchableOpacity } from "react-native";
 
@@ -15,9 +16,18 @@ import { foodDetailsUserStyles } from "../../../styles/screens/food-details-user
 // Component
 import { FormBtnComponent } from "../../Auth-Comp/form-btn.component";
 
-export const BottomSheetCartComponent = () => {
+interface Props {
+    price?: any
+}
+
+export const BottomSheetCartComponent: React.FC<Props> = ({ price }) => {
 
     const navigation = useNavigation();
+
+    const [num, setNum] = useState(0);
+
+    const addNum = () => setNum(num + 1);
+    const subNum = () => num !== 0 && setNum( num - 1 );
 
     return (
         <View>
@@ -30,20 +40,20 @@ export const BottomSheetCartComponent = () => {
                 ]}
             >
 
-                <Text style={ foodDetailsUserStyles.bottomSheetAmountTxt }>$32</Text>
+                <Text style={ foodDetailsUserStyles.bottomSheetAmountTxt }>${ price }</Text>
                 <View 
                     style={[ 
                         homeUsersScreenStyles.flexDisplay,
                         foodDetailsUserStyles.bottomSheetAmountCont
                     ]}
                 >
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={ subNum } >
                         <AntDesign name="minuscircle" size={24} color="rgba(255, 255, 255, 0.6)" />
                     </TouchableOpacity>
 
-                    <Text style={ foodDetailsUserStyles.bottomSheetAmountNumTxt }>2</Text>
+                    <Text style={ foodDetailsUserStyles.bottomSheetAmountNumTxt }>{ num }</Text>
 
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={ addNum } >
                         <AntDesign name="pluscircle" size={24} color="rgba(255, 255, 255, 0.6)" />
                     </TouchableOpacity>
                 </View>
