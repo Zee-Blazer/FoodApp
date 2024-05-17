@@ -48,11 +48,13 @@ export const FoodDetailsScreen = ({ route }) => {
                 <ScrollView
                     showsVerticalScrollIndicator={ false }
                 >
-                    <FoodDetailContainerComponent />
+                    <FoodDetailContainerComponent 
+                        categoryData={ categoryData }
+                    />
 
-                    <FoodSizeComponent />
+                    {/* <FoodSizeComponent /> */}
 
-                    <FoodIngridentComponent />
+                    {/* <FoodIngridentComponent /> */}
 
                 </ScrollView>
 

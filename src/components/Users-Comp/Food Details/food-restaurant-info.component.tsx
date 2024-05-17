@@ -10,12 +10,22 @@ import { homeUsersScreenStyles } from "../../../styles/screens/home-users.styles
 import { foodUserStyles } from "../../../styles/screens/food-users.styles";
 import { searchUsersStyles } from "../../../styles/screens/serach-users.styles";
 
-export const FoodRestaurantInfo = () => {
+interface Props {
+    resName: string,
+    resImg: string
+}
+
+export const FoodRestaurantInfo: React.FC<Props> = ({ resName, resImg }) => {
 
     return (
         <View style={ foodDetailsUserStyles.spaceTop }>
             <Image 
-                source={ require("../../../../assets/Images/Restaurants/camp.jpg") }
+                source={ 
+                    resImg ? 
+                        { uri: resImg } 
+                        : 
+                        require("../../../../assets/Images/Restaurants/camp.jpg") 
+                }
                 style={ foodDetailsUserStyles.resDetailsImg }
             />
             <TouchableOpacity style={ foodDetailsUserStyles.heartBox }>
@@ -36,7 +46,7 @@ export const FoodRestaurantInfo = () => {
                     style={[ foodUserStyles.spaceTop, foodUserStyles.spaceRight ]}
                 />
                 <Text style={ foodDetailsUserStyles.resTextCheff }>
-                    Uttora Coffe House
+                    { resName }
                 </Text>
             </TouchableOpacity>
         </View>

@@ -5,14 +5,32 @@ import { View } from "react-native";
 import { FoodRestaurantInfo } from "./food-restaurant-info.component";
 import { RestaurantDetailInfoComponent } from "./restaurant-detail.component";
 
-export const FoodDetailContainerComponent = () => {
+interface Category {
+    item_category: string | any,
+    item_delivery: string | any,
+    item_details: string | any,
+    item_img: string | any,
+    item_name: string | any,
+    item_price: any
+}
+
+interface Props {
+    categoryData?: Category
+}
+
+export const FoodDetailContainerComponent: React.FC<Props> = ({ categoryData }) => {
+
+    // console.log(categoryData);
 
     return (
         <View>
-            <FoodRestaurantInfo />
+            <FoodRestaurantInfo 
+                resName={ categoryData?.item_name }
+                resImg={ categoryData?.item_img }
+            />
             <RestaurantDetailInfoComponent 
-                restaurantName="Pizza Calzone European"
-                restaurantItems="Prosciutto e funghi is a pizza variety that is topped with tomato sauce."
+                restaurantName={ categoryData?.item_name }
+                restaurantItems={ categoryData?.item_details }
                 rating="4.7"
                 time={ 20 }
             />
