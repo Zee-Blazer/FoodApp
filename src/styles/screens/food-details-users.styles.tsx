@@ -9,6 +9,7 @@ export const foodDetailsUserStyles = StyleSheet.create({
         width: 358,
         height: 194,
         borderRadius: 32,
+        // aspectRatio: 2
         // backgroundColor: "black"
     },
     spaceTop: {

@@ -26,6 +26,7 @@ export const FoodRestaurantInfo: React.FC<Props> = ({ resName, resImg }) => {
                         : 
                         require("../../../../assets/Images/Restaurants/camp.jpg") 
                 }
+                resizeMode='contain'
                 style={ foodDetailsUserStyles.resDetailsImg }
             />
             <TouchableOpacity style={ foodDetailsUserStyles.heartBox }>
