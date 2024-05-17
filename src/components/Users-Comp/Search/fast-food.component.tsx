@@ -44,12 +44,20 @@ export const FastFoodComponent: React.FC<Props> = ({
     }, [] )
 
     return (
-        <TouchableOpacity onPress={ () => link && navigation.navigate(link) }>
+        <TouchableOpacity 
+            onPress={ () => link && navigation.navigate(link) }
+        >
             <Image 
                 source={ uid ? { uri: itemUri && itemUri } : imgUri }
                 style={ searchUsersStyles.foodPackImg }
             />
-            <View style={[ searchUsersStyles.foodPackInfoCont, homeUsersScreenStyles.boxShadow ]}>
+            <View 
+                style={[ 
+                    searchUsersStyles.foodPackInfoCont, 
+                    homeUsersScreenStyles.boxShadow,
+                    { maxWidth: 174, width: 174 }
+                ]}
+            >
                 <Text style={ searchUsersStyles.foodPackMainTxt }>
                     { uid ? itemName && itemName : foodType }
                 </Text>
