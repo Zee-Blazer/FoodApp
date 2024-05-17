@@ -18,16 +18,17 @@ import { homeUsersScreenStyles } from '../../../styles/screens/home-users.styles
 interface Props {
     resName: string | any,
     foodType: string,
-    imgUri: string,
+    imgUri: string | any,
     amount: number,
     link: string,
     uid?: string,
+    personalUID?: string,
     inner_id?: string,
     category?: any
 }
 
 export const FastFoodComponent: React.FC<Props> = ({ 
-    resName, foodType, imgUri, amount, link, uid, inner_id, category
+    resName, foodType, imgUri, amount, link, uid, inner_id, category, personalUID
 }) => {
 
     const navigation = useNavigation();
@@ -48,7 +49,7 @@ export const FastFoodComponent: React.FC<Props> = ({
             onPress={ () => link && navigation.navigate(link) }
         >
             <Image 
-                source={ uid ? { uri: itemUri && itemUri } : imgUri }
+                source={ uid ? { uri: itemUri && itemUri } : { uri: imgUri } }
                 style={ searchUsersStyles.foodPackImg }
             />
             <View 

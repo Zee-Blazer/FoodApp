@@ -60,10 +60,10 @@ export const searchUsersStyles = StyleSheet.create({
     //     marginTop: 24
     // },
     foodPackImg: {
-        width: 122,
+        width: 124,
         height: 84,
         borderRadius: 15,
-        marginHorizontal: 18,
+        marginHorizontal: 26,
         zIndex: 9
     },
     foodPackInfoCont: {
