@@ -24,10 +24,11 @@ export const BottomSheetCartComponent: React.FC<Props> = ({ price }) => {
 
     const navigation = useNavigation();
 
+    // The number of meals to add to cart
     const [num, setNum] = useState(0);
 
-    const addNum = () => setNum(num + 1);
-    const subNum = () => num !== 0 && setNum( num - 1 );
+    const addNum = () => setNum(num + 1); // Function to add number of meals
+    const subNum = () => num !== 0 && setNum( num - 1 ); // Function to subtract number of meals
 
     return (
         <View>
