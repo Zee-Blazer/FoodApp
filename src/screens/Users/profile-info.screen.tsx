@@ -9,6 +9,8 @@ import { UsersCartHeaderComponent } from "../../components/Users-Comp/Header/use
 import { ProfileDetailsComponent } from "../../components/Users-Comp/Profile Section/profile-details.component";
 import { InfoDisplayComponent } from "../../components/Users-Comp/Profile Info/info-display.component";
 
+// Would add become admin function to this component
+
 export const ProfileInfoScreen = () => {
 
     return (
