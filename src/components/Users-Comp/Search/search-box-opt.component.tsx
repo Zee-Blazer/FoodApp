@@ -24,11 +24,12 @@ interface Props {
 
 export const SearchBoxOptComponent: React.FC<Props> = ({ data }) => {
 
-    console.log(data);
-
     return (
         <>
-            <TouchableOpacity style={[ searchUsersStyles.searchBoxOpt ]}>
+            <TouchableOpacity 
+                style={[ searchUsersStyles.searchBoxOpt ]}
+                onPress={ () => console.log(data) }
+            >
                 <AntDesign 
                     name="search1" size={14} color="#A0A5BA" 
                     style={[ searchUsersStyles.searchBoxOptIcon ]}
