@@ -5,6 +5,9 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 // Icons
 import { FontAwesome } from '@expo/vector-icons';
 
+// Navigation
+import { useNavigation } from '@react-navigation/native';
+
 // Firebase function
 import { getSpecificRestaurant } from "../../../services/Firebase/User/Restaurants/get-record.restaurant";
 
@@ -26,6 +29,8 @@ interface Props {
 
 export const MiniRestaurantSuggestioncomponent: React.FC<Props> = ({ item }) => {
 
+    const navigation = useNavigation();
+
     const [resName, setResName] = useState();
     const [resUri, setResUri] = useState();
 
@@ -34,7 +39,10 @@ export const MiniRestaurantSuggestioncomponent: React.FC<Props> = ({ item }) => 
     }, [] )
 
     return (
-        <TouchableOpacity style={ searchUsersStyles.miniRestCont }>
+        <TouchableOpacity 
+            style={ searchUsersStyles.miniRestCont }
+            onPress={ () => navigation.navigate("RestaurantView", { uid: item?.UID }) }
+        >
             <Image 
                 source={{ uri: resUri }}
                 style={ searchUsersStyles.miniResImg }
