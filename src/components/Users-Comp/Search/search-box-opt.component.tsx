@@ -24,6 +24,7 @@ interface Props {
 
 export const SearchBoxOptComponent: React.FC<Props> = ({ data }) => {
 
+    console.log(data);
 
     return (
         <>
