@@ -18,7 +18,7 @@ export const SuggestedRestaurantContainerComponent = () => {
     useEffect( () => {
         setData(restaurantsRecord.slice(0,3));
     }, [] )
-    // console.log(data);
+    console.log(data);
 
     return (
         <View style={{ marginTop: -10 }}>
