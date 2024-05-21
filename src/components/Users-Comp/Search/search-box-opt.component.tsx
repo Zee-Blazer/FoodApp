@@ -5,6 +5,9 @@ import { View, Text, TouchableOpacity } from "react-native";
 import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 
+// Navigation
+import { useNavigation } from "@react-navigation/native";
+
 // Stylings
 import { searchUsersStyles } from "../../../styles/screens/serach-users.styles";
 
@@ -24,11 +27,26 @@ interface Props {
 
 export const SearchBoxOptComponent: React.FC<Props> = ({ data }) => {
 
+    // Navigation declaration
+    const navigation = useNavigation();
+
+    const linkToScreen = () => {
+        if(data?.category !== undefined){
+            navigation.navigate(
+                "FoodDetails", 
+                { inner_id: data.inner_id, uid: data.UID, category: data.category }
+            );
+        }
+        else{
+            navigation.navigate("RestaurantView", { uid: data.UID })
+        }
+    }
+
     return (
         <>
             <TouchableOpacity 
                 style={[ searchUsersStyles.searchBoxOpt ]}
-                onPress={ () => console.log(data) }
+                onPress={ linkToScreen }
             >
                 <AntDesign 
                     name="search1" size={14} color="#A0A5BA" 
