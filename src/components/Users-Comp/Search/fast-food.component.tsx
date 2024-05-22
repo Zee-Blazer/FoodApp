@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 
 // Navigation
 import { useNavigation } from '@react-navigation/native';
+
+// Authentication Context
+import { AuthContext } from '../../../services/Context/auth.context';
 
 // Firebase Function to get the specific category data
 import { getSpecificCategoryRecord } from '../../../services/Firebase/User/Restaurants/get-record.category';
@@ -35,6 +38,8 @@ export const FastFoodComponent: React.FC<Props> = ({
 }) => {
 
     const navigation = useNavigation();
+
+    const { user } = useContext(AuthContext);
 
     const [itemName, setItemName] = useState();
     const [itemRestaurant, setItemRestaurant] = useState();
@@ -83,9 +88,8 @@ export const FastFoodComponent: React.FC<Props> = ({
                     </Text>
                     <TouchableOpacity
                         onPress={ () => addToCart(
-                                uid || personalUID, 
-                                category, 
-                                inner_id 
+                                user.uid,
+                                `${uid || personalUID}/${category}/${inner_id}`, 
                             ) 
                         }
                     >
