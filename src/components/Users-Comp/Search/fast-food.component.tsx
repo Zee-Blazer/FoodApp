@@ -8,6 +8,8 @@ import { useNavigation } from '@react-navigation/native';
 // Firebase Function to get the specific category data
 import { getSpecificCategoryRecord } from '../../../services/Firebase/User/Restaurants/get-record.category';
 
+// Firebase function to add to cart
+
 // Icons
 import { MaterialIcons } from '@expo/vector-icons';
 
@@ -78,7 +80,9 @@ export const FastFoodComponent: React.FC<Props> = ({
                     <Text>
                         ${ uid ? itemPrice && itemPrice : amount }
                     </Text>
-                    <TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={ () => console.log({ uid: uid || personalUID, category, inner_id }) }
+                    >
                         <MaterialIcons name="add-circle" size={30} color="#F58D1D" />
                     </TouchableOpacity>
                 </View>
