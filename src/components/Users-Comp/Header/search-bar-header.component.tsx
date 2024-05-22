@@ -12,6 +12,9 @@ import { View, Text, TouchableOpacity } from "react-native";
 import { homeUsersScreenStyles } from '../../../styles/screens/home-users.styles';
 import { searchUsersStyles } from '../../../styles/screens/serach-users.styles';
 
+// Component
+import { CartRecordNavComponent } from './cart-record-nav.component';
+
 interface Props {
     header?: string
 }
@@ -43,15 +46,7 @@ export const SerachBarHeaderComponent: React.FC<Props> = ({ header }) => {
                 </Text>
             </View>
 
-            <TouchableOpacity style={ homeUsersScreenStyles.shopChartNote }>
-                <Feather 
-                    name="shopping-bag" size={24} color="white" 
-                    style={ homeUsersScreenStyles.shopChartNoteIcon }
-                />
-                <View style={ homeUsersScreenStyles.shopChartNoteMsg }>
-                    <Text style={ homeUsersScreenStyles.shopChartNoteMsgTxt }>2</Text>
-                </View>
-            </TouchableOpacity>
+            <CartRecordNavComponent />
         </View>
     )
 }

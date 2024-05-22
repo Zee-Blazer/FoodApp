@@ -12,6 +12,9 @@ import { useNavigation } from '@react-navigation/native';
 // Styling
 import { homeUsersScreenStyles } from '../../../styles/screens/home-users.styles';
 
+// Component
+import { CartRecordNavComponent } from './cart-record-nav.component';
+
 interface Props {
     isAdmin: boolean
 }
@@ -38,15 +41,7 @@ export const DashboardHeaderComponent: React.FC<Props> = ({ isAdmin }) => {
                 </View>
             </View>
 
-            <TouchableOpacity style={ homeUsersScreenStyles.shopChartNote }>
-                <Feather 
-                    name="shopping-bag" size={24} color="white" 
-                    style={ homeUsersScreenStyles.shopChartNoteIcon }
-                />
-                <View style={ homeUsersScreenStyles.shopChartNoteMsg }>
-                    <Text style={ homeUsersScreenStyles.shopChartNoteMsgTxt }>2</Text>
-                </View>
-            </TouchableOpacity>
+            <CartRecordNavComponent />
         </View>
     )
 }
