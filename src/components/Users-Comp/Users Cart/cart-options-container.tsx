@@ -31,7 +31,7 @@ export const CartOptionContainer: React.FC<Props> = ({ resName, price, size, amo
                 style={ usersCartUsersStyles.cartOptionImg }
             />
 
-            <View style={{ width: 200 }}>
+            <View style={{ width: 232 }}>
 
                 <View 
                     style={[ 

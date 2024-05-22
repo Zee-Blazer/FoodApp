@@ -7,7 +7,7 @@ import { theme } from "../../infrastructure/Theme";
 export const usersCartUsersStyles = StyleSheet.create({
     body: {
         flex: 1,
-        marginHorizontal: theme.space[9],
+        marginHorizontal: theme.space[7],
         backgroundColor: "#121223",
         color: "white"
     },

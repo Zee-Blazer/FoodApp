@@ -10,7 +10,6 @@ import { usersCartUsersStyles } from "../../styles/screens/users-cart-users.styl
 
 // Component
 import { UsersCartHeaderComponent } from "../../components/Users-Comp/Header/users-cart-header.component";
-import { CartOptionContainer } from "../../components/Users-Comp/Users Cart/cart-options-container";
 import { FormBtnComponent } from "../../components/Auth-Comp/form-btn.component";
 import { BottomSheetUserCartComponent } from '../../components/Users-Comp/Users Cart/bottom-sheet-user-cart.component';
 import { DisplayCartItemsComponent } from '../../components/Users-Comp/Add Cart/display-cart-items.component';
