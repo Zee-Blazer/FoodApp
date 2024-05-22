@@ -1,9 +1,15 @@
-import React, { useState, useMemo, useRef } from 'react';
+import React, { useState, useEffect, useMemo, useRef, useContext } from 'react';
 
 import { View, ScrollView, SafeAreaView } from "react-native";
 
 // Bottom Sheet
 import BottomSheet from '@gorhom/bottom-sheet';
+
+// Authentication Context
+import { AuthContext } from '../../services/Context/auth.context';
+
+// Firebase functionality
+import { getAllCartItems } from '../../services/Firebase/User/Cart/getCart';
 
 // Styling
 import { usersCartUsersStyles } from "../../styles/screens/users-cart-users.styles";
@@ -19,9 +25,17 @@ export const UsersCartScreen = () => {
     const snapPoints = useMemo( () => ["40%"], [] );
     const bottomSheetRef = useRef<BottomSheet>(null);
 
+    const { user } = useContext(AuthContext);
+
+    const [dataStore, setDataStore] = useState();
+
     const [showBottomSheet, setShowBottomSheet] = useState<boolean>(false);
 
     const snapToIndex = (index: number) => bottomSheetRef.current?.snapToIndex(index);
+
+    useEffect( () => {
+        getAllCartItems(user.uid);
+    }, [] ) 
 
     return (
         <SafeAreaView style={{ backgroundColor: "#121223", flex: 1 }}>

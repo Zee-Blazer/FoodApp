@@ -7,7 +7,11 @@ const getAllCartItems = (uid: string) => {
     onValue(
         ref(database, `Cart/${uid}`),
         ( snapshot ) => {
-            console.log(snapshot.val());
+            const data = [];
+            snapshot.forEach( ( childSnapshot ) => {
+                data.push({ key: childSnapshot.key, ...childSnapshot.val() })
+            } )
+            console.log(data);
         }
     )
 }
