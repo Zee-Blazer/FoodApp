@@ -37,8 +37,6 @@ export const UsersCartScreen = () => {
         getAllCartItems(user.uid, setDataStore);
     }, [] ) 
 
-    console.log(dataStore);
-
     return (
         <SafeAreaView style={{ backgroundColor: "#121223", flex: 1 }}>
             <View style={ usersCartUsersStyles.body }>

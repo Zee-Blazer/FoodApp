@@ -4,7 +4,11 @@ import { ScrollView } from "react-native";
 // Components
 import { CartOptionContainer } from "../Users Cart/cart-options-container";
 
-export const DisplayCartItemsComponent = () => {
+interface Props {
+    edit: boolean
+}
+
+export const DisplayCartItemsComponent: React.FC<Props> = ({ edit }) => {
 
     return (
         <>
