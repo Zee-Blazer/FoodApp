@@ -3,7 +3,21 @@
 import { database } from '../../../../firebaseConfig';
 import { ref, onValue, push } from 'firebase/database';
 
-const getAllCartItems = (uid: string) => {
+const getTotalCartItems = (uid: string, setTotal: React.Dispatch<React.SetStateAction<number>>) => {
+    onValue(
+        ref(database, `Cart/${uid}`),
+        ( snapshot ) => {
+            if(snapshot.exists()){
+                setTotal(Object.values(snapshot.val()).length);
+            }
+            else{
+                setTotal(0);
+            }
+        }
+    )
+}
+
+const getAllCartItems = (uid: string, setDataStore: React.Dispatch<React.SetStateAction<any[]>>) => {
     onValue(
         ref(database, `Cart/${uid}`),
         ( snapshot ) => {
@@ -11,11 +25,12 @@ const getAllCartItems = (uid: string) => {
             snapshot.forEach( ( childSnapshot ) => {
                 data.push({ key: childSnapshot.key, ...childSnapshot.val() })
             } )
-            console.log(data);
+            setDataStore(data);
         }
     )
 }
 
 export {
-    getAllCartItems
+    getAllCartItems,
+    getTotalCartItems
 }

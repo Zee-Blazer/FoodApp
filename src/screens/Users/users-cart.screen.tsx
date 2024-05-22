@@ -27,15 +27,17 @@ export const UsersCartScreen = () => {
 
     const { user } = useContext(AuthContext);
 
-    const [dataStore, setDataStore] = useState();
+    const [dataStore, setDataStore] = useState<any>([]);
 
     const [showBottomSheet, setShowBottomSheet] = useState<boolean>(false);
 
     const snapToIndex = (index: number) => bottomSheetRef.current?.snapToIndex(index);
 
     useEffect( () => {
-        getAllCartItems(user.uid);
+        getAllCartItems(user.uid, setDataStore);
     }, [] ) 
+
+    console.log(dataStore);
 
     return (
         <SafeAreaView style={{ backgroundColor: "#121223", flex: 1 }}>
