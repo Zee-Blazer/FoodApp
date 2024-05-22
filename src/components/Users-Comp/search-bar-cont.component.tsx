@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect, useContext } from 'react';
 
 // Icons
 import { AntDesign } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
 
 // Navigation 
 import { useNavigation } from '@react-navigation/native';
@@ -15,7 +16,7 @@ import { DetailsContext } from '../../services/Context/details.context';
 // Authentication Context
 import { AuthContext } from '../../services/Context/auth.context';
 
-import { View, TextInput, FlatList } from 'react-native';
+import { View, TextInput, FlatList, TouchableOpacity } from 'react-native';
 
 // Styling 
 import { homeUsersScreenStyles } from '../../styles/screens/home-users.styles';
@@ -37,7 +38,7 @@ export const SearchBarContComponent: React.FC<Props> = ({ redirect }) => {
 
     const textInputRef = useRef<TextInput | null>(null);
 
-    const [searchItemTxt, setSearchItemTxt] = useState();
+    const [searchItemTxt, setSearchItemTxt] = useState<string | any>();
 
     const searchVal = (e: string) => {
         // Stores the text input value in a state variable ("Which is not really necessary")
@@ -84,6 +85,14 @@ export const SearchBarContComponent: React.FC<Props> = ({ redirect }) => {
                     onFocus={ () => redirect && navigation.navigate("Search") }
                     onSubmitEditing={ getKeyWord }
                 />
+                {
+                    searchItemTxt?.length > 0 &&
+                    <TouchableOpacity
+                        onPress={ () => setSearchItemTxt("") }
+                    >
+                        <MaterialIcons name="cancel" size={14} color="black" />
+                    </TouchableOpacity>
+                }
             </View>
 
             {
