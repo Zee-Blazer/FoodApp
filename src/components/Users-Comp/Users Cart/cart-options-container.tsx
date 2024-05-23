@@ -3,7 +3,12 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, Image, TouchableOpacity } from "react-native";
 
 // Firebase function to get as specific restaurant
-import { getCartItem } from '../../../services/Firebase/User/Cart/getCart';
+import { 
+    getCartItem,
+    addItemAndIncrement,
+    subItemAndDecrement,
+    deleteItemFromCart
+} from '../../../services/Firebase/User/Cart/getCart';
 
 // Icons
 import { MaterialIcons } from '@expo/vector-icons';
@@ -78,7 +83,9 @@ export const CartOptionContainer: React.FC<Props> = ({ uid, num, path, key, edit
                     </Text>
 
                     <View style={[ homeUsersScreenStyles.flexDisplay, homeUsersScreenStyles.flexDesign ]}>
-                        <TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={ addItemAndIncrement }
+                        >
                             <Entypo name="circle-with-minus" size={22} color="rgba(255,255,255,0.5)" />
                         </TouchableOpacity>
 
@@ -86,7 +93,9 @@ export const CartOptionContainer: React.FC<Props> = ({ uid, num, path, key, edit
                             { num }
                         </Text>
 
-                        <TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={ subItemAndDecrement }
+                        >
                             <Entypo name="circle-with-plus" size={22} color="rgba(255,255,255,0.5)" />
                         </TouchableOpacity>
                     </View>

@@ -1,7 +1,7 @@
 
 // Firebase Database
 import { database } from '../../../../firebaseConfig';
-import { ref, onValue, push } from 'firebase/database';
+import { ref, onValue, push, update } from 'firebase/database';
 
 const getTotalCartItems = (uid: string, setTotal: React.Dispatch<React.SetStateAction<number>>) => {
     onValue(
@@ -48,8 +48,35 @@ const getCartItem = (
     )
 }
 
+const addItemAndIncrement = () => {
+    // push(
+    //     ref(database, `Database/test`),
+    //     {
+    //         name: "James",
+    //         password: "MagicCard",
+    //         age: 24
+    //     }
+    // )
+    console.log("Working");
+    update(
+        ref(database, `Database/test/-Ny_knIVIomvbjp_WISE`),
+        {
+            // name: "James",
+            // password: "MagicCard",
+            age: 27
+        }
+    )
+}
+
+const subItemAndDecrement = () => {}
+
+const deleteItemFromCart = () => {}
+
 export {
     getAllCartItems,
     getTotalCartItems,
-    getCartItem
+    getCartItem,
+    addItemAndIncrement,
+    subItemAndDecrement,
+    deleteItemFromCart
 }

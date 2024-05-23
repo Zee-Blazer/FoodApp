@@ -28,7 +28,7 @@ export const UsersCartScreen = () => {
     const { user } = useContext(AuthContext);
 
     const [dataStore, setDataStore] = useState<any>([]);
-    const [edit, setEdit] = useState<boolean>(false);
+    const [edit, setEdit] = useState<boolean>(true);
 
     const [showBottomSheet, setShowBottomSheet] = useState<boolean>(false);
 
