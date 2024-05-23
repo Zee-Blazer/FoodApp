@@ -1,5 +1,5 @@
 
-import { FlatList, ScrollView } from "react-native";
+import { FlatList } from "react-native";
 
 // Components
 import { CartOptionContainer } from "../Users Cart/cart-options-container";
@@ -10,8 +10,6 @@ interface Props {
 }
 
 export const DisplayCartItemsComponent: React.FC<Props> = ({ edit, data }) => {
-
-    console.log(data);
 
     return (
         <>
@@ -32,7 +30,7 @@ export const DisplayCartItemsComponent: React.FC<Props> = ({ edit, data }) => {
                 } }
                 keyExtractor={ item => item.key }
             />
-            
+
         </>
     )
 }

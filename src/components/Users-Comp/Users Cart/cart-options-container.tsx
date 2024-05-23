@@ -1,5 +1,9 @@
+import React, { useState, useEffect } from 'react';
 
 import { View, Text, Image, TouchableOpacity } from "react-native";
+
+// Firebase function to get as specific restaurant
+
 
 // Icons
 import { MaterialIcons } from '@expo/vector-icons';
@@ -10,14 +14,20 @@ import { homeUsersScreenStyles } from "../../../styles/screens/home-users.styles
 import { usersCartUsersStyles } from "../../../styles/screens/users-cart-users.styles";
 
 interface Props {
-    resName: string,
-    price: number,
-    size: number,
-    amount: number,
-    imgUri: string
+    uid: string,
+    num: number | any,
+    path: string,
+    key: string
 }
 
-export const CartOptionContainer: React.FC<Props> = ({ resName, price, size, amount, imgUri }) => {
+export const CartOptionContainer: React.FC<Props> = ({ uid, num, path, key }) => {
+
+    const [itemName, setItemName] = useState();
+    const [itemRestaurant, setItemRestaurant] = useState();
+    const [itemPrice, setItemPrice] = useState();
+    const [itemUri, setItemUri] = useState();
+
+    useEffect( () => {}, [] )
 
     return (
         <TouchableOpacity 
@@ -27,7 +37,7 @@ export const CartOptionContainer: React.FC<Props> = ({ resName, price, size, amo
             ]}
         >
             <Image 
-                source={ imgUri }
+                // source={ imgUri }
                 style={ usersCartUsersStyles.cartOptionImg }
             />
 
@@ -42,10 +52,10 @@ export const CartOptionContainer: React.FC<Props> = ({ resName, price, size, amo
                 >
                     <View style={{ marginRight: 42 }}>
                         <Text style={[ usersCartUsersStyles.mainRestTxt ]}>
-                            { resName }
+                            {/* { resName } */}
                         </Text>
                         <Text style={ usersCartUsersStyles.mainRestTxtPrc }>
-                            ${ price }
+                            {/* ${ price } */}
                         </Text>
                     </View>
                     <TouchableOpacity>
@@ -55,7 +65,7 @@ export const CartOptionContainer: React.FC<Props> = ({ resName, price, size, amo
 
                 <View style={[ homeUsersScreenStyles.flexDisplay, homeUsersScreenStyles.flexDesign ]}>
                     <Text style={ usersCartUsersStyles.quantTxt }>
-                        { size }"
+                        {/* { size }" */}
                     </Text>
 
                     <View style={[ homeUsersScreenStyles.flexDisplay, homeUsersScreenStyles.flexDesign ]}>
@@ -64,7 +74,7 @@ export const CartOptionContainer: React.FC<Props> = ({ resName, price, size, amo
                         </TouchableOpacity>
 
                         <Text style={ usersCartUsersStyles.quantAmtTxt }>
-                            { amount }
+                            {/* { amount } */}
                         </Text>
 
                         <TouchableOpacity>
