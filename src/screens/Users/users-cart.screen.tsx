@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useRef, useContext } from 'react';
 
-import { View, ScrollView, SafeAreaView } from "react-native";
+import { View, SafeAreaView } from "react-native";
 
 // Bottom Sheet
 import BottomSheet from '@gorhom/bottom-sheet';

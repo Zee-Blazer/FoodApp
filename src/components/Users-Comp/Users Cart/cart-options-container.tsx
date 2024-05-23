@@ -34,8 +34,6 @@ export const CartOptionContainer: React.FC<Props> = ({ uid, num, path, key, edit
         );
     }, [] )
 
-    console.log(itemName);
-
     return (
         <TouchableOpacity 
             style={[ 
@@ -85,7 +83,7 @@ export const CartOptionContainer: React.FC<Props> = ({ uid, num, path, key, edit
                         </TouchableOpacity>
 
                         <Text style={ usersCartUsersStyles.quantAmtTxt }>
-                            { itemPrice }
+                            { num }
                         </Text>
 
                         <TouchableOpacity>
