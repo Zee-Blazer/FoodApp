@@ -46,6 +46,8 @@ export const UsersCartScreen = () => {
                     title="Cart"
                     screenType='Cart'
                     action={ false }
+                    edit={ edit }
+                    setEdit={ setEdit }
                 />
 
                 <View style={{ marginVertical: 12 }}></View>

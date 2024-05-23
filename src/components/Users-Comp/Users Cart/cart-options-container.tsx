@@ -64,7 +64,7 @@ export const CartOptionContainer: React.FC<Props> = ({ uid, num, path, key, edit
                         </Text>
                     </View>
                     { 
-                        edit 
+                        !edit 
                         &&
                         <TouchableOpacity>
                             <MaterialIcons name="cancel" size={27} color="#E04444" />

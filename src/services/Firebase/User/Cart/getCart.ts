@@ -44,7 +44,6 @@ const getCartItem = (
             setItemPrice(snapshot.val().item_price);
             setItemRestaurant(snapshot.val().restaurant_info.restaurant_name);
             setItemName(snapshot.val().item_name);
-            // console.log(snapshot.val())
         }
     )
 }
