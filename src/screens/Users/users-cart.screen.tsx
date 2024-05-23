@@ -28,6 +28,7 @@ export const UsersCartScreen = () => {
     const { user } = useContext(AuthContext);
 
     const [dataStore, setDataStore] = useState<any>([]);
+    const [edit, setEdit] = useState<boolean>(false);
 
     const [showBottomSheet, setShowBottomSheet] = useState<boolean>(false);
 
@@ -49,7 +50,10 @@ export const UsersCartScreen = () => {
 
                 <View style={{ marginVertical: 12 }}></View>
                 
-                <DisplayCartItemsComponent />
+                <DisplayCartItemsComponent 
+                    edit={ edit }
+                    data={ dataStore }
+                />
 
             </View>
 
