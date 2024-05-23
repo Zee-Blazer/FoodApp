@@ -17,10 +17,11 @@ interface Props {
     uid: string,
     num: number | any,
     path: string,
-    key: string
+    key: string,
+    edit: boolean
 }
 
-export const CartOptionContainer: React.FC<Props> = ({ uid, num, path, key }) => {
+export const CartOptionContainer: React.FC<Props> = ({ uid, num, path, key, edit }) => {
 
     const [itemName, setItemName] = useState();
     const [itemRestaurant, setItemRestaurant] = useState();
@@ -33,7 +34,7 @@ export const CartOptionContainer: React.FC<Props> = ({ uid, num, path, key }) =>
         );
     }, [] )
 
-    // console.log(uid, path);
+    console.log(itemName);
 
     return (
         <TouchableOpacity 
@@ -43,7 +44,7 @@ export const CartOptionContainer: React.FC<Props> = ({ uid, num, path, key }) =>
             ]}
         >
             <Image 
-                // source={ imgUri }
+                source={{ uri: itemUri }}
                 style={ usersCartUsersStyles.cartOptionImg }
             />
 
@@ -58,20 +59,24 @@ export const CartOptionContainer: React.FC<Props> = ({ uid, num, path, key }) =>
                 >
                     <View style={{ marginRight: 42 }}>
                         <Text style={[ usersCartUsersStyles.mainRestTxt ]}>
-                            {/* { resName } */}
+                            { itemName }
                         </Text>
                         <Text style={ usersCartUsersStyles.mainRestTxtPrc }>
-                            {/* ${ price } */}
+                            ${ itemPrice }
                         </Text>
                     </View>
-                    <TouchableOpacity>
-                        <MaterialIcons name="cancel" size={27} color="#E04444" />
-                    </TouchableOpacity>
+                    { 
+                        edit 
+                        &&
+                        <TouchableOpacity>
+                            <MaterialIcons name="cancel" size={27} color="#E04444" />
+                        </TouchableOpacity>
+                    }
                 </View>
 
                 <View style={[ homeUsersScreenStyles.flexDisplay, homeUsersScreenStyles.flexDesign ]}>
                     <Text style={ usersCartUsersStyles.quantTxt }>
-                        {/* { size }" */}
+                        { 14 }"
                     </Text>
 
                     <View style={[ homeUsersScreenStyles.flexDisplay, homeUsersScreenStyles.flexDesign ]}>
@@ -80,7 +85,7 @@ export const CartOptionContainer: React.FC<Props> = ({ uid, num, path, key }) =>
                         </TouchableOpacity>
 
                         <Text style={ usersCartUsersStyles.quantAmtTxt }>
-                            {/* { amount } */}
+                            { itemPrice }
                         </Text>
 
                         <TouchableOpacity>

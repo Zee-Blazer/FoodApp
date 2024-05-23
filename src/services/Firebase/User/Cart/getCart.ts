@@ -37,17 +37,16 @@ const getCartItem = (
     setItemRestaurant: React.Dispatch<React.SetStateAction<any>>,
     setItemName: React.Dispatch<React.SetStateAction<any>>
 ) => {
-    // onValue(
-    //     ref(database, `Category/${path}`),
-    //     (snapshot) => {
-    //         // setItemUri(snapshot.val().item_img);
-    //         // setItemPrice(snapshot.val().item_price);
-    //         // setItemRestaurant(snapshot.val().restaurant_info.restaurant_name);
-    //         // setItemName(snapshot.val().item_name);
-    //         console.log(snapshot.val())
-    //     }
-    // )
-    console.log(path)
+    onValue(
+        ref(database, `Category/${path}`),
+        (snapshot) => {
+            setItemUri(snapshot.val().item_img);
+            setItemPrice(snapshot.val().item_price);
+            setItemRestaurant(snapshot.val().restaurant_info.restaurant_name);
+            setItemName(snapshot.val().item_name);
+            // console.log(snapshot.val())
+        }
+    )
 }
 
 export {

@@ -24,6 +24,7 @@ export const DisplayCartItemsComponent: React.FC<Props> = ({ edit, data }) => {
                             num={ item.num }
                             path={ item.path }
                             key={ item.key }
+                            edit={ edit }
                         />
                     )
                 } }
