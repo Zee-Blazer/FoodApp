@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, Image, TouchableOpacity } from "react-native";
 
 // Firebase function to get as specific restaurant
-
+import { getCartItem } from '../../../services/Firebase/User/Cart/getCart';
 
 // Icons
 import { MaterialIcons } from '@expo/vector-icons';
@@ -27,7 +27,13 @@ export const CartOptionContainer: React.FC<Props> = ({ uid, num, path, key }) =>
     const [itemPrice, setItemPrice] = useState();
     const [itemUri, setItemUri] = useState();
 
-    useEffect( () => {}, [] )
+    useEffect( () => {
+        getCartItem(
+            path, setItemUri, setItemPrice, setItemRestaurant, setItemName
+        );
+    }, [] )
+
+    // console.log(uid, path);
 
     return (
         <TouchableOpacity 

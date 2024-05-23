@@ -20,11 +20,10 @@ export const DisplayCartItemsComponent: React.FC<Props> = ({ edit, data }) => {
                     
                     return (
                         <CartOptionContainer 
-                            price={64}
-                            resName="Pizza Calzone European"
-                            size={14}
-                            amount={2}
-                            imgUri={ require("../../../../assets/Images/Burger/burger1.jpg") }
+                            uid={ item.uid }
+                            num={ item.num }
+                            path={ item.path }
+                            key={ item.key }
                         />
                     )
                 } }
