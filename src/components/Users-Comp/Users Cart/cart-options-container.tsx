@@ -80,12 +80,12 @@ export const CartOptionContainer: React.FC<Props> = ({ uid, num, path, edit, car
                 <View style={[ homeUsersScreenStyles.flexDisplay, homeUsersScreenStyles.flexDesign ]}>
                     <Text style={ usersCartUsersStyles.quantTxt }>
                         <Text style={{ fontSize: 14 }}>Pay: </Text>
-                        <Text style={{ color: "#059C6A" }}>${ 14 }</Text>
+                        <Text style={{ color: "#059C6A" }}>${ itemPrice && itemPrice * num }</Text>
                     </Text>
 
                     <View style={[ homeUsersScreenStyles.flexDisplay, homeUsersScreenStyles.flexDesign ]}>
                         <TouchableOpacity
-                            onPress={ subItemAndDecrement }
+                            onPress={ () => subItemAndDecrement(cart, num, uid) }
                         >
                             <Entypo name="circle-with-minus" size={22} color="rgba(255,255,255,0.5)" />
                         </TouchableOpacity>

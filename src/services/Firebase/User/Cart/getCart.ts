@@ -59,7 +59,16 @@ const addItemAndIncrement = (key: string, num: number, uid: string) => {
 
 }
 
-const subItemAndDecrement = () => {}
+const subItemAndDecrement = (key: string, num: number, uid: string) => {
+
+    update(
+        ref(database, `Cart/${uid}/${key}`),
+        {
+            num: num === 1 ? num : num-1
+        }
+    )
+
+}
 
 const deleteItemFromCart = () => {}
 
