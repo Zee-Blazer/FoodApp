@@ -39,6 +39,8 @@ export const CartOptionContainer: React.FC<Props> = ({ uid, num, path, key, edit
         );
     }, [] )
 
+    console.log(key);
+
     return (
         <TouchableOpacity 
             style={[ 

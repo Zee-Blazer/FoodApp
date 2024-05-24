@@ -16,7 +16,7 @@ export const DisplayCartItemsComponent: React.FC<Props> = ({ edit, data }) => {
             <FlatList 
                 data={data}
                 renderItem={ ({ item }) => {
-                    console.log(item)
+                    console.log(item.key);
                     
                     return (
                         <CartOptionContainer 
