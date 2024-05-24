@@ -6,7 +6,7 @@ import { CartOptionContainer } from "../Users Cart/cart-options-container";
 
 interface Props {
     edit: boolean,
-    data?: any[]
+    data?: any[],
 }
 
 export const DisplayCartItemsComponent: React.FC<Props> = ({ edit, data }) => {

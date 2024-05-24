@@ -17,7 +17,7 @@ interface Props {
     screenType?: string,
     action?: boolean,
     edit?: boolean,
-    setEdit?: Dispatch<SetStateAction<boolean>>
+    setEdit?: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export const UsersCartHeaderComponent: React.FC<Props> = ({ 

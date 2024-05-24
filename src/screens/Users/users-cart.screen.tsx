@@ -30,8 +30,6 @@ export const UsersCartScreen = () => {
     const [dataStore, setDataStore] = useState<any>([]); // Stores all the data gotten from the DB
     const [edit, setEdit] = useState<boolean>(true); // To allow the user delete items in cart
 
-    const [totalAmt, setTotalAmt] = useState<number>(0); // Get the total amount of the cart items
-
     const [showBottomSheet, setShowBottomSheet] = useState<boolean>(false);
 
     const snapToIndex = (index: number) => bottomSheetRef.current?.snapToIndex(index);

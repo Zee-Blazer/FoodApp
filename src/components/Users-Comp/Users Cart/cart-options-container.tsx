@@ -23,10 +23,12 @@ interface Props {
     num: number | any,
     path: string,
     edit: boolean,
-    cart?: string | any
+    cart?: string | any,
 }
 
-export const CartOptionContainer: React.FC<Props> = ({ uid, num, path, edit, cart }) => {
+export const CartOptionContainer: React.FC<Props> = ({ 
+    uid, num, path, edit, cart
+}) => {
 
     const [itemName, setItemName] = useState();
     const [itemRestaurant, setItemRestaurant] = useState();
