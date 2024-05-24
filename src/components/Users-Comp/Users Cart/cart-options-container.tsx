@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 import { View, Text, Image, TouchableOpacity } from "react-native";
 
@@ -79,12 +79,13 @@ export const CartOptionContainer: React.FC<Props> = ({ uid, num, path, key, edit
 
                 <View style={[ homeUsersScreenStyles.flexDisplay, homeUsersScreenStyles.flexDesign ]}>
                     <Text style={ usersCartUsersStyles.quantTxt }>
-                        { 14 }"
+                        <Text style={{ fontSize: 14 }}>Pay: </Text>
+                        <Text style={{ color: "#059C6A" }}>${ 14 }</Text>
                     </Text>
 
                     <View style={[ homeUsersScreenStyles.flexDisplay, homeUsersScreenStyles.flexDesign ]}>
                         <TouchableOpacity
-                            onPress={ addItemAndIncrement }
+                            onPress={ subItemAndDecrement }
                         >
                             <Entypo name="circle-with-minus" size={22} color="rgba(255,255,255,0.5)" />
                         </TouchableOpacity>
@@ -94,7 +95,7 @@ export const CartOptionContainer: React.FC<Props> = ({ uid, num, path, key, edit
                         </Text>
 
                         <TouchableOpacity
-                            onPress={ subItemAndDecrement }
+                            onPress={ () => addItemAndIncrement(key, num, uid) }
                         >
                             <Entypo name="circle-with-plus" size={22} color="rgba(255,255,255,0.5)" />
                         </TouchableOpacity>

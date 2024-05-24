@@ -48,24 +48,17 @@ const getCartItem = (
     )
 }
 
-const addItemAndIncrement = () => {
-    // push(
-    //     ref(database, `Database/test`),
+const addItemAndIncrement = (key: string, num: number, uid: string) => {
+
+    console.log(`Cart/${uid}/${key}`)
+
+    // update(
+    //     ref(database, `Cart/${uid}/${key}`),
     //     {
-    //         name: "James",
-    //         password: "MagicCard",
-    //         age: 24
+    //         num: num+1
     //     }
     // )
-    console.log("Working");
-    update(
-        ref(database, `Database/test/-Ny_knIVIomvbjp_WISE`),
-        {
-            // name: "James",
-            // password: "MagicCard",
-            age: 27
-        }
-    )
+
 }
 
 const subItemAndDecrement = () => {}
