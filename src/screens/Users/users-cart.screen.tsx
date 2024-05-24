@@ -27,8 +27,10 @@ export const UsersCartScreen = () => {
 
     const { user } = useContext(AuthContext);
 
-    const [dataStore, setDataStore] = useState<any>([]);
-    const [edit, setEdit] = useState<boolean>(true);
+    const [dataStore, setDataStore] = useState<any>([]); // Stores all the data gotten from the DB
+    const [edit, setEdit] = useState<boolean>(true); // To allow the user delete items in cart
+
+    const [totalAmt, setTotalAmt] = useState<number>(0); // Get the total amount of the cart items
 
     const [showBottomSheet, setShowBottomSheet] = useState<boolean>(false);
 
