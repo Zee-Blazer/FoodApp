@@ -22,11 +22,11 @@ interface Props {
     uid: string,
     num: number | any,
     path: string,
-    key: string,
-    edit: boolean
+    edit: boolean,
+    cart?: string | any
 }
 
-export const CartOptionContainer: React.FC<Props> = ({ uid, num, path, key, edit }) => {
+export const CartOptionContainer: React.FC<Props> = ({ uid, num, path, edit, cart }) => {
 
     const [itemName, setItemName] = useState();
     const [itemRestaurant, setItemRestaurant] = useState();
@@ -39,7 +39,7 @@ export const CartOptionContainer: React.FC<Props> = ({ uid, num, path, key, edit
         );
     }, [] )
 
-    console.log(key);
+    console.log(cart);
 
     return (
         <TouchableOpacity 
@@ -97,7 +97,7 @@ export const CartOptionContainer: React.FC<Props> = ({ uid, num, path, key, edit
                         </Text>
 
                         <TouchableOpacity
-                            onPress={ () => addItemAndIncrement(key, num, uid) }
+                            onPress={ () => addItemAndIncrement(cart, num, uid) }
                         >
                             <Entypo name="circle-with-plus" size={22} color="rgba(255,255,255,0.5)" />
                         </TouchableOpacity>
