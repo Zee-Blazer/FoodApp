@@ -50,14 +50,12 @@ const getCartItem = (
 
 const addItemAndIncrement = (key: string, num: number, uid: string) => {
 
-    console.log(`Cart/${uid}/${key}`)
-
-    // update(
-    //     ref(database, `Cart/${uid}/${key}`),
-    //     {
-    //         num: num+1
-    //     }
-    // )
+    update(
+        ref(database, `Cart/${uid}/${key}`),
+        {
+            num: num+1
+        }
+    )
 
 }
 
