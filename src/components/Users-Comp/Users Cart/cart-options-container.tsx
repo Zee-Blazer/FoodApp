@@ -71,7 +71,9 @@ export const CartOptionContainer: React.FC<Props> = ({ uid, num, path, edit, car
                     { 
                         !edit 
                         &&
-                        <TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={ () => deleteItemFromCart(cart, uid) }
+                        >
                             <MaterialIcons name="cancel" size={27} color="#E04444" />
                         </TouchableOpacity>
                     }

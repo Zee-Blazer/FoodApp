@@ -1,7 +1,7 @@
 
 // Firebase Database
 import { database } from '../../../../firebaseConfig';
-import { ref, onValue, push, update } from 'firebase/database';
+import { ref, onValue, push, update, remove } from 'firebase/database';
 
 const getTotalCartItems = (uid: string, setTotal: React.Dispatch<React.SetStateAction<number>>) => {
     onValue(
@@ -70,7 +70,11 @@ const subItemAndDecrement = (key: string, num: number, uid: string) => {
 
 }
 
-const deleteItemFromCart = () => {}
+const deleteItemFromCart = (key: string, uid: string) => {
+    remove(
+        ref(database, `Cart/${uid}/${key}`)
+    )
+}
 
 export {
     getAllCartItems,
