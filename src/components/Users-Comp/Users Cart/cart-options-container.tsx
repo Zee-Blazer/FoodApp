@@ -10,6 +10,9 @@ import {
     deleteItemFromCart
 } from '../../../services/Firebase/User/Cart/getCart';
 
+// Details Context
+import { DetailsContext } from '../../../services/Context/details.context';
+
 // Icons
 import { MaterialIcons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
@@ -30,16 +33,37 @@ export const CartOptionContainer: React.FC<Props> = ({
     uid, num, path, edit, cart
 }) => {
 
+    const { totalAmt, setTotalAmt, addAllAmount } = useContext(DetailsContext);
+
     const [itemName, setItemName] = useState();
     const [itemRestaurant, setItemRestaurant] = useState();
     const [itemPrice, setItemPrice] = useState();
     const [itemUri, setItemUri] = useState();
 
+    const funcDecrement = () => {
+        setTotalAmt(0);
+        subItemAndDecrement(cart, num, uid);
+    }
+
+    const funIncrement = () => {
+        setTotalAmt(0);
+        addItemAndIncrement(cart, num, uid)
+    }
+
     useEffect( () => {
         getCartItem(
             path, setItemUri, setItemPrice, setItemRestaurant, setItemName
         );
+
+        // setTotalAmt( parseInt(parseInt(totalAmt) + ( itemPrice !== undefined && parseInt(itemPrice) * parseInt(num) )) )
     }, [] )
+
+    useEffect( () => {
+        itemPrice !== undefined && 
+        addAllAmount(itemPrice !== undefined && parseInt(itemPrice), num);
+    }, [itemPrice, num] );
+
+    console.log(totalAmt);
 
     return (
         <TouchableOpacity 
@@ -89,7 +113,7 @@ export const CartOptionContainer: React.FC<Props> = ({
 
                     <View style={[ homeUsersScreenStyles.flexDisplay, homeUsersScreenStyles.flexDesign ]}>
                         <TouchableOpacity
-                            onPress={ () => subItemAndDecrement(cart, num, uid) }
+                            onPress={ funcDecrement }
                         >
                             <Entypo name="circle-with-minus" size={22} color="rgba(255,255,255,0.5)" />
                         </TouchableOpacity>
@@ -99,7 +123,7 @@ export const CartOptionContainer: React.FC<Props> = ({
                         </Text>
 
                         <TouchableOpacity
-                            onPress={ () => addItemAndIncrement(cart, num, uid) }
+                            onPress={ funIncrement }
                         >
                             <Entypo name="circle-with-plus" size={22} color="rgba(255,255,255,0.5)" />
                         </TouchableOpacity>

@@ -17,6 +17,8 @@ export const DetailsContextProvider = ({ children }) => {
     const [restaurantsRecord, setRestaurantsRecord] = useState(); 
     const [allItemRecord, setAllItemRecord] = useState();
 
+    const [totalAmt, setTotalAmt] = useState(0);
+
     const [searchResult, setSearchResult] = useState();
 
     const getDataMain = () => {
@@ -25,6 +27,11 @@ export const DetailsContextProvider = ({ children }) => {
         setSnacksRecord(generalGetAllInfoSearch("snacks"));
         setRestaurantsRecord(generalGetAllInfoSearch("restaurants"));
         setAllItemRecord(generalGetAllInfoSearch("all"));
+    }
+
+    const addAllAmount = (price, num) => {
+        // setTotalAmt( totalAmt + ( price * num ) );
+        // console.log(totalAmt)
     }
 
     useEffect( () => {
@@ -43,7 +50,10 @@ export const DetailsContextProvider = ({ children }) => {
                 restaurantsRecord,
                 getDataMain,
                 searchResult, 
-                setSearchResult
+                setSearchResult,
+                totalAmt,
+                setTotalAmt,
+                addAllAmount
             }}
         >
             { children }
