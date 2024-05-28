@@ -48,6 +48,7 @@ export const RestaurantDetailContainerComponent: React.FC<Props> = ({ show }) =>
                         dataList.forEach( e => descrip.push(e.item_name) );
                         const textDescrip = descrip.join(" - ");
 
+<<<<<<< HEAD
                         return (
                             <RestaurantDetailComponent 
                                 restaurantName={ item.restaurant_name }
@@ -69,6 +70,22 @@ export const RestaurantDetailContainerComponent: React.FC<Props> = ({ show }) =>
                     style={ homeUsersScreenStyles.noAvailableRestaurantError }
                 >No Available Restaurant At The Moment</Text>
             }
+=======
+                    return (
+                        <RestaurantDetailComponent 
+                            restaurantName={ item.restaurant_name }
+                            restaurantItems={ textDescrip }
+                            imgUri={ item.restaurant_logo }
+                            rating="4.7"
+                            time={20}
+                            link="RestaurantView"
+                        />
+                    )
+                } }
+                keyExtractor={ item => item.ownerId }
+                // style={ show && { paddingBottom: 102 } }
+            />
+>>>>>>> ec5a056 (About to work on the restaurant view screen)
 
         </View>
     )
