@@ -1,8 +1,12 @@
+import React, { useContext } from 'react';
 
 import { View, Text, SafeAreaView } from "react-native";
 
 // Navigation
 import { useNavigation } from "@react-navigation/native";
+
+// Details Context
+import { DetailsContext } from '../../services/Context/details.context';
 
 // Styling
 import { homeUsersScreenStyles } from "../../styles/screens/home-users.styles";
@@ -18,6 +22,8 @@ import { TransparentBtnComponent } from "../../components/Users-Comp/Payment/tra
 export const PaymentScreen: React.FC = () => {
 
     const navigation = useNavigation();
+
+    const { totalAmt } = useContext(DetailsContext);
 
     return (
         <SafeAreaView style={{ backgroundColor: "white", flex: 1 }}>
@@ -41,7 +47,7 @@ export const PaymentScreen: React.FC = () => {
             <View style={ usersCartUsersStyles.wildSpace }>
                 <View style={{ flexDirection: "row" }}>
                     <Text style={ paymentUsersStyles.placeBarTxt }>TOTAL: </Text>
-                    <Text style={ paymentUsersStyles.placeBarTxtPrice }>$96</Text>
+                    <Text style={ paymentUsersStyles.placeBarTxtPrice }>${ totalAmt }</Text>
                 </View>
                 <FormBtnComponent 
                     title="PAY & CONFIRM"
