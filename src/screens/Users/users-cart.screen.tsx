@@ -8,6 +8,9 @@ import BottomSheet from '@gorhom/bottom-sheet';
 // Authentication Context
 import { AuthContext } from '../../services/Context/auth.context';
 
+// Details Context
+import { DetailsContext } from '../../services/Context/details.context';
+
 // Firebase functionality
 import { getAllCartItems } from '../../services/Firebase/User/Cart/getCart';
 
@@ -28,6 +31,7 @@ export const UsersCartScreen = () => {
     const bottomSheetRef = useRef<BottomSheet>(null);
 
     const { user } = useContext(AuthContext);
+    const { totalAmt, setTotalAmt } = useContext(DetailsContext);
 
     const [dataStore, setDataStore] = useState<any>([]); // Stores all the data gotten from the DB
     const [edit, setEdit] = useState<boolean>(true); // To allow the user delete items in cart

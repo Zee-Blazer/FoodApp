@@ -29,11 +29,6 @@ export const DetailsContextProvider = ({ children }) => {
         setAllItemRecord(generalGetAllInfoSearch("all"));
     }
 
-    const addAllAmount = (price, num) => {
-        // setTotalAmt( totalAmt + ( price * num ) );
-        // console.log(totalAmt)
-    }
-
     useEffect( () => {
         getAllRestaurantsForUser(setRestaurantsData);
         getDataMain();
@@ -53,7 +48,6 @@ export const DetailsContextProvider = ({ children }) => {
                 setSearchResult,
                 totalAmt,
                 setTotalAmt,
-                addAllAmount
             }}
         >
             { children }
