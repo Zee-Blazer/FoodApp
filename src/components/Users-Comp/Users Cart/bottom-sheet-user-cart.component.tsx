@@ -53,7 +53,7 @@ export const BottomSheetUserCartComponent = () => {
             >
                 <View style={{ flexDirection: "row" }}>
                     <Text style={ paymentUsersStyles.placeBarTxt }>TOTAL: </Text>
-                    <Text style={ paymentUsersStyles.placeBarTxtPrice }>$96</Text>
+                    <Text style={ paymentUsersStyles.placeBarTxtPrice }>${ totalAmt }</Text>
                 </View>
                 
                 <TouchableOpacity style={[ homeUsersScreenStyles.flexDisplay, { marginTop: 12 } ]}>
