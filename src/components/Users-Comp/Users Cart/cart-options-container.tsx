@@ -41,12 +41,10 @@ export const CartOptionContainer: React.FC<Props> = ({
     const [itemUri, setItemUri] = useState();
 
     const funcDecrement = () => {
-        setTotalAmt(0);
         subItemAndDecrement(cart, num, uid);
     }
 
     const funIncrement = () => {
-        setTotalAmt(0);
         addItemAndIncrement(cart, num, uid)
     }
 
@@ -54,16 +52,7 @@ export const CartOptionContainer: React.FC<Props> = ({
         getCartItem(
             path, setItemUri, setItemPrice, setItemRestaurant, setItemName
         );
-
-        // setTotalAmt( parseInt(parseInt(totalAmt) + ( itemPrice !== undefined && parseInt(itemPrice) * parseInt(num) )) )
     }, [] )
-
-    useEffect( () => {
-        itemPrice !== undefined && 
-        addAllAmount(itemPrice !== undefined && parseInt(itemPrice), num);
-    }, [itemPrice, num] );
-
-    console.log(totalAmt);
 
     return (
         <TouchableOpacity 
