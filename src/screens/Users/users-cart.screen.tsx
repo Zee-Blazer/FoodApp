@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useRef, useContext } from 'react';
 
-import { View, ScrollView, SafeAreaView } from "react-native";
+import { View, SafeAreaView } from "react-native";
 
 // Bottom Sheet
 import BottomSheet from '@gorhom/bottom-sheet';
@@ -8,8 +8,13 @@ import BottomSheet from '@gorhom/bottom-sheet';
 // Authentication Context
 import { AuthContext } from '../../services/Context/auth.context';
 
+// Details Context
+import { DetailsContext } from '../../services/Context/details.context';
+
 // Firebase functionality
 import { getAllCartItems } from '../../services/Firebase/User/Cart/getCart';
+
+import { getStaticData } from '../../services/Firebase/User/Cart/static.func';
 
 // Styling
 import { usersCartUsersStyles } from "../../styles/screens/users-cart-users.styles";
@@ -26,16 +31,20 @@ export const UsersCartScreen = () => {
     const bottomSheetRef = useRef<BottomSheet>(null);
 
     const { user } = useContext(AuthContext);
+    const { setTotalAmt } = useContext(DetailsContext);
 
-    const [dataStore, setDataStore] = useState();
+    const [dataStore, setDataStore] = useState<any>([]); // Stores all the data gotten from the DB
+    const [edit, setEdit] = useState<boolean>(true); // To allow the user delete items in cart
 
     const [showBottomSheet, setShowBottomSheet] = useState<boolean>(false);
 
     const snapToIndex = (index: number) => bottomSheetRef.current?.snapToIndex(index);
 
     useEffect( () => {
-        getAllCartItems(user.uid);
+        getAllCartItems(user.uid, setDataStore);
     }, [] ) 
+
+    dataStore && setTotalAmt(getStaticData(dataStore)); // To set the total amount of cart
 
     return (
         <SafeAreaView style={{ backgroundColor: "#121223", flex: 1 }}>
@@ -45,11 +54,16 @@ export const UsersCartScreen = () => {
                     title="Cart"
                     screenType='Cart'
                     action={ false }
+                    edit={ edit }
+                    setEdit={ setEdit }
                 />
 
                 <View style={{ marginVertical: 12 }}></View>
                 
-                <DisplayCartItemsComponent />
+                <DisplayCartItemsComponent 
+                    edit={ edit }
+                    data={ dataStore }
+                />
 
             </View>
 

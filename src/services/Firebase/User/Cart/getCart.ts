@@ -1,9 +1,23 @@
 
 // Firebase Database
 import { database } from '../../../../firebaseConfig';
-import { ref, onValue, push } from 'firebase/database';
+import { ref, onValue, push, update, remove } from 'firebase/database';
 
-const getAllCartItems = (uid: string) => {
+const getTotalCartItems = (uid: string, setTotal: React.Dispatch<React.SetStateAction<number>>) => {
+    onValue(
+        ref(database, `Cart/${uid}`),
+        ( snapshot ) => {
+            if(snapshot.exists()){
+                setTotal(Object.values(snapshot.val()).length);
+            }
+            else{
+                setTotal(0);
+            }
+        }
+    )
+}
+
+const getAllCartItems = (uid: string, setDataStore: React.Dispatch<React.SetStateAction<any[]>>) => {
     onValue(
         ref(database, `Cart/${uid}`),
         ( snapshot ) => {
@@ -11,11 +25,62 @@ const getAllCartItems = (uid: string) => {
             snapshot.forEach( ( childSnapshot ) => {
                 data.push({ key: childSnapshot.key, ...childSnapshot.val() })
             } )
-            console.log(data);
+            setDataStore(data);
         }
     )
 }
 
+const getCartItem = (
+    path: any,
+    setItemUri: React.Dispatch<React.SetStateAction<any>>,
+    setItemPrice: React.Dispatch<React.SetStateAction<any>>,
+    setItemRestaurant: React.Dispatch<React.SetStateAction<any>>,
+    setItemName: React.Dispatch<React.SetStateAction<any>>
+) => {
+    onValue(
+        ref(database, `Category/${path}`),
+        (snapshot) => {
+            setItemUri(snapshot.val().item_img);
+            setItemPrice(snapshot.val().item_price);
+            setItemRestaurant(snapshot.val().restaurant_info.restaurant_name);
+            setItemName(snapshot.val().item_name);
+        }
+    )
+}
+
+const addItemAndIncrement = (key: string, num: number, uid: string) => {
+
+    update(
+        ref(database, `Cart/${uid}/${key}`),
+        {
+            num: num+1
+        }
+    )
+
+}
+
+const subItemAndDecrement = (key: string, num: number, uid: string) => {
+
+    update(
+        ref(database, `Cart/${uid}/${key}`),
+        {
+            num: num === 1 ? num : num-1
+        }
+    )
+
+}
+
+const deleteItemFromCart = (key: string, uid: string) => {
+    remove(
+        ref(database, `Cart/${uid}/${key}`)
+    )
+}
+
 export {
-    getAllCartItems
+    getAllCartItems,
+    getTotalCartItems,
+    getCartItem,
+    addItemAndIncrement,
+    subItemAndDecrement,
+    deleteItemFromCart
 }

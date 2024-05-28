@@ -15,16 +15,23 @@ import { usersCartUsersStyles } from "../../../styles/screens/users-cart-users.s
 interface Props {
     title: string,
     screenType?: string,
-    action?: boolean
+    action?: boolean,
+    edit?: boolean,
+    setEdit?: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export const UsersCartHeaderComponent: React.FC<Props> = ({ title, screenType, action }) => {
+export const UsersCartHeaderComponent: React.FC<Props> = ({ 
+    title, screenType, action, edit, setEdit 
+}) => {
 
     const navigation = useNavigation();
 
     const checkAndNavigate = () => {
         if(screenType === "ProfileInfo"){
             navigation.navigate("EditProfile");
+        }
+        else if(screenType === "Cart") {
+            setEdit(!edit)
         }
     }
 
@@ -65,8 +72,17 @@ export const UsersCartHeaderComponent: React.FC<Props> = ({ title, screenType, a
                 <TouchableOpacity
                     onPress={ checkAndNavigate }
                 >
-                    <Text style={[ usersCartUsersStyles.upperEditTxt, { color: "#FF7622" } ]}>
-                        { screenType == "Cart" ?  "EDIT ITEMS" : "EDIT" }
+                    <Text 
+                        style={[ 
+                            usersCartUsersStyles.upperEditTxt, 
+                            { color: edit ? "#FF7622" : "#059C6A" } 
+                        ]}
+                    >
+                        { screenType == "Cart" ?  
+                                edit ? "EDIT ITEMS" : "DONE"
+                            : 
+                                "EDIT" 
+                        }
                     </Text>
                 </TouchableOpacity> :
                 <View style={{ marginVertical: 18 }}></View>

@@ -1,5 +1,12 @@
+import React, { useState, useEffect, useContext } from 'react';
 
 import { View, Text, TouchableOpacity } from 'react-native';
+
+// Firebase function to get total cart items
+import { getTotalCartItems } from '../../../services/Firebase/User/Cart/getCart';
+
+// Authentication Context
+import { AuthContext } from '../../../services/Context/auth.context';
 
 // Icon
 import { Feather } from '@expo/vector-icons';
@@ -14,6 +21,14 @@ export const CartRecordNavComponent = () => {
 
     const navigation = useNavigation();
 
+    const { user } = useContext(AuthContext);
+
+    const [total, setTotal] = useState<number>(0);
+
+    useEffect( () => {
+        getTotalCartItems(user.uid, setTotal);
+    }, [] )
+
     return (
         <TouchableOpacity 
             style={ homeUsersScreenStyles.shopChartNote }
@@ -23,9 +38,12 @@ export const CartRecordNavComponent = () => {
                 name="shopping-bag" size={24} color="white" 
                 style={ homeUsersScreenStyles.shopChartNoteIcon }
             />
-            <View style={ homeUsersScreenStyles.shopChartNoteMsg }>
-                <Text style={ homeUsersScreenStyles.shopChartNoteMsgTxt }>2</Text>
-            </View>
+            {
+                total > 0 &&
+                <View style={ homeUsersScreenStyles.shopChartNoteMsg }>
+                    <Text style={ homeUsersScreenStyles.shopChartNoteMsgTxt }>{ total && total }</Text>
+                </View>
+            }
         </TouchableOpacity>
     )
 }

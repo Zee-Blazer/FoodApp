@@ -23,8 +23,6 @@ interface Props {
 
 export const PopularMealComponent: React.FC<Props> = ({ cateName, data }) => {
 
-    // console.log(data && data[0]);
-
     return (
         <View>
             <CategoriesHeaderText 

@@ -89,7 +89,7 @@ export const FastFoodComponent: React.FC<Props> = ({
                     <TouchableOpacity
                         onPress={ () => addToCart(
                                 user.uid,
-                                `${uid || personalUID}/${category}/${inner_id}`, 
+                                `${category}/${uid || personalUID}/${inner_id}`, 
                             ) 
                         }
                     >
