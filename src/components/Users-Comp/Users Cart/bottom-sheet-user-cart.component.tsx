@@ -1,8 +1,12 @@
+import React, { useContext } from 'react';
 
 import { View, Text, TouchableOpacity, TextInput } from "react-native";
 
 // Icon
 import { AntDesign } from '@expo/vector-icons';
+
+// Details Context
+import { DetailsContext } from '../../../services/Context/details.context';
 
 // Navigation
 import { useNavigation } from "@react-navigation/native";
@@ -19,6 +23,8 @@ import { FormBtnComponent } from "../../Auth-Comp/form-btn.component";
 export const BottomSheetUserCartComponent = () => {
 
     const navigation = useNavigation();
+
+    const { totalAmt } = useContext(DetailsContext);
 
     return (
         <View>
