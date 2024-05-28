@@ -57,3 +57,4 @@ export const PaymentScreen: React.FC = () => {
         </SafeAreaView>
     )
 }
+ 
