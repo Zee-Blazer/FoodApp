@@ -31,7 +31,7 @@ export const UsersCartScreen = () => {
     const bottomSheetRef = useRef<BottomSheet>(null);
 
     const { user } = useContext(AuthContext);
-    const { totalAmt, setTotalAmt } = useContext(DetailsContext);
+    const { setTotalAmt } = useContext(DetailsContext);
 
     const [dataStore, setDataStore] = useState<any>([]); // Stores all the data gotten from the DB
     const [edit, setEdit] = useState<boolean>(true); // To allow the user delete items in cart
@@ -44,7 +44,7 @@ export const UsersCartScreen = () => {
         getAllCartItems(user.uid, setDataStore);
     }, [] ) 
 
-    getStaticData(dataStore);
+    dataStore && setTotalAmt(getStaticData(dataStore)); // To set the total amount of cart
 
     return (
         <SafeAreaView style={{ backgroundColor: "#121223", flex: 1 }}>
