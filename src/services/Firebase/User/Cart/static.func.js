@@ -3,10 +3,13 @@
 import { database } from '../../../../firebaseConfig';
 import { ref, onValue, push, update, remove } from 'firebase/database';
 
-const getSpecificData = () => {
-    console.log("Working fine");
+const getStaticData = (data) => {
+    let count = 0;
+
+    data.forEach( obj => console.log(obj) )
+    console.log("Working fine", data);
 }
 
 export {
-    getSpecificData
+    getStaticData
 }

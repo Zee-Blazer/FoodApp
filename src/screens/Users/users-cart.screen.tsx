@@ -11,6 +11,8 @@ import { AuthContext } from '../../services/Context/auth.context';
 // Firebase functionality
 import { getAllCartItems } from '../../services/Firebase/User/Cart/getCart';
 
+import { getStaticData } from '../../services/Firebase/User/Cart/static.func';
+
 // Styling
 import { usersCartUsersStyles } from "../../styles/screens/users-cart-users.styles";
 
@@ -37,6 +39,8 @@ export const UsersCartScreen = () => {
     useEffect( () => {
         getAllCartItems(user.uid, setDataStore);
     }, [] ) 
+
+    getStaticData(dataStore);
 
     return (
         <SafeAreaView style={{ backgroundColor: "#121223", flex: 1 }}>
