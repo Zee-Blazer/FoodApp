@@ -11,7 +11,6 @@ const getStaticData = (data) => {
             ref(database, `Category/${obj.path}`),
             ( snapshot ) => {
                 count += ( snapshot.val().item_price * obj.num )
-                // console.log(snapshot.val().item_price * obj.num);
             }
         )
     } )
