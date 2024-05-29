@@ -1,7 +1,7 @@
 
 // Firebase Database
 import { database } from '../../../../firebaseConfig';
-import { ref, onValue, push, update, remove } from 'firebase/database';
+import { ref, onValue } from 'firebase/database';
 
 const getStaticData = (data) => {
     let count = 0;
